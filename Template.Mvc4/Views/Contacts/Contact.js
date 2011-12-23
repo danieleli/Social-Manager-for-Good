@@ -1,3 +1,4 @@
+(function() {
 
   $(function() {
     var baseUrl;
@@ -59,3 +60,5 @@
       return ko.applyBindings(viewModel);
     });
   });
+
+}).call(this);
