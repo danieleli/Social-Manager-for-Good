@@ -1,3 +1,4 @@
+(function() {
 
   $(function() {
     return ko.bindingHandlers.executeOnEnter = {
@@ -18,3 +19,5 @@
       }
     };
   });
+
+}).call(this);

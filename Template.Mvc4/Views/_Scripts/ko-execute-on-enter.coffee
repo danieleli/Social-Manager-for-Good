@@ -12,4 +12,4 @@ $ ->
         value.call viewModel
         return false
       true
-    
+   
