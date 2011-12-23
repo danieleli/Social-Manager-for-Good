@@ -10,12 +10,21 @@
 }
 <ul data-bind="foreach: triggers">
   <li class="trigger" data-bind="click: $parent.selectTrigger"><span data-bind="text: title">
-    </span>@*<span data-bind="text: FirstName"></span><span data-bind="text: LastName"></span>
+  </span>
+    <ul data-bind="foreach: activities">
+      <li class="activity" data-bind="click: $parent.selectActivity">
+      <span data-bind="text: date"></span>
+      <ul data-bind="foreach: channels">
+        <li><span data-bind="text: channel"></span></li>
+      </ul>
+      
+      </li>
+    </ul>
+    @*<span data-bind="text: FirstName"></span><span data-bind="text: LastName"></span>
     <div>
       <a href="#" class="contact-edit">Edit</a> <a href="#" class="contact-delete">Delete</a>
     </div>*@ </li>
 </ul>
-
 @section pageScripts
 {
   <script src="/Views/_Scripts/ko-protected-observable.js" type="text/javascript"></script>
@@ -24,7 +33,6 @@
   <script src="@Url.Content("~/Views/_Scripts/CrudHelpers.js")" type="text/javascript"></script>
   <script src="@Url.Content("~/Views/Social/Social.js")" type="text/javascript"></script>
 }
-
 <style type="text/css">
-  
+ul span { margin: 5px; }  
 </style>

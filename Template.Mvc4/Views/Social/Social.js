@@ -5,10 +5,16 @@
     title: "trigger1",
     activities: new Array({
       date: new Date("01/01/2012"),
-      channels: new Array("facebook", "twitter")
+      channels: new Array({
+        channel: "twitter"
+      }, {
+        channel: "facebook"
+      })
     }, {
       date: new Date("01/03/2012"),
-      channels: new Array("facebook", "linkedin")
+      channels: new Array({
+        channel: "facebook"
+      })
     }),
     selectTrigger: function(koItem) {
       return alert(koItem.title());
@@ -19,10 +25,16 @@
     title: "trigger2",
     activities: new Array({
       date: new Date("02/01/2012"),
-      channels: new Array("twitter")
+      channels: new Array({
+        channel: "facebook"
+      })
     }, {
       date: new Date("02/03/2012"),
-      channels: new Array("linkedin", "facebook")
+      channels: new Array({
+        channel: "linkedin"
+      }, {
+        channel: "facebook"
+      })
     }),
     selectTrigger: function(koItem) {
       return alert(koItem.title());
