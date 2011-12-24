@@ -16,6 +16,10 @@ namespace Template.Mvc4.Controllers
             return View();
         }
 
+        public ActionResult Index2()
+        {
+          return View();
+        }
         //
         // GET: /Social/Details/5
 

@@ -412,6 +412,7 @@
     <Content Include="Content\lib\twitter-bootstrap\scripts\bootstrap-tabs.js" />
     <Content Include="Content\lib\twitter-bootstrap\scripts\bootstrap-twipsy.js" />
     <None Include="Content\common-functions.less" />
+    <Content Include="Content\social.less" />
     <None Include="Content\lib\twitter-bootstrap\styles\bootstrap.css.old" />
     <Content Include="Content\lib\twitter-bootstrap\styles\bootstrap.min.css" />
     <Content Include="Global.asax" />
@@ -436,10 +437,19 @@
     <None Include="Test\calendar\calendar.less" />
     <Content Include="Test\Calendar.cshtml" />
     <Content Include="Test\calendar\Calendar2.cshtml" />
+    <Content Include="Test\social.cshtml" />
     <None Include="Views\Home\javascript.cshtml" />
+    <Content Include="Views\Social\Index2.js">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index2.coffee</DependentUpon>
+    </Content>
     <Content Include="Views\Social\Social.js">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>Social.coffee</DependentUpon>
+    </Content>
+    <Content Include="Views\Social\Social.min.js">
       <DependentUpon>Social.coffee</DependentUpon>
     </Content>
     <Content Include="Views\_Scripts\CrudHelpers.js">
@@ -472,6 +482,11 @@
     <Content Include="Views\Home\_TwitterFoot.cshtml" />
     <Content Include="Views\Home\LessEditor.cshtml" />
     <Content Include="Views\Social\Index.cshtml" />
+    <Content Include="Views\Social\Index2.cshtml" />
+    <None Include="Views\Social\Index2.coffee">
+      <Generator>CoffeeScriptGenerator</Generator>
+      <LastGenOutput>Index2.js</LastGenOutput>
+    </None>
     <None Include="Views\Social\Social.coffee">
       <Generator>CoffeeScriptGenerator</Generator>
       <LastGenOutput>Social.js</LastGenOutput>

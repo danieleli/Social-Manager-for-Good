@@ -8,29 +8,114 @@
   <script src="/Content/lib/jquery/jquery-1.7.1.min.js" type="text/javascript"></script> 
   }
 }
-<ul class="triggers" data-bind="foreach: triggers">
-  <li class="trigger">
-    <span data-bind="click: $parent.selectTrigger">
-      <span data-bind="text: title"></span>
-    </span>
-    <span>
-      <button class="trigger-details">Details</button>
-      <a href="#" class="trigger-edit">Edit</a>
-      <a href="#" class="trigger-delete">Delete</a>
-    </span>
-    <ul class="activities" data-bind="foreach: activities">
-      <li class="activity" data-bind="click: $parent.selectActivity">
-        <span data-bind="text: niceDate"></span>
-        <ul class="channels" data-bind="foreach: channels">
-          <li class="channel">
-            <span data-bind="text: channel"></span>
-            <button class="channel-delete">Delete</button>
-          </li>
-        </ul>
-      </li>
-    </ul>
+<br />
+<br />
+<ul>
+  <li class="new-item">
+      <input type="text" class="date" placeholder="Date" data-bind="value: triggerToAddDate"
+        name="Title" />
+      <input type="text" placeholder="New Trigger" data-bind="value: triggerToAddTitle"
+        name="Title" />
+      <button data-bind="click: addTrigger" class="btn add primary">+ Add</button>
   </li>
 </ul>
+<ul class="triggers" data-bind="foreach: triggers">
+  <li class="trigger">
+    <div class="summary">
+      <button class="btn delete danger outer-left">x</button>
+      <div class='date' data-bind="text: niceDate">
+      </div>
+      <div class='title' data-bind="text: title">
+      </div>
+    </div>
+    <div class="details">
+      <div class="tabs">
+        <ul>
+          <li>
+            <a href="#tabs-1">Simple View</a></li>
+          <li>
+            <a href="#tabs-2">Calendar View</a></li>
+        </ul>
+        <div id="tabs-1">
+          <ul data-bind="foreach: actions">
+            <li class="action" data-bind="click: $parent.selectAction">
+            
+            <span data-bind="text: niceDate">
+            
+            </span>
+            <div class="channel"><span data-bind="text: channel"></span>
+              <button class="btn delete danger">x</button>
+              </div>
+            </li>
+            
+          </ul>
+          <div class="new-item">
+            <input placeholder="Date" name="Date" class="date" type="date" /><input placeholder="Channels"
+              class="new-channels" type="text" />
+            <button class="btn add info">Add</button>
+          </div>
+        </div>
+        <div id="tabs-2" class="calendar">
+          <div class="outer-div">
+            <div class="inner-div">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="nogb" colspan="2"></th>
+                    <th colspan="4" class="top-header">Channels</th>
+                  </tr>
+                  <tr>
+                    <th class="header-first">Date </th>
+                    <th colspan="2">
+                      <div>
+                        linkedin</div>
+                    </th>
+                    <th>
+                      <div>
+                        facebook</div>
+                    </th>
+                    <th>
+                      <div>
+                        meetup</div>
+                    </th>
+                    <th>
+                      <div>
+                        twitter</div>
+                    </th>
+                  </tr>
+                </thead>
+@*                <tfoot>
+                  <tr>
+                    <td colspan="2"></td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                  </tr>
+                </tfoot>*@
+                <tbody data-bind="foreach: getRows">
+                  <tr>
+                    <td><span data-bind="text: formatMMDD()"></span></td>
+                    <td></td>
+                    <td>
+                      <input type="checkbox" name="linkedin" /></td>
+                    <td>
+                      <input type="checkbox" name="facebook" /></td>
+                    <td>
+                      <input type="checkbox" name="meetup" /></td>
+                    <td>
+                      <input type="checkbox" name="twitter" /></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>
+
 @section pageScripts
 {
   <script src="/Views/_Scripts/ko-protected-observable.js" type="text/javascript"></script>
@@ -40,29 +125,11 @@
   <script src="@Url.Content("~/Views/Social/Social.js")" type="text/javascript"></script>
   <script type="text/javascript">
     $(function () {
-      $('.trigger-details').click(function () {
-        $(this.parentNode.parentNode).children('.activities').show()
+      $('.tabs').tabs();
+      $(document).on("click", '.summary', function () {
+        $(this.parentNode).children('.details').toggle('fast')
       });
+      $('.new-item .date').datepicker();
     });
   </script>
 }
-<style type="text/css">
-  ul span
-  {
-    margin: 5px;
-  }
-  .activities
-  {
-    display: none;
-  }
-  .activity
-  {
-    display: block;
-  }
-  .channels, .channel
-  {
-    display: inline;
-  }
-  ul ul { background: red; }
-  ul ul ul li{ background: blue !important; }
-</style>

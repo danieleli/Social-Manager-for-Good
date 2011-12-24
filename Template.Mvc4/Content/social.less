@@ -1,0 +1,84 @@
+﻿@import "common-functions.less";
+
+
+
+
+ul { list-style: none; }
+.tabs, .tabs ul { border: none; background: transparent;}
+.triggers {
+  .trigger { 
+    .summary {
+      cursor: pointer;
+      margin: 20px 0 10px 10px;
+      position: relative;
+      div { display: inline-block; padding-right: 10px; }
+      .outer-left { position: absolute; left: -80px; top: -6px;}
+    } 
+    .details { 
+      .delete { padding: 0 3px; margin: 3px;}
+      .channel { background: #eee; .rounded-corners(5px); }
+      .channel:hover { background: #ddd; color: #333; }
+    } 
+    .ui-tabs-panel { 
+      padding: 10px; 
+      height: 270px;
+      background: #fafaff;
+      ul { margin-left: 0px; margin-bottom: 15px; }
+    }
+  }
+  ul span {
+    margin: 5px; }
+  .title {
+    width: 150px;
+    display: inline-block; }
+
+  .new-item {
+    margin-bottom: 50px;
+    .date {
+      width: 80px; }
+    input {
+      margin: 2px; } }
+
+  .details {
+    margin-top: 20px;
+    display: none; }
+
+  .action {
+    display: block; }
+
+  .channel {
+    background: #eee;
+    padding: 1px;
+    margin: 3px;
+    span {
+      padding: 2px; }
+    .delete {
+      padding: 2px;
+      height: auto; } }
+
+  .channels, .channel {
+    display: inline-block; }
+
+  .calendar {
+    .outer-div{ position:relative;  margin: auto;}
+    .inner-div{ overflow: auto; height: 260px; padding-right: 10px; }
+    table  {   
+      color: #666;
+      th {
+      
+        text-align: center;
+        background: #eee;
+        &.top-header { background: #ddd; .rounded-corners-each(5px,5px,0,0);}
+        &.nogb { background: transparent; }
+        &.header-first {.rounded-corners-each(5px,0,0,0);}
+      }
+      tbody {
+        tr:hover { background: #eee; }
+        td { text-align: center; padding: 2px;  }
+      }
+      
+    }
+  }
+
+  
+}
