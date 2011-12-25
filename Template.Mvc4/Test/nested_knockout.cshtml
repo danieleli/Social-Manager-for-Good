@@ -1,84 +1,12 @@
 ﻿@{
   Page.Title = "Nested Knockout";
 }
-<script>
-  var trigger1 = {
-    Title: "annual meeting",
-    Date: new Date("1/15/2012"),
-    Actions: new Array(
-       { channel: "action1", date: "1/12/2012" },
-       { channel: "action2", date: "2/12/2012" }
-    )
+@{if (false)
+  { 
+  <script src="../Content/lib/qunit/qunit.js"> </script>
+  <script src="../Content/lib/knockout/knockout-1.3.0beta.debug.js"> </script>
   }
-
-  var trigger2 = {
-    Title: "brown bag",
-    Date: new Date("2/15/2012"),
-    Actions: new Array()
-  }
-
-
-  var data = new Array(trigger1, trigger2);
-  function setupModel() {
-    var viewModel = {
-      triggers: ko.mapping.fromJS(data)
-    }
-    ko.applyBindings(viewModel);
-    return viewModel;
-  }
-
-</script>
-<!-- The tests -->
-<script>
-
-  $(function () {
-    // calculator_tests.js
-    module("Triggers");
-//    test("Should bind to template", function () {
-//      var viewModel = setupModel();
-//      ok(viewModel, "ViewModel is a O.K.");
-//      equals(viewModel.triggers().length, 2, "2 Triggers");
-//    });
-
-//    test("new trigger should show in template", function () {
-//      var viewModel = setupModel();
-//      var trigger3 = {
-//        Title: "3rd trigger",
-//        Date: new Date("3/15/2012"),
-//        Actions: null
-//      }
-//      viewModel.triggers.push(trigger3);
-//      ok(viewModel, "ViewModel is a O.K.");
-
-//      equals(viewModel.triggers().length, 3, "2 Triggers");
-//    });
-
-//    test("child actions should be two", function () {
-//      var viewModel = setupModel();
-
-//      ok(viewModel, "ViewModel is a O.K.");
-//      var actions = viewModel.triggers()[0].Actions();
-//      equals(actions.length, 2, "2 action");
-//    });
-     
-    test("add new action to trigger", function () {
-      var viewModel = setupModel();
-
-      ok(viewModel, "ViewModel is a O.K.");
-      var actions = viewModel.triggers()[1].Actions();
-      equals(actions.length, 0, "0 action");
-      equals($('.action').length, 2, "2 actions in dom");
-      equals(actions.length, 0, "0 action in our trigger");
-       
-      // act 
-      viewModel.triggers()[1].Actions.push({ channel: "action3", date: "3/12/2012" });
-      
-       // assert
-      equals(actions.length, 1, "1 action in our trigger");
-      equals($('.action').length, 3, "3 actions in dom");
-    });
-  });
-</script>
+}
 <ul class="triggers" data-bind="foreach: triggers">
   <li class="trigger">
     <div class="summary">
@@ -89,17 +17,135 @@
       </div>
     </div>
     <ul data-bind="foreach: Actions">
-      <li class="action"><span data-bind="text: date">
-      </span>
+      <li class="action"><span data-bind="text: date"></span>
         <div class="channel">
           <span data-bind="text: channel"></span>
           <button class="btn delete danger">x</button>
         </div>
       </li>
     </ul>
+    <div class="new-item new-action">
+      new item trigger.actions[]
+      <input placeholder="Date" name="Date1" class="date" type="text" data-bind="value: $data.addActionDate" />
+      <input placeholder="Channel" name="Channel" type="text" data-bind="value: $data.addActionChannel" />
+      <button data-bind="click: $root.addActionToTrigger" class="btn add primary">+ Add</button>
+    </div>
   </li>
 </ul>
-<script src="/Views/_Scripts/ko-protected-observable.js" type="text/javascript"></script>
-<script src="/Views/_Scripts/CrudHelpers.js" type="text/javascript"></script>
-<script src="/Content/lib/knockout/knockout-1.3.0beta.js" type="text/javascript"></script>
-<script src="/Content/lib/knockout/knockout-mapping.js" type="text/javascript"></script>
+<script>
+
+  $(function () {
+    function viewModel(data) {
+      var self = this;
+
+      // add view fields for each trigger.
+      prepTriggers(data);
+      self.triggers = ko.mapping.fromJS(data);
+
+      self.addActionToTrigger = function () {
+        // this = the trigger getting the new action.
+        if (arguments.length > 0) {
+          var newAction;
+          newAction = action(this.addActionDate(), this.addActionChannel());
+          this.addActionDate("");
+          this.addActionChannel("");
+          this.Actions.push(newAction);
+        };
+      };
+    };
+
+    function prepTriggers(triggers) {
+      for (var i = 0; i < triggers.length; i++) {
+        triggers[i].addActionDate = "";
+        triggers[i].addActionChannel = "";
+      }
+    }
+
+    var action = function (date, channel) {
+      return {
+        date: new Date(date),
+        niceDate: new Date(date).formatMMDDYYY(),
+        channel: channel
+      }
+    };
+
+
+
+
+    function getPageData() {
+      var trigger1 = {
+        Title: "annual meeting",
+        Date: new Date("1/15/2012"),
+        Actions: new Array(
+          { channel: "action1", date: "1/12/2012" },
+          { channel: "action2", date: "2/12/2012" }
+        )
+      };
+
+      var trigger2 = {
+        Title: "brown bag",
+        Date: new Date("2/15/2012"),
+        Actions: new Array()
+      };
+
+      var pageData = new Array(trigger1, trigger2);
+      return pageData;
+    };
+
+    var myData = getPageData();
+    var vm = new viewModel(myData);
+    ko.applyBindings(vm);
+
+    function refreshTriggers(myViewModel) {
+      myViewModel.triggers.removeAll();
+      var freshTriggers = getPageData();
+      prepTriggers(freshTriggers);
+      myViewModel.triggers.push(ko.mapping.fromJS(freshTriggers[0]));
+      myViewModel.triggers.push(ko.mapping.fromJS(freshTriggers[1]));
+
+    }
+    module("Triggers");
+
+    test("Should bind to template", function () {
+      refreshTriggers(vm);
+      ok(viewModel, "ViewModel is a O.K.");
+      equals(vm.triggers().length, 2, "2 Triggers");
+      vm.triggers.removeAll();
+    })
+
+            test("new trigger should show in template", function () {
+              refreshTriggers(vm);
+              var trigger3 = {
+                Title: "3rd trigger",
+                Date: new Date("3/15/2012"),
+                Actions: null
+              }
+              var initialLength = vm.triggers().length;
+              vm.triggers.push(trigger3);
+              ok(vm, "ViewModel is a O.K.");
+
+              equals(vm.triggers().length, initialLength + 1, "1 additional trigger");
+              vm.triggers.removeAll();
+               
+            });
+
+            test("add new action to trigger", function () {
+              refreshTriggers(vm);
+              ok(vm, "ViewModel is a O.K.");
+              var actions = vm.triggers()[1].Actions();
+
+              equals(vm.triggers()[0].Actions().length, 2, "2 actions in first trigger");
+              equals($('.action').length, 2, "2 actions in dom");
+              equals(actions.length, 0, "0 actions in 2nd trigger");
+
+              // act 
+              vm.triggers()[1].Actions.push({ channel: "action3", date: "3/12/2012" });
+
+              // assert
+              equals(actions.length, 1, "1 action in 2nd trigger");
+              equals($('.action').length, 3, "3 actions in dom");
+
+              vm.triggers.removeAll();
+            });
+  });
+</script>
