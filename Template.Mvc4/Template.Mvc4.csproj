@@ -462,6 +462,7 @@
     <Content Include="Views\Social\Social.min.js">
       <DependentUpon>Social.coffee</DependentUpon>
     </Content>
+    <Content Include="Views\Social\triggers_viewmodel.js" />
     <Content Include="Views\_Scripts\CrudHelpers.js">
       <DependentUpon>CrudHelpers.coffee</DependentUpon>
       <AutoGen>True</AutoGen>

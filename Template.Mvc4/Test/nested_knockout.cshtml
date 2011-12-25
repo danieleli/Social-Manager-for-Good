@@ -7,6 +7,7 @@
   <script src="../Content/lib/knockout/knockout-1.3.0beta.debug.js"> </script>
   }
 }
+<script src="/Views/Social/triggers_viewmodel.js"> </script>
 <ul class="triggers" data-bind="foreach: triggers">
   <li class="trigger">
     <div class="summary">
@@ -35,117 +36,92 @@
 <script>
 
   $(function () {
-    function viewModel(data) {
-      var self = this;
 
-      // add view fields for each trigger.
-      prepTriggers(data);
-      self.triggers = ko.mapping.fromJS(data);
+    testUtils = {
+      getPageData: function () {
+        var trigger1 = this.getTrigger1();
+        var trigger2 = this.getTrigger2();
 
-      self.addActionToTrigger = function () {
-        // this = the trigger getting the new action.
-        if (arguments.length > 0) {
-          var newAction;
-          newAction = action(this.addActionDate(), this.addActionChannel());
-          this.addActionDate("");
-          this.addActionChannel("");
-          this.Actions.push(newAction);
-        };
-      };
-    };
+        var pageData = new Array(trigger1, trigger2);
 
-    function prepTriggers(triggers) {
-      for (var i = 0; i < triggers.length; i++) {
-        triggers[i].addActionDate = "";
-        triggers[i].addActionChannel = "";
+        return pageData;
+      },
+
+      getTrigger1: function () {
+        return {
+          Title: "annual meeting",
+          Date: new Date("1/15/2012"),
+          Actions: new Array(
+            { channel: "action1", date: "1/12/2012" },
+            { channel: "action2", date: "2/12/2012" }
+          )
+        }
+      },
+
+      getTrigger2: function () {
+        return {
+          Title: "brown bag",
+          Date: new Date("2/15/2012"),
+          Actions: new Array()
+        }
+      },
+
+      refreshTriggers: function (myViewModel) {
+        myViewModel.triggers.removeAll();
+        var freshTriggers = this.getPageData();
+        myViewModel.prepTriggers(freshTriggers);
+        myViewModel.triggers.push(ko.mapping.fromJS(freshTriggers[0]));
+        myViewModel.triggers.push(ko.mapping.fromJS(freshTriggers[1]));
       }
-    }
-
-    var action = function (date, channel) {
-      return {
-        date: new Date(date),
-        niceDate: new Date(date).formatMMDDYYY(),
-        channel: channel
-      }
     };
-
-
-
-
-    function getPageData() {
-      var trigger1 = {
-        Title: "annual meeting",
-        Date: new Date("1/15/2012"),
-        Actions: new Array(
-          { channel: "action1", date: "1/12/2012" },
-          { channel: "action2", date: "2/12/2012" }
-        )
-      };
-
-      var trigger2 = {
-        Title: "brown bag",
-        Date: new Date("2/15/2012"),
-        Actions: new Array()
-      };
-
-      var pageData = new Array(trigger1, trigger2);
-      return pageData;
-    };
-
-    var myData = getPageData();
-    var vm = new viewModel(myData);
+     
+    var myData = testUtils.getPageData();
+    var vm = new TriggerViewModel(myData);
     ko.applyBindings(vm);
 
-    function refreshTriggers(myViewModel) {
-      myViewModel.triggers.removeAll();
-      var freshTriggers = getPageData();
-      prepTriggers(freshTriggers);
-      myViewModel.triggers.push(ko.mapping.fromJS(freshTriggers[0]));
-      myViewModel.triggers.push(ko.mapping.fromJS(freshTriggers[1]));
 
-    }
     module("Triggers");
 
     test("Should bind to template", function () {
-      refreshTriggers(vm);
-      ok(viewModel, "ViewModel is a O.K.");
+      testUtils.refreshTriggers(vm);
+      ok(vm, "ViewModel is a O.K.");
       equals(vm.triggers().length, 2, "2 Triggers");
       vm.triggers.removeAll();
     })
 
-            test("new trigger should show in template", function () {
-              refreshTriggers(vm);
-              var trigger3 = {
-                Title: "3rd trigger",
-                Date: new Date("3/15/2012"),
-                Actions: null
-              }
-              var initialLength = vm.triggers().length;
-              vm.triggers.push(trigger3);
-              ok(vm, "ViewModel is a O.K.");
+    test("new trigger should show in template", function () {
+      testUtils.refreshTriggers(vm);
+      var trigger3 = {
+        Title: "3rd trigger",
+        Date: new Date("3/15/2012"),
+        Actions: null
+      }
+      var initialLength = vm.triggers().length;
+      vm.triggers.push(trigger3);
+      ok(vm, "ViewModel is a O.K.");
 
-              equals(vm.triggers().length, initialLength + 1, "1 additional trigger");
-              vm.triggers.removeAll();
-               
-            });
+      equals(vm.triggers().length, initialLength + 1, "1 additional trigger");
+      vm.triggers.removeAll();
 
-            test("add new action to trigger", function () {
-              refreshTriggers(vm);
-              ok(vm, "ViewModel is a O.K.");
-              var actions = vm.triggers()[1].Actions();
+    });
 
-              equals(vm.triggers()[0].Actions().length, 2, "2 actions in first trigger");
-              equals($('.action').length, 2, "2 actions in dom");
-              equals(actions.length, 0, "0 actions in 2nd trigger");
+    test("add new action to trigger", function () {
+      testUtils.refreshTriggers(vm);
+      ok(vm, "ViewModel is a O.K.");
+      var actions = vm.triggers()[1].Actions();
 
-              // act 
-              vm.triggers()[1].Actions.push({ channel: "action3", date: "3/12/2012" });
+      equals(vm.triggers()[0].Actions().length, 2, "2 actions in first trigger");
+      equals($('.action').length, 2, "2 actions in dom");
+      equals(actions.length, 0, "0 actions in 2nd trigger");
 
-              // assert
-              equals(actions.length, 1, "1 action in 2nd trigger");
-              equals($('.action').length, 3, "3 actions in dom");
+      // act 
+      vm.triggers()[1].Actions.push({ channel: "action3", date: "3/12/2012" });
 
-              vm.triggers.removeAll();
-            });
+      // assert
+      equals(actions.length, 1, "1 action in 2nd trigger");
+      equals($('.action').length, 3, "3 actions in dom");
+
+      vm.triggers.removeAll();
+    });
   });
 </script>
