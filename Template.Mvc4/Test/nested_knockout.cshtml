@@ -8,35 +8,48 @@
   }
 }
 <script src="/Views/Social/triggers_viewmodel.js"> </script>
-<ul class="triggers" data-bind="foreach: triggers">
-  <li class="trigger">
+<ul class="triggers" data-bind="foreach: triggers" style="width: 500px;">
+  <li class="trigger" data-bind="event: {mouseover: $root.selectTrigger}">
     <div class="summary">
-      <button class="btn delete danger outer-left">x</button>
-      <div class='date' data-bind="text: Date">
-      </div>
-      <div class='title' data-bind="text: Title">
-      </div>
+      
+      <span class='date' data-bind="text: niceDate"></span> - <span class='title' data-bind="text: title">
+      
+      </span>
+      <button class="btn delete danger" style="float:right;" data-bind="click: $root.removeTrigger">x</button>
     </div>
-    <ul data-bind="foreach: Actions">
-      <li class="action"><span data-bind="text: date"></span>
-        <div class="channel">
-          <span data-bind="text: channel"></span>
-          <button class="btn delete danger">x</button>
-        </div>
+    <ul data-bind="foreach: actions">
+      <li class="action" style="clear:both;"><span data-bind="text: niceDate"></span> - <span class="channel"><span
+        data-bind="text: channel"></span>
+        <button class="btn delete danger" style="float:right;" data-bind="click: $root.removeActionFromTrigger">x</button>
+      </span></li>
+    </ul>
+    <ul class="new-item new-action">
+      <li>
+        <input placeholder="Date" name="Date1" class="date" type="text" data-bind="value: $data.addActionDate" />
+        <input placeholder="Channel" name="Channel" type="text" data-bind="value: $data.addActionChannel" />
+        <button data-bind="click: $root.addActionToTrigger" class="btn add primary">+ Add</button>
       </li>
     </ul>
-    <div class="new-item new-action">
-      new item trigger.actions[]
-      <input placeholder="Date" name="Date1" class="date" type="text" data-bind="value: $data.addActionDate" />
-      <input placeholder="Channel" name="Channel" type="text" data-bind="value: $data.addActionChannel" />
-      <button data-bind="click: $root.addActionToTrigger" class="btn add primary">+ Add</button>
-    </div>
   </li>
 </ul>
+
+<style type="text/css">
+  .trigger:hover { background: #ddd;}
+</style>
+<div id="debug">
+  <h2>Debug</h2>
+  <div data-bind="text: ko.toJSON($data)">
+  </div>
+</div>
+
+
 <script>
 
+  myFunction = function (data, event) {
+    alert(2);
+  }
   $(function () {
-
+    var runtests = true;
     testUtils = {
       getPageData: function () {
         var trigger1 = this.getTrigger1();
@@ -49,9 +62,9 @@
 
       getTrigger1: function () {
         return {
-          Title: "annual meeting",
-          Date: new Date("1/15/2012"),
-          Actions: new Array(
+          title: "annual meeting",
+          date: new Date("1/15/2012"),
+          actions: new Array(
             { channel: "action1", date: "1/12/2012" },
             { channel: "action2", date: "2/12/2012" }
           )
@@ -60,68 +73,71 @@
 
       getTrigger2: function () {
         return {
-          Title: "brown bag",
-          Date: new Date("2/15/2012"),
-          Actions: new Array()
+          title: "brown bag",
+          date: new Date("2/15/2012"),
+          actions: new Array()
         }
       },
 
       refreshTriggers: function (myViewModel) {
         myViewModel.triggers.removeAll();
         var freshTriggers = this.getPageData();
-        myViewModel.prepTriggers(freshTriggers);
+        myViewModel.modelUtils.prepTriggers(freshTriggers);
         myViewModel.triggers.push(ko.mapping.fromJS(freshTriggers[0]));
         myViewModel.triggers.push(ko.mapping.fromJS(freshTriggers[1]));
       }
     };
-     
+
     var myData = testUtils.getPageData();
-    var vm = new TriggerViewModel(myData);
+    var vm = new TriggersViewModel(myData);
     ko.applyBindings(vm);
 
 
     module("Triggers");
 
     test("Should bind to template", function () {
+      if (!runtests) return true;
       testUtils.refreshTriggers(vm);
       ok(vm, "ViewModel is a O.K.");
       equals(vm.triggers().length, 2, "2 Triggers");
-      vm.triggers.removeAll();
-    })
+    });
+
 
     test("new trigger should show in template", function () {
+      if (!runtests) return true;
       testUtils.refreshTriggers(vm);
       var trigger3 = {
-        Title: "3rd trigger",
-        Date: new Date("3/15/2012"),
-        Actions: null
+        title: "3rd trigger",
+        date: new Date("3/15/2012"),
+        actions: new Array()
       }
+      vm.modelUtils.prepTrigger(trigger3);
+      trigger3 = ko.mapping.fromJS(trigger3);
       var initialLength = vm.triggers().length;
       vm.triggers.push(trigger3);
       ok(vm, "ViewModel is a O.K.");
 
       equals(vm.triggers().length, initialLength + 1, "1 additional trigger");
-      vm.triggers.removeAll();
-
     });
 
     test("add new action to trigger", function () {
+      if (!runtests) return true;
       testUtils.refreshTriggers(vm);
       ok(vm, "ViewModel is a O.K.");
-      var actions = vm.triggers()[1].Actions();
+      var actions = vm.triggers()[1].actions();
 
-      equals(vm.triggers()[0].Actions().length, 2, "2 actions in first trigger");
+      equals(vm.triggers()[0].actions().length, 2, "2 actions in first trigger");
       equals($('.action').length, 2, "2 actions in dom");
       equals(actions.length, 0, "0 actions in 2nd trigger");
 
       // act 
-      vm.triggers()[1].Actions.push({ channel: "action3", date: "3/12/2012" });
+      action = createActionViewModel("3/2/2333", "action3");
+      action = ko.mapping.fromJS(action);
+      vm.triggers()[1].actions.push(action);
 
       // assert
       equals(actions.length, 1, "1 action in 2nd trigger");
       equals($('.action').length, 3, "3 actions in dom");
-
-      vm.triggers.removeAll();
     });
   });
 </script>

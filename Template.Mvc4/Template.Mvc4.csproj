@@ -400,7 +400,6 @@
     <Content Include="Test\nested_knockout.min.js">
       <DependentUpon>nested_knockout.coffee</DependentUpon>
     </Content>
-    <Content Include="Test\nested_knockout_js.js" />
     <Content Include="Views\Home\application.js" />
     <Content Include="Content\lib\twitter-bootstrap\images\bird.png" />
     <Content Include="Content\lib\twitter-bootstrap\images\bootstrap-apple-114x114.png" />
