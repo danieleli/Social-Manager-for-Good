@@ -12,11 +12,11 @@
 <br />
 <ul>
   <li class="new-item">
-      <input type="text" class="date" placeholder="Date" data-bind="value: triggerToAddDate"
-        name="Title" />
-      <input type="text" placeholder="New Trigger" data-bind="value: triggerToAddTitle"
-        name="Title" />
-      <button data-bind="click: addTrigger" class="btn add primary">+ Add</button>
+    <input type="text" class="date" placeholder="Date" data-bind="value: triggerToAddDate"
+      name="Date" />
+    <input type="text" placeholder="New Trigger" data-bind="value: triggerToAddTitle"
+      name="Title" />
+    <button data-bind="click: addTrigger" class="btn add primary">+ Add</button>
   </li>
 </ul>
 <ul class="triggers" data-bind="foreach: triggers">
@@ -28,6 +28,11 @@
       <div class='title' data-bind="text: title">
       </div>
     </div>
+    <div class="new-item">
+      <input placeholder="Date" name="Date1" class="date" type="text" data-bind="value: $data.addActionDate" />
+      <input placeholder="Channel" name="Channel"  type="text" data-bind="value: $data.addActionChannel"/>
+      <button data-bind="click: $data.addAction()" class="btn add primary">+ Add</button>
+    </div>
     <div class="details">
       <div class="tabs">
         <ul>
@@ -38,16 +43,13 @@
         </ul>
         <div id="tabs-1">
           <ul data-bind="foreach: actions">
-            <li class="action" data-bind="click: $parent.selectAction">
-            
-            <span data-bind="text: niceDate">
-            
+            <li class="action" data-bind="click: $parent.selectAction"><span data-bind="text: niceDate">
             </span>
-            <div class="channel"><span data-bind="text: channel"></span>
-              <button class="btn delete danger">x</button>
+              <div class="channel">
+                <span data-bind="text: channel"></span>
+                <button class="btn delete danger">x</button>
               </div>
             </li>
-            
           </ul>
           <div class="new-item">
             <input placeholder="Date" name="Date" class="date" type="date" /><input placeholder="Channels"
@@ -84,7 +86,7 @@
                     </th>
                   </tr>
                 </thead>
-@*                <tfoot>
+                @*                <tfoot>
                   <tr>
                     <td colspan="2"></td>
                     <td>0</td>
@@ -115,7 +117,6 @@
     </div>
   </li>
 </ul>
-
 @section pageScripts
 {
   <script src="/Views/_Scripts/ko-protected-observable.js" type="text/javascript"></script>

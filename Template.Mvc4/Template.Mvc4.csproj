@@ -439,11 +439,6 @@
     <Content Include="Test\calendar\Calendar2.cshtml" />
     <Content Include="Test\social.cshtml" />
     <None Include="Views\Home\javascript.cshtml" />
-    <Content Include="Views\Social\Index2.js">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index2.coffee</DependentUpon>
-    </Content>
     <Content Include="Views\Social\Social.js">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -457,6 +452,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
+    <Content Include="Views\_Scripts\date.js" />
     <Content Include="Views\_Scripts\ko-execute-on-enter.js">
       <DependentUpon>ko-execute-on-enter.coffee</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -482,11 +478,6 @@
     <Content Include="Views\Home\_TwitterFoot.cshtml" />
     <Content Include="Views\Home\LessEditor.cshtml" />
     <Content Include="Views\Social\Index.cshtml" />
-    <Content Include="Views\Social\Index2.cshtml" />
-    <None Include="Views\Social\Index2.coffee">
-      <Generator>CoffeeScriptGenerator</Generator>
-      <LastGenOutput>Index2.js</LastGenOutput>
-    </None>
     <None Include="Views\Social\Social.coffee">
       <Generator>CoffeeScriptGenerator</Generator>
       <LastGenOutput>Social.js</LastGenOutput>
