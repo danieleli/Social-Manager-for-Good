@@ -303,6 +303,7 @@
     <Content Include="Content\Images\nav.png" />
     <Content Include="Content\Images\options.png" />
     <Content Include="Content\Images\shadow.png" />
+    <Content Include="Content\lib\knockout\knockout-mapping.js" />
     <Content Include="Content\lib\slicebox\fancy_deboss.png" />
     <Content Include="Content\lib\slicebox\jquery.easing.1.3.js" />
     <Content Include="Content\lib\slicebox\jquery.slicebox.js" />
@@ -391,6 +392,15 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\lib\qunit\qunit.js" />
     <Content Include="Test\calendar\jquery.dop.BookingCalendar.js" />
+    <Content Include="Test\nested_knockout.js">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>nested_knockout.coffee</DependentUpon>
+    </Content>
+    <Content Include="Test\nested_knockout.min.js">
+      <DependentUpon>nested_knockout.coffee</DependentUpon>
+    </Content>
+    <Content Include="Test\nested_knockout_js.js" />
     <Content Include="Views\Home\application.js" />
     <Content Include="Content\lib\twitter-bootstrap\images\bird.png" />
     <Content Include="Content\lib\twitter-bootstrap\images\bootstrap-apple-114x114.png" />
@@ -438,6 +448,11 @@
     <Content Include="Test\Calendar.cshtml" />
     <Content Include="Test\calendar\Calendar2.cshtml" />
     <Content Include="Test\social.cshtml" />
+    <Content Include="Test\nested_knockout.cshtml" />
+    <None Include="Test\nested_knockout.coffee">
+      <Generator>CoffeeScriptGenerator</Generator>
+      <LastGenOutput>nested_knockout.js</LastGenOutput>
+    </None>
     <None Include="Views\Home\javascript.cshtml" />
     <Content Include="Views\Social\Social.js">
       <AutoGen>True</AutoGen>

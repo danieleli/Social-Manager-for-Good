@@ -16,19 +16,20 @@ action  =
 
 trigger =
   (title, date, actions) ->
+    self: this
     title: title,
     date: date,
     niceDate: new Date(date).formatMMDDYYY(),
-    actions: actions,
-    addActionChannel: "x",
-    addActionDate: new Date(),
+    actions: ko.mapping.fromJS(actions),
+    addActionChannel: ko.observable(""),
+    addActionDate: ko.observable(""),
     getRows: ((new Date(new Date(date).addDays(num))) for num in [-7..7]),
     actionToAdd: new action("", ""),
     addAction: ->
-      newAction = action this.addActionDate, this.addActionChannel
-      this.addActionChannel = ""
-      this.addActionDate = "01/01/2012"
-      this.actions().push new ko.protectedObservableItem newAction
+      newAction = action this.addActionDate(), this.addActionChannel()
+      this.addActionChannel ""
+      this.addActionDate ""
+      this.actions.push newAction
 
 
 
@@ -56,8 +57,8 @@ loadData = ->
 $ ->
   data = loadData()
   viewModel = 
-    self=this
-    triggers: ko.observableArray(ko.toProtectedObservableItemArray(data.triggers))
+    self: this
+    triggers: ko.mapping.fromJS(data.triggers)
     selectTrigger: ->
       alert this.title()
     selectAction: ->
@@ -65,10 +66,13 @@ $ ->
     triggerToAddTitle: ko.observable ""
     triggerToAddDate: ko.observable ""
     addTrigger: ->
-      newTrigger = trigger this.triggerToAddTitle(),this.triggerToAddDate(), new Array()
+      newTrigger = trigger this.triggerToAddTitle(),this.triggerToAddDate(), new Array(
+        action "04/01/2012", "twitter"
+        action "04/01/2012", "facebook"
+      )
       this.triggerToAddTitle ""
       this.triggerToAddDate ""
-      viewModel.triggers.push new ko.protectedObservableItem newTrigger
+      viewModel.triggers.push  newTrigger
       $('.triggers .tabs').tabs();
       $('.triggers .details .date').datepicker();
 
