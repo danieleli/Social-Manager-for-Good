@@ -26,7 +26,7 @@
       },
      
       prepAction: function (action) {
-         action.niceDate = new Date(action.date).formatMMDDYYY();
+         action.niceDate = new Date(action.date).formatMMDD();
       }
    };
 
@@ -98,7 +98,7 @@ $(function () {
 createActionViewModel = function (date, channel) {
    return {
       date: new Date(date),
-      niceDate: new Date(date).formatMMDDYYY(),
+      niceDate: new Date(date).formatMMDD(),
       channel: channel
    }
 };
@@ -140,8 +140,9 @@ testUtils = {
          title: "annual meeting",
          date: new Date("1/15/2012"),
          actions: new Array(
-            { channel: "action1", date: "1/12/2012" },
-            { channel: "action2", date: "2/12/2012" }
+            { channel: "facebook", date: "1/12/2012" },
+            { channel: "twitter", date: "1/12/2012" },
+            { channel: "twitter", date: "1/15/2012" }
           )
       }
    },

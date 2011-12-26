@@ -5,82 +5,95 @@
 
 ul { list-style: none; }
 .tabs, .tabs ul { border: none; background: transparent;}
+.date {
+  width: 80px;
+  color: #bbb;  }
 .triggers {
-  .trigger { 
-    .summary {
-      cursor: pointer;
-      margin: 20px 0 10px 10px;
-      position: relative;
-      div { display: inline-block; padding-right: 10px; }
-      .outer-left { position: absolute; left: -80px; top: -6px;}
-    } 
-    .details { 
-      .delete { padding: 0 3px; margin: 3px;}
-      .channel { background: #eee; .rounded-corners(5px); }
-      .channel:hover { background: #ddd; color: #333; }
-    } 
-    .ui-tabs-panel { 
-      padding: 10px; 
-      height: 270px;
-      background: #fafaff;
-      .rounded-corners-each(0,10px,10px,10px);
-      ul { margin-left: 0px; margin-bottom: 15px; }
-    }
+  display: inline-block;
+  ul, li { margin-left: 0; }
+  .new-item { 
+    margin-left:80px;
+    input, button { margin: 5px; }
   }
-  ul span {
-    margin: 5px; }
   .title {
     width: 150px;
-    display: inline-block; }
-
-  .date {
-      width: 80px; }
-  .new-item {
-    margin-bottom: 50px;
-
-    input {
-      margin: 2px; } }
-
-  .details {
-    margin-top: 20px;
-    display: none; }
-
-  .action {
-    display: block; }
-
-  .channel {
-    background: #eee;
-    padding: 1px;
-    margin: 3px;
-    span {
-      padding: 2px; }
-    .delete {
-      padding: 2px;
-      height: auto; } }
-
-  .channels, .channel {
-    display: inline-block; }
-
-  .calendar {
-    .outer-div{ position:relative;  margin: auto;}
-    .inner-div{ overflow: auto; height: 260px; padding-right: 10px; }
-    table  {   
-      color: #666;
-      th {
-      
-        text-align: center;
-        background: #eee;
-        &.top-header { background: #ddd; .rounded-corners-each(5px,5px,0,0);}
-        &.nogb { background: transparent; }
-        &.header-first {.rounded-corners-each(5px,0,0,0);}
-      }
-      tbody {
-        tr:hover { background: #eee; }
-        td { text-align: center; padding: 2px;  }
-      }
-      
-    }
+    display: inline-block;
   }
+  .trigger { 
+    .rounded-corners();
+    &:hover { background: #eee; }
+    .summary {
+      cursor: pointer;
+      position: relative;
+      padding: 10px;
+      vertical-align: middle;
+      div { display: inline-block; padding-right: 10px; }
+      .outer-left { position: absolute; left: -80px; top: -6px;}
+      span { vertical-align: top; display: inline-block; }
+      .title { font-size: 120%; width: 165px; }
+      .actions { 
+        padding: 0px;
+        margin: 0px;
+        width: 350px;
+        display: inline-block;
+        border: none;
+        background: transparent;
+        .channel {
+          background: #eee;
+          padding: 3px;
+          margin: 0 3px 3px 3px;
+          .date { font-size: 80%; color: #999; }
+          .rounded-corners();
+          span {
+            padding: 2px;
+            display: inline; }
+          .delete {
+            padding: 0 5px;
+          } }
+      } 
+    } 
 
-  
+    .details { 
+      margin-top: 5px;
+      display: none; 
+      .new-item.action {
+        margin-left:200px;
+        padding-bottom: 10px;
+        .delete { padding: 0 3px; margin: 3px;}
+        .channel { background: #eee; .rounded-corners(5px); }
+        .channel:hover { background: #ddd; color: #333; }
+
+      } 
+      .ui-tabs-panel { 
+        padding: 10px; 
+        height: 270px;
+        background: #fafaff;
+        .rounded-corners-each(0,10px,10px,10px);
+        ul { margin-left: 0px; margin-bottom: 15px; }
+      }
+    }
+    .channels, .channel {
+      display: inline-block; }
+
+    .calendar {
+      .outer-div{ position:relative;  margin: auto;}
+      .inner-div{ overflow: auto; height: 260px; padding-right: 10px; }
+      table  {   
+        color: #666;
+        th {
+      
+          text-align: center;
+          background: #eee;
+          &.top-header { background: #ddd; .rounded-corners-each(5px,5px,0,0);}
+          &.nogb { background: transparent; }
+          &.header-first {.rounded-corners-each(5px,0,0,0);}
+        }
+        tbody {
+          tr:hover { background: #eee; }
+          td { text-align: center; padding: 2px;  }
+        }
+      
+      }
+    }
+  } 
 }

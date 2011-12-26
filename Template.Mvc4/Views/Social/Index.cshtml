@@ -13,25 +13,34 @@
 <div class="triggers">
   <ul>
     <li class="new-item">
-      <input type="text" placeholder="New Trigger" data-bind="value: triggerToAddTitle"
+      <input type="text" placeholder="New Trigger" class="title" data-bind="value: triggerToAddTitle"
         name="Title" />
       <input type="text" class="date" placeholder="Date" data-bind="value: triggerToAddDate"
         name="Date" />
-      <button data-bind="click: addTrigger" class="btn add primary">+ Add</button>
+      <button data-bind="click: addTrigger" class="btn add primary">+ Add Trigger</button>
     </li>
   </ul>
   <ul data-bind="foreach: triggers">
     <li class="trigger" data-bind="event: {mouseover: $root.selectTrigger}">
       <div class="summary">
-        <span class='.uneditable-input' data-bind="text: title"></span><span class='date'
-          data-bind="text: niceDate"></span>
-        <button class="btn delete danger" data-bind="click: $root.removeTrigger">x</button>
+        <span class='date' data-bind="text: niceDate"></span><span class='title' data-bind="text: title">
+        </span>
+        <ul data-bind="foreach: actions" class="actions">
+          <li class="action" style="display: inline-block;">
+            <div class="channel">
+              <span class="date" data-bind="text: niceDate"></span><span data-bind="text: channel"></span>
+              <button class="btn delete danger" data-bind="click: $root.removeActionFromTrigger">
+                x</button>
+            </div>
+          </li>
+        </ul>
+        <span><button class="btn delete danger" data-bind="click: $root.removeTrigger">x</button></span>
       </div>
-      <div class="details" style="display: block;">
+      <div class="details" style="display: none;">
         <div class="new-item action">
           <input placeholder="Date" name="Date1" class="date" type="text" data-bind="value: $data.addActionDate" />
           <input placeholder="Channel" name="Channel" type="text" data-bind="value: $data.addActionChannel" />
-          <button data-bind="click: $root.addActionToTrigger" class="btn add primary">+ Add</button>
+          <button data-bind="click: $root.addActionToTrigger" class="btn add primary">+ Add Action</button>
         </div>
         <!-- actions -->
         <ul data-bind="foreach: actions" style="display: none;">
@@ -43,7 +52,7 @@
             </div>
           </li>
         </ul>
-        <div class="tabs" >
+        <div class="tabs" style="display: none;">
           <ul>
             <li>
               <a href="#tabs-1">Simple View</a></li>
