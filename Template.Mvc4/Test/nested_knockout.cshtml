@@ -50,43 +50,7 @@
   }
   $(function () {
     var runtests = true;
-    testUtils = {
-      getPageData: function () {
-        var trigger1 = this.getTrigger1();
-        var trigger2 = this.getTrigger2();
 
-        var pageData = new Array(trigger1, trigger2);
-
-        return pageData;
-      },
-
-      getTrigger1: function () {
-        return {
-          title: "annual meeting",
-          date: new Date("1/15/2012"),
-          actions: new Array(
-            { channel: "action1", date: "1/12/2012" },
-            { channel: "action2", date: "2/12/2012" }
-          )
-        }
-      },
-
-      getTrigger2: function () {
-        return {
-          title: "brown bag",
-          date: new Date("2/15/2012"),
-          actions: new Array()
-        }
-      },
-
-      refreshTriggers: function (myViewModel) {
-        myViewModel.triggers.removeAll();
-        var freshTriggers = this.getPageData();
-        myViewModel.modelUtils.prepTriggers(freshTriggers);
-        myViewModel.triggers.push(ko.mapping.fromJS(freshTriggers[0]));
-        myViewModel.triggers.push(ko.mapping.fromJS(freshTriggers[1]));
-      }
-    };
 
     var myData = testUtils.getPageData();
     var vm = new TriggersViewModel(myData);
