@@ -1,4 +1,4 @@
-﻿Date.prototype.formatMMDDYYY = function () {
+﻿Date.prototype.formatMMDDYYYY = function () {
    return this.getMonth() + 1 + '/' + this.getDate() + '/' + this.getFullYear();
 };
 

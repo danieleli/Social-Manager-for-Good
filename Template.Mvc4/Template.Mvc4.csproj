@@ -303,6 +303,8 @@
     <Content Include="Content\Images\nav.png" />
     <Content Include="Content\Images\options.png" />
     <Content Include="Content\Images\shadow.png" />
+    <Content Include="Content\lib\knockout\knockout-2.0.0.debug.js" />
+    <Content Include="Content\lib\knockout\knockout-2.0.0.js" />
     <Content Include="Content\lib\knockout\knockout-mapping.js" />
     <Content Include="Content\lib\slicebox\fancy_deboss.png" />
     <Content Include="Content\lib\slicebox\jquery.easing.1.3.js" />
@@ -453,6 +455,7 @@
       <LastGenOutput>nested_knockout.js</LastGenOutput>
     </None>
     <None Include="Views\Home\javascript.cshtml" />
+    <Content Include="Views\Social\jsfiddle.js" />
     <Content Include="Views\Social\Social.js">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -461,6 +464,7 @@
     <Content Include="Views\Social\Social.min.js">
       <DependentUpon>Social.coffee</DependentUpon>
     </Content>
+    <Content Include="Views\Social\test.js" />
     <Content Include="Views\Social\triggers_viewmodel.js" />
     <Content Include="Views\_Scripts\CrudHelpers.js">
       <DependentUpon>CrudHelpers.coffee</DependentUpon>
@@ -497,6 +501,7 @@
       <Generator>CoffeeScriptGenerator</Generator>
       <LastGenOutput>Social.js</LastGenOutput>
     </None>
+    <Content Include="Views\Social\_action-dialog.cshtml" />
     <None Include="Views\_Scripts\CrudHelpers.coffee">
       <Generator>CoffeeScriptGenerator</Generator>
       <LastGenOutput>CrudHelpers.js</LastGenOutput>

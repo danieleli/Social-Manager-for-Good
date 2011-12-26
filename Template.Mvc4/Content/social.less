@@ -8,6 +8,11 @@ ul { list-style: none; }
 .date {
   width: 80px;
   color: #bbb;  }
+
+#actionDialog {
+  label { margin-top: 4px; margin-right: 10px; padding: 0; width:60px; text-align: right; }
+  input, textarea { width: 190px; }
+}
 .triggers {
   display: inline-block;
   ul, li { margin-left: 0; }
@@ -21,7 +26,12 @@ ul { list-style: none; }
   }
   .trigger { 
     .rounded-corners();
-    &:hover { background: #eee; }
+    &:hover { 
+      background: #eee;
+      .channel {
+        background: #fff !important;
+      }
+    }
     .summary {
       cursor: pointer;
       position: relative;
@@ -47,7 +57,7 @@ ul { list-style: none; }
           span {
             padding: 2px;
             display: inline; }
-          .delete {
+          .moreinfo {
             padding: 0 5px;
           } }
       } 
@@ -57,12 +67,12 @@ ul { list-style: none; }
       margin-top: 5px;
       display: none; 
       .new-item.action {
-        margin-left:200px;
+        
         padding-bottom: 10px;
         .delete { padding: 0 3px; margin: 3px;}
         .channel { background: #eee; .rounded-corners(5px); }
         .channel:hover { background: #ddd; color: #333; }
-
+        margin: 0;
       } 
       .ui-tabs-panel { 
         padding: 10px; 
@@ -72,6 +82,7 @@ ul { list-style: none; }
         ul { margin-left: 0px; margin-bottom: 15px; }
       }
     }
+
     .channels, .channel {
       display: inline-block; }
 
