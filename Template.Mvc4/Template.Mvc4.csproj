@@ -456,16 +456,6 @@
     </None>
     <None Include="Views\Home\javascript.cshtml" />
     <Content Include="Views\Social\jsfiddle.js" />
-    <Content Include="Views\Social\Social.js">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Social.coffee</DependentUpon>
-    </Content>
-    <Content Include="Views\Social\Social.min.js">
-      <DependentUpon>Social.coffee</DependentUpon>
-    </Content>
-    <Content Include="Views\Social\test.js" />
-    <Content Include="Views\Social\triggers_viewmodel.js" />
     <Content Include="Views\_Scripts\CrudHelpers.js">
       <DependentUpon>CrudHelpers.coffee</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -497,10 +487,6 @@
     <Content Include="Views\Home\_TwitterFoot.cshtml" />
     <Content Include="Views\Home\LessEditor.cshtml" />
     <Content Include="Views\Social\Index.cshtml" />
-    <None Include="Views\Social\Social.coffee">
-      <Generator>CoffeeScriptGenerator</Generator>
-      <LastGenOutput>Social.js</LastGenOutput>
-    </None>
     <Content Include="Views\Social\_action-dialog.cshtml" />
     <None Include="Views\_Scripts\CrudHelpers.coffee">
       <Generator>CoffeeScriptGenerator</Generator>
