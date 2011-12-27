@@ -183,6 +183,7 @@
     <Compile Include="Models\Core\GenericRepository.cs" />
     <Compile Include="Models\TemplateMvc4Context.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Views\Social\_calendar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\fancy_deboss.png" />
@@ -490,6 +491,7 @@
     <Content Include="Views\Social\_action-dialog.cshtml" />
     <Content Include="Views\Social\_action-tabs.cshtml" />
     <Content Include="Views\Social\_trigger.cshtml" />
+    <Content Include="Views\Social\_triggers.cshtml" />
     <None Include="Views\_Scripts\CrudHelpers.coffee">
       <Generator>CoffeeScriptGenerator</Generator>
       <LastGenOutput>CrudHelpers.js</LastGenOutput>

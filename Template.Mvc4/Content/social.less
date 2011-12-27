@@ -14,26 +14,40 @@ ul { list-style: none; }
   input, textarea { width: 190px; }
 }
 
-.calendar-days{
+
+.my-calendar {
+   
+  .calendar-header { 
+
+    .channel{
+      color: #555; 
+      font-size: 115%; 
+      font-wieght: 900;
+      border-bottom: 1px solid #ccc;
+    }
+  }
+
+  .calendar-days { margin: 0; }
   margin: 0;
   display: inline-block;
   .day {
-    border-top: 1px solid #ccc;
     margin: 0 0 15px 0;
     padding-top: 5px;
-    .channels {
-      display: inline-block;
-      text-align: center;
+  }
+  .date { width: 50px; display: inline-block; }
+  .channels {
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    margin: 0;
+    .channel {
       vertical-align: top;
-      .channel {
-        vertical-align: top;
-        display: inline-block;
-        width: 100px;
+      display: inline-block;
+      width: 150px;
+      margin: 0;
+      .channel-actions {
         margin: 0;
-        .channel-actions {
-          margin: 0;
           
-        }
       }
     }
   }

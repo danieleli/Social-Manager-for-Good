@@ -1,0 +1,20 @@
+﻿<h3>Calendar</h3>
+<br />
+<div class="my-calendar">
+  <span class="date"></span>
+  <ul data-bind="foreach: $root.allChannels()" class="channels calendar-header">
+    <li class="channel"><span  data-bind="text: $data"></span>
+    </li>
+  </ul>
+  <ul data-bind="foreach: calendarDays" class="calendar-days">
+    <li class="day"><span class="date" data-bind="text: niceDay"></span>
+      <ul data-bind="foreach: channels" class="channels">
+        <li class="channel">
+          <ul class="channel-actions" data-bind="foreach: actions">
+            <li><span data-bind="text: triggerTitle"></span></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

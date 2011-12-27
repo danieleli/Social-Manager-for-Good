@@ -1,0 +1,22 @@
+﻿<div class="triggers">
+  <ul>
+    <li class="new-item" style="position: relative"><span style="margin-left: -320px;
+      margin-top: 10px; position: absolute;">Enter a new trigger or event here --></span>
+      <span style="margin-left: -320px; margin-top: 70px; position: absolute;">...or click
+        on an exiting trigger --></span>
+      <button style="margin-left: -30px; margin-top: 9px; position: absolute; padding: 0 4px;"
+        class="btn info">?</button>
+      <input type="text" placeholder="New Trigger" class="title" data-bind="value: triggerToAddTitle"
+        name="Title" />
+      <input type="text" class="date" placeholder="Date" data-bind="value: triggerToAddDate"
+        name="Date" />
+      <button data-bind="click: addTrigger" class="btn add primary">+ Add Trigger</button>
+    </li>
+  </ul>
+  <ul data-bind="foreach: triggers">
+    <li class="trigger" data-bind="event: {mouseover: $root.selectTrigger}">
+      @Html.Partial("_trigger")
+    </li>
+  </ul>
+  @Html.Partial("_action-dialog")
+</div>
