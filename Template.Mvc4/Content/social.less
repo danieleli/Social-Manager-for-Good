@@ -13,6 +13,32 @@ ul { list-style: none; }
   label { margin-top: 4px; margin-right: 10px; padding: 0; width:60px; text-align: right; }
   input, textarea { width: 190px; }
 }
+
+.calendar-days{
+  margin: 0;
+  display: inline-block;
+  .day {
+    border-top: 1px solid #ccc;
+    margin: 0 0 15px 0;
+    padding-top: 5px;
+    .channels {
+      display: inline-block;
+      text-align: center;
+      vertical-align: top;
+      .channel {
+        vertical-align: top;
+        display: inline-block;
+        width: 100px;
+        margin: 0;
+        .channel-actions {
+          margin: 0;
+          
+        }
+      }
+    }
+  }
+}
+
 .triggers {
   display: inline-block;
   ul, li { margin-left: 0; }

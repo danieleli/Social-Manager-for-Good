@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Mvc4", "Template.Mvc4\Template.Mvc4.csproj", "{CC2DBC0C-C9CA-47E8-BE3E-35109631D4C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialManager.Mvc4", "Template.Mvc4\SocialManager.Mvc4.csproj", "{CC2DBC0C-C9CA-47E8-BE3E-35109631D4C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Mvc4._Tests", "Template.Mvc4._Tests\Template.Mvc4._Tests.csproj", "{B4951493-7103-493F-A6EC-6357787B11E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialManager.Mvc4._Tests", "Template.Mvc4._Tests\SocialManager.Mvc4._Tests.csproj", "{B4951493-7103-493F-A6EC-6357787B11E4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4E4ED30D-924C-4976-B3D1-2BEF05992442}"
 	ProjectSection(SolutionItems) = preProject

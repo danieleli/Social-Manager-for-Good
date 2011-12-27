@@ -1,10 +1,9 @@
 ﻿
-
-
 function TriggersViewModel(data) {
-   var self = this;
+   var self, triggerHelper;
+   self = this;
+   triggerHelper = new TriggerHelper();
    self.triggers = [];
-   var triggerHelper = new TriggerHelper();
 
    self.initialize = function (myData) {
       self.triggers = triggerHelper.processTriggers(myData);
@@ -15,21 +14,77 @@ function TriggersViewModel(data) {
 
    self.initialize(data);
 
-   self.allActions = ko.computed(function () {
-      var triggers = self.triggers();
-      var actions = [];
-      var rtn = triggers.map(function (trigger, index, array) {
-         actions = actions.concat(trigger.actions());
-         return actions;
+   self.allChannels = function () {
+      var temp = [];
+      var rtn = [];
+      self.allActions().map(function (action, index, array) {
+         if ($.inArray(action.channel(), temp) < 0) {
+            rtn.push(action.channel());
+         }
+         temp = rtn.slice(0);
       });
-      actions.sort(function (a, b) {
+      rtn.sort();
+      return rtn;
+   };
+
+   self.allActions = function () {
+      var rtn = [];
+      self.triggers().map(function (trigger, index, array) {
+         rtn = rtn.concat(trigger.actions());
+      });
+      rtn.sort(function (a, b) {
          var dateA = new Date(a.date());
          var dateB = new Date(b.date());
-         return  dateA - dateB;
+         return dateA - dateB;
       });
-      return actions;
+      return rtn;
+   };
+
+   self.calendarDays = ko.computed(function () {
+      var triggers, rtn, firstDay, lastDay, dayCount, i, calendarDays;
+      triggers = self.triggers();
+      var allActionsCopy = self.allActions();
+      dayCount = (function () {
+         firstDay = new Date(allActionsCopy[0].date());
+         lastDay = new Date(allActionsCopy[allActionsCopy.length - 1].date());
+         return ((lastDay - firstDay) / 86400000) + 1;
+      } ());
+
+      calendarDays = (function () {
+         var calendarDay, currentDay, rtnDays;
+         rtnDays = [];
+         for (i = 0; i < dayCount; i++) {
+            currentDay = new Date(new Date(firstDay).addDays(i));
+
+            calendarDay = {
+               day: currentDay,
+               niceDay: currentDay.formatMMDD(),
+               channels: (function () {
+                  var rtn = [];
+                  self.allChannels().map(function (currentChannel, index, array) {
+                     var innerActions = [];
+                     
+                     self.allActions().map(function (action, index, array) {
+                        if ((new Date(action.date()).toString() === currentDay.toString()) && (action.channel() === currentChannel)) {
+                           innerActions.push(action);
+                        }
+                     });
+                     
+                     
+                     rtn = rtn.concat({channel: currentChannel, actions: innerActions});
+                  })
+                  return rtn;
+               })()
+            };
+
+            rtnDays.push(calendarDay);
+         };
+         return rtnDays;
+      })();
+
+      return calendarDays;
    }, self.triggers);
-   
+
    // track current trigger
    var _currentTrigger;
    self.currentTrigger = function () {
@@ -91,7 +146,7 @@ function TriggersViewModel(data) {
    self.addActionToTrigger = function () {
       // this = the trigger getting the new action.
       if (arguments.length > 0) {
-         var newAction = ko.mapping.fromJS({ date: this.addActionDate(), channel: this.addActionChannel() });
+         var newAction = ko.mapping.fromJS({ date: this.addActionDate(), channel: this.addActionChannel(), id: "new" });
          triggerHelper.postProcessAction(newAction);
          this.addActionDate("");
          this.addActionChannel("");
@@ -123,9 +178,9 @@ testUtils = {
          title: "annual meeting2",
          date: new Date("1/15/2012"),
          actions: [
-            { channel: "facebook", date: "1/12/2012" },
-            { channel: "twitter", date: "1/12/2012" },
-            { channel: "twitter", date: "1/15/2012" }
+            { channel: "facebook", date: "1/12/2012", id: 1 },
+            { channel: "twitter", date: "1/12/2012", id: 2 },
+            { channel: "twitter", date: "1/15/2012", id: 3 }
          ]
       };
    },
