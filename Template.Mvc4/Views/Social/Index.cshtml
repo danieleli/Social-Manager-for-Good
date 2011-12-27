@@ -11,6 +11,7 @@
 <br />
 <br />
 <br />
+
 <div class="triggers">
   <ul>
     <li class="new-item">
@@ -137,6 +138,16 @@
   </ul>
   @Html.Partial("_action-dialog")
 </div>
+
+  <ul data-bind="foreach: allActions">
+  <li class="action"><span data-bind="text: niceDate"></span>
+    <div class="channel">
+      <span data-bind="text: channel"></span>
+      <button class="btn delete danger" data-bind="click: $root.removeActionFromTrigger">
+        x</button>
+    </div>
+  </li>
+</ul>
 @section pageScripts
 {
   <script src="/Views/_Scripts/ko-protected-observable.js" type="text/javascript"></script>

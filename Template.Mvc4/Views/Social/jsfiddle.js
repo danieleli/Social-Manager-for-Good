@@ -1,104 +1,5 @@
 ﻿
-testUtils = {
-   getPageData: function () {
-      var trigger1 = this.getTrigger1();
-      var trigger2 = this.getTrigger2();
-      var pageData = new Array(trigger1, trigger2);
 
-      return pageData;
-   },
-
-   getTrigger1: function () {
-      return {
-         title: "annual meeting2",
-         date: new Date("1/15/2012"),
-         actions: [
-            { channel: "facebook", date: "1/12/2012" },
-            { channel: "twitter", date: "1/12/2012" },
-            { channel: "twitter", date: "1/15/2012" }
-         ]
-      };
-   },
-
-   getTrigger2: function () {
-      return {
-         title: "brown bag2",
-         date: new Date("2/15/2012"),
-         actions: []
-      };
-   },
-
-   refreshTriggers: function (myViewModel) {
-      myViewModel.triggers.removeAll();
-      var freshTriggers = this.getPageData();
-      myViewModel.modelUtils.prepTriggers(freshTriggers);
-      myViewModel.triggers.push(ko.mapping.fromJS(freshTriggers[0]));
-      myViewModel.triggers.push(ko.mapping.fromJS(freshTriggers[1]));
-   }
-};
-
-function TriggerHelper() {
-   var self = this;
-
-   // processing
-   self.processTriggers = function (data) {
-      self.preProcessTriggers(data);
-      var rtn = ko.mapping.fromJS(data);
-      self.postProcessTriggers(rtn());
-      return rtn;
-   };
-   
-   self.processTrigger = function (trigger) {
-      self.preProcessTrigger(trigger);
-      var rtn = ko.mapping.fromJS(trigger);
-      self.postProcessTrigger(rtn);
-      return rtn;
-   };
-
-   // pre-processing
-   self.preProcessTriggers = function (triggers) {
-      triggers.map(function (trigger, triggerIndex, triggerArray) {
-         self.preProcessTrigger(trigger);
-      });
-   };
-   self.preProcessTrigger = function (trigger) {
-      // add viewModel fields so ko.mapping can make them observable.
-      trigger.addActionDate = "";
-      trigger.addActionChannel = "";
-      trigger.niceDate = new Date(trigger.date).formatMMDDYYYY();
-      trigger.getRows = function () {
-         var _results;
-         _results = [];
-         for (num = -7; num <= 7; num++) {
-            _results.push(new Date(new Date(trigger.date).addDays(num)));
-         }
-         return _results;
-      }
-   };
-
-   // post-processing
-   self.postProcessTriggers = function (triggers) {
-      triggers.map(function (trigger, index, array) {
-         self.postProcessTrigger(trigger);
-      });
-   };
-   self.postProcessTrigger = function (trigger) {
-      // add calulated fields to viewModel.
-      trigger.niceDate = ko.computed(function () {
-         return new Date(trigger.date()).formatMMDDYYYY();
-      }, trigger);
-
-      trigger.actions().map(function (action, actionIndex, actionArray) {
-         self.postProcessAction(action);
-      });
-   };
-
-   self.postProcessAction = function (action) {
-      action.niceDate = ko.computed(function () {
-         return new Date(action.date()).formatMMDD();
-      }, action);
-   }
-};
 
 function TriggersViewModel(data) {
    var self = this;
@@ -114,6 +15,16 @@ function TriggersViewModel(data) {
 
    self.initialize(data);
 
+   self.allActions = ko.computed(function () {
+      var triggers = self.triggers();
+      var actions = [];
+      var rtn = triggers.map(function (trigger, index, array) {
+         actions = actions.concat(trigger.actions());
+         return actions;
+      });
+      return actions;
+   }, self.triggers);
+   
    // track current trigger
    var _currentTrigger;
    self.currentTrigger = function () {
@@ -193,7 +104,106 @@ function TriggersViewModel(data) {
 
 };
 
+testUtils = {
+   getPageData: function () {
+      var trigger1 = this.getTrigger1();
+      var trigger2 = this.getTrigger2();
+      var pageData = new Array(trigger1, trigger2);
 
+      return pageData;
+   },
+
+   getTrigger1: function () {
+      return {
+         title: "annual meeting2",
+         date: new Date("1/15/2012"),
+         actions: [
+            { channel: "facebook", date: "1/12/2012" },
+            { channel: "twitter", date: "1/12/2012" },
+            { channel: "twitter", date: "1/15/2012" }
+         ]
+      };
+   },
+
+   getTrigger2: function () {
+      return {
+         title: "brown bag2",
+         date: new Date("2/15/2012"),
+         actions: []
+      };
+   },
+
+   refreshTriggers: function (myViewModel) {
+      myViewModel.triggers.removeAll();
+      var freshTriggers = this.getPageData();
+      myViewModel.modelUtils.prepTriggers(freshTriggers);
+      myViewModel.triggers.push(ko.mapping.fromJS(freshTriggers[0]));
+      myViewModel.triggers.push(ko.mapping.fromJS(freshTriggers[1]));
+   }
+};
+
+function TriggerHelper() {
+   var self = this;
+
+   // processing
+   self.processTriggers = function (data) {
+      self.preProcessTriggers(data);
+      var rtn = ko.mapping.fromJS(data);
+      self.postProcessTriggers(rtn());
+      return rtn;
+   };
+
+   self.processTrigger = function (trigger) {
+      self.preProcessTrigger(trigger);
+      var rtn = ko.mapping.fromJS(trigger);
+      self.postProcessTrigger(rtn);
+      return rtn;
+   };
+
+   // pre-processing
+   self.preProcessTriggers = function (triggers) {
+      triggers.map(function (trigger, triggerIndex, triggerArray) {
+         self.preProcessTrigger(trigger);
+      });
+   };
+   self.preProcessTrigger = function (trigger) {
+      // add viewModel fields so ko.mapping can make them observable.
+      trigger.addActionDate = "";
+      trigger.addActionChannel = "";
+      trigger.niceDate = new Date(trigger.date).formatMMDDYYYY();
+      trigger.getRows = function () {
+         var _results;
+         _results = [];
+         for (num = -7; num <= 7; num++) {
+            _results.push(new Date(new Date(trigger.date).addDays(num)));
+         }
+         return _results;
+      }
+   };
+
+   // post-processing
+   self.postProcessTriggers = function (triggers) {
+      triggers.map(function (trigger, index, array) {
+         self.postProcessTrigger(trigger);
+      });
+   };
+   self.postProcessTrigger = function (trigger) {
+      // add calulated fields to viewModel.
+      trigger.niceDate = ko.computed(function () {
+         return new Date(trigger.date()).formatMMDDYYYY();
+      }, trigger);
+
+      trigger.actions().map(function (action, actionIndex, actionArray) {
+         self.postProcessAction(action);
+      });
+   };
+
+   self.postProcessAction = function (action) {
+      action.niceDate = ko.computed(function () {
+         return new Date(action.date()).formatMMDD();
+      }, action);
+   }
+};
 
 //var action = function (date, channel) {
 //   alert(2);
