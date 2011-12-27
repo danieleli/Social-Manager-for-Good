@@ -1,0 +1,75 @@
+﻿<div class="tabs" style="display: none;">
+  <ul>
+    <li>
+      <a href="#tabs-1">Simple View</a></li>
+    <li>
+      <a href="#tabs-2">Calendar View</a></li>
+  </ul>
+  <div id="tabs-1">
+    <ul data-bind="foreach: actions">
+      <li class="action" data-bind="click: $parent.selectAction"><span data-bind="text: niceDate">
+      </span>
+        <div class="channel">
+          <span data-bind="text: channel"></span>
+          <button class="btn delete danger">x</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="tabs-2" class="calendar">
+    <div class="outer-div">
+      <div class="inner-div">
+        <table>
+          <thead>
+            <tr>
+              <th class="nogb" colspan="2"></th>
+              <th colspan="4" class="top-header">Channels</th>
+            </tr>
+            <tr>
+              <th class="header-first">Date </th>
+              <th colspan="2">
+                <div>
+                  linkedin</div>
+              </th>
+              <th>
+                <div>
+                  facebook</div>
+              </th>
+              <th>
+                <div>
+                  meetup</div>
+              </th>
+              <th>
+                <div>
+                  twitter</div>
+              </th>
+            </tr>
+          </thead>
+          @*                <tfoot>
+                  <tr>
+                    <td colspan="2"></td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                  </tr>
+                </tfoot>*@
+          <tbody data-bind="foreach: getRows()">
+            <tr>
+              <td><span data-bind="text: formatMMDD()"></span></td>
+              <td></td>
+              <td>
+                <input type="checkbox" name="linkedin" /></td>
+              <td>
+                <input type="checkbox" name="facebook" /></td>
+              <td>
+                <input type="checkbox" name="meetup" /></td>
+              <td>
+                <input type="checkbox" name="twitter" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+﻿<div class="summary">
+  <span class='date' data-bind="text: niceDate"></span><span class='title' data-bind="text: title">
+  </span>
+  <ul data-bind="foreach: actions" class="actions">
+    <li class="action" style="display: inline-block;">
+      <div class="channel">
+        <span class="date" data-bind="text: niceDate"></span><span data-bind="text: channel">
+        </span>
+        <button class="btn moreinfo primary" data-bind="click: $root.showActionDialog">i</button>
+      </div>
+    </li>
+  </ul>
+  <span>
+    <button class="btn delete danger" data-bind="click: $root.removeTrigger">x</button></span>
+</div>
+<div class="details" style="display: none;">
+  <textarea rows="5" cols="90" style="margin: 5px 0px 10px 10px; width: 230px;" placeholder="notes"></textarea>
+  <span class="new-item action">
+    <input placeholder="Date" name="Date1" class="date" type="text" data-bind="value: $data.addActionDate"
+      style="margin-left: 7px;" />
+    <input placeholder="Channel" style="width: 140px" name="Channel" type="text" data-bind="value: $data.addActionChannel" />
+    <button data-bind="click: $root.addActionToTrigger" style="float: right; margin-right: 10px;"
+      class="btn add primary">+ Add Action</button>
+  </span>@*@Html.Partial("_action-tabs")*@
+</div>

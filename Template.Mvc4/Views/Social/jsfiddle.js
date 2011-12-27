@@ -22,6 +22,11 @@ function TriggersViewModel(data) {
          actions = actions.concat(trigger.actions());
          return actions;
       });
+      actions.sort(function (a, b) {
+         var dateA = new Date(a.date());
+         var dateB = new Date(b.date());
+         return  dateA - dateB;
+      });
       return actions;
    }, self.triggers);
    

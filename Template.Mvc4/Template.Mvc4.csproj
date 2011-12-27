@@ -488,6 +488,8 @@
     <Content Include="Views\Home\LessEditor.cshtml" />
     <Content Include="Views\Social\Index.cshtml" />
     <Content Include="Views\Social\_action-dialog.cshtml" />
+    <Content Include="Views\Social\_action-tabs.cshtml" />
+    <Content Include="Views\Social\_trigger.cshtml" />
     <None Include="Views\_Scripts\CrudHelpers.coffee">
       <Generator>CoffeeScriptGenerator</Generator>
       <LastGenOutput>CrudHelpers.js</LastGenOutput>
