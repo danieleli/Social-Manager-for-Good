@@ -27,10 +27,68 @@ ul { list-style: none; }
 }
 
 @channel-width: 100px;
-.my-calendar { 
+@day-width: 85px;
+@tradition-calendar-width: (@day-width * 7) + 52;
+table td { border: none; }
+table { border: none; }
+.traditional-calendar
+{
+  float: right;
+  clear: right;
+  background: #aaa;
+  .rounded-corners(10px);
+  margin-left: 20px;
+  width: @tradition-calendar-width;
+  display: inline-block;
+  div {margin: 0; padding: 0; display:inline-block; border: none;}
+
+  .myheader {
+    padding: 5px 0 0 0;
+    .rounded-corners-each(10px, 10px, 0,0);
+    background: #eee;
+    div { 
+      text-align: center; 
+      width: @day-width; 
+      margin-bottom: 0px;
+      border-bottom: 1px solid black;
+      background: #eee;
+      padding: 2px 2px 3px 2px;
+    }
+  }
+  .actions { background: none; }
+  .calendar-days { width: auto;  }
+  .day { 
+    color: #666;
+    
+    min-height: 50px;
+    width: @day-width; 
+    margin-bottom: 3px; 
+    vertical-align: top;  
+    overflow: hidden;
+    padding: 2px;
+    .actions { 
+      border: none;
+      display: inline;
+      .action  { 
+        color: #333;
+        background: transparent;
+        display: inline;
+        border: none;
+        display: inline-block; 
+        white-space: nowrap; 
+      }  
+    }
+  }
+  
+  
+  
+}
+
+.list-calendar { 
   position: relative;
   display: inline-block;
-  margin: 0 0 0 40px;
+  margin: 20px 0 0 0;
+  overflow: visible;
 
   .calendar-header { 
     padding-bottom: 0px;

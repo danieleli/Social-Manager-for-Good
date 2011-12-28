@@ -47,7 +47,11 @@ function TriggersViewModel(data) {
       dayCount = (function () {
          if(allActionsCopy.length > 0){
             firstDay = new Date(allActionsCopy[0].date());
+            // start on sunday
+            firstDay.addDays(-firstDay.getDay());
             lastDay = new Date(allActionsCopy[allActionsCopy.length - 1].date());
+            // end on saturday
+            lastDay.addDays(6-lastDay.getDay());
             return ((lastDay - firstDay) / 86400000) + 1;
          };
          return 0;
