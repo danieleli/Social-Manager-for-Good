@@ -459,25 +459,25 @@
       <LastGenOutput>nested_knockout.js</LastGenOutput>
     </None>
     <None Include="Views\Home\javascript.cshtml" />
-    <Content Include="Views\Social\social.js" />
-    <Content Include="Views\_Scripts\CrudHelpers.js">
+    <Content Include="Content\social.js" />
+    <Content Include="Content\CrudHelpers.js">
       <DependentUpon>CrudHelpers.coffee</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
-    <Content Include="Views\_Scripts\CrudHelpers.min.js">
+    <Content Include="Content\CrudHelpers.min.js">
       <DependentUpon>CrudHelpers.coffee</DependentUpon>
     </Content>
-    <Content Include="Views\_Scripts\date.js" />
-    <Content Include="Views\_Scripts\ko-execute-on-enter.js">
+    <Content Include="Content\date.js" />
+    <Content Include="Content\ko-execute-on-enter.js">
       <DependentUpon>ko-execute-on-enter.coffee</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
-    <Content Include="Views\_Scripts\ko-execute-on-enter.min.js">
+    <Content Include="Content\ko-execute-on-enter.min.js">
       <DependentUpon>ko-execute-on-enter.coffee</DependentUpon>
     </Content>
-    <Content Include="Views\_Scripts\ko-protected-observable.js" />
+    <Content Include="Content\ko-protected-observable.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -505,11 +505,11 @@
     <Content Include="Views\Social\_triggers.cshtml" />
     <Content Include="Views\Social\__tests.cshtml" />
     <Content Include="Views\Social\Web.config" />
-    <None Include="Views\_Scripts\CrudHelpers.coffee">
+    <None Include="Content\CrudHelpers.coffee">
       <Generator>CoffeeScriptGenerator</Generator>
       <LastGenOutput>CrudHelpers.js</LastGenOutput>
     </None>
-    <None Include="Views\_Scripts\ko-execute-on-enter.coffee">
+    <None Include="Content\ko-execute-on-enter.coffee">
       <Generator>CoffeeScriptGenerator</Generator>
       <LastGenOutput>ko-execute-on-enter.js</LastGenOutput>
     </None>
@@ -522,7 +522,6 @@
     <Content Include="Views\_Shared\_LessEditor.cshtml" />
     <Content Include="Views\_Shared\_LogOnPartial.cshtml" />
     <Content Include="Views\_Shared\_Scripts.cshtml" />
-    <Content Include="Views\_Scripts\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
