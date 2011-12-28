@@ -8,7 +8,7 @@ namespace SocialManager.Mvc4.Controllers
       {
          ViewBag.Message = "Modify this template to kick-start your ASP.NET MVC application.";
 
-         return View("../social/index");
+         return Redirect("/social");
       }
 
       public ActionResult About()
