@@ -1,0 +1,39 @@
+﻿@{
+  ViewBag.Title = "SocialTests";
+}
+
+@if (false)
+{
+  // OPTIONAL! QUnit script (here for intellisense)
+  <script type="text/javascript" src="@Url.Content("~/Content/Scripts/qunit.js")"> </script>
+}
+<!-- Script we're testing -->
+<script type="text/javascript">
+  Date.prototype.addDays = function (days) {
+    days = this.getDate() + days;
+    return this.setDate(days);
+  };
+  var rows = function (date) {
+    var _results;
+    _results = [];
+    for (num = -30; num <= 30; num++) {
+      _results.push(new Date(new Date(date).addDays(num)));
+    }
+    return _results;
+  }
+</script>
+
+<!-- The tests -->
+<script type="text/javascript">
+
+  $(function () {
+    // calculator_tests.js
+    module("My Rows");
+    test("Should return 60 dates", function () {
+
+      ok(rows, "My Rows is a O.K.");
+      var myRows = rows(new Date());
+      equals(myRows.length, 61, "61 Rows");
+    });
+  });
+</script>
