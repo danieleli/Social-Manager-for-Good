@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using Template.Mvc4.Models;
+using SocialManager.Mvc4.Models;
 
-namespace Template.Mvc4.Controllers
+namespace SocialManager.Mvc4.Controllers
 {
 
    [Authorize]

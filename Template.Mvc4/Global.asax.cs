@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Services;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Microsoft.ApplicationServer.Http;
-using Template.Mvc4.Models;
 using System.Data.Entity;
-using Template.Mvc4.Api;
 using System.Diagnostics;
+using SocialManager.Mvc4.Api;
+using SocialManager.Mvc4.Models;
 
-namespace Template.Mvc4
+namespace SocialManager.Mvc4
 {
   // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
   // visit http://go.microsoft.com/?LinkId=9394801

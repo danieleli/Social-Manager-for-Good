@@ -1,8 +1,9 @@
 using DataAnnotationsExtensions.ClientValidation;
+using SocialManager.Mvc4.App_Start;
 
-[assembly: WebActivator.PreApplicationStartMethod(typeof(Template.Mvc4.App_Start.RegisterClientValidationExtensions), "Start")]
+[assembly: WebActivator.PreApplicationStartMethod(typeof(RegisterClientValidationExtensions), "Start")]
  
-namespace Template.Mvc4.App_Start {
+namespace SocialManager.Mvc4.App_Start {
     public static class RegisterClientValidationExtensions {
         public static void Start() {
             DataAnnotationsModelValidatorProviderExtensions.RegisterValidationExtensions();            

@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
 
-namespace Template.Mvc4.Models
+namespace SocialManager.Mvc4.Models
 {
     public class TemplateMvc4Context : DbContext
     {
@@ -17,7 +13,7 @@ namespace Template.Mvc4.Models
         // 
         // System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<Template.Mvc4.Models.TemplateMvc4Context>());
 
-       public DbSet<Template.Mvc4.Models.Contact> Contacts { get; set; }
+       public DbSet<Contact> Contacts { get; set; }
 
     }
 }

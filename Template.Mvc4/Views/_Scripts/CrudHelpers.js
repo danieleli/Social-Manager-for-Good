@@ -1,3 +1,4 @@
+(function() {
 
   $(function() {
     $.ajaxSetup({
@@ -30,3 +31,5 @@
       }
     };
   });
+
+}).call(this);

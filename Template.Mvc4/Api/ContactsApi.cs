@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel.Web;
-using System.Web;
-using Template.Mvc4.Models;
-using Template.Mvc4.Repositories;
+using SocialManager.Mvc4.Models;
+using SocialManager.Mvc4.Models.Core;
 
-namespace Template.Mvc4.Api
+namespace SocialManager.Mvc4.Api
 {
   public class ContactsApi
   {

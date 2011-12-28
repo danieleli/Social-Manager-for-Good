@@ -10,8 +10,8 @@
     <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Template.Mvc4</RootNamespace>
-    <AssemblyName>Template.Mvc4</AssemblyName>
+    <RootNamespace>SocialManager.Mvc4</RootNamespace>
+    <AssemblyName>SocialManager.Mvc4</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>false</UseIISExpress>
@@ -403,6 +403,9 @@
     <Content Include="Test\nested_knockout.min.js">
       <DependentUpon>nested_knockout.coffee</DependentUpon>
     </Content>
+    <Content Include="Views\Contacts\Contact.min.js">
+      <DependentUpon>Contact.coffee</DependentUpon>
+    </Content>
     <Content Include="Views\Home\application.js" />
     <Content Include="Content\lib\twitter-bootstrap\images\bird.png" />
     <Content Include="Content\lib\twitter-bootstrap\images\bootstrap-apple-114x114.png" />
@@ -462,11 +465,17 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
+    <Content Include="Views\_Scripts\CrudHelpers.min.js">
+      <DependentUpon>CrudHelpers.coffee</DependentUpon>
+    </Content>
     <Content Include="Views\_Scripts\date.js" />
     <Content Include="Views\_Scripts\ko-execute-on-enter.js">
       <DependentUpon>ko-execute-on-enter.coffee</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Content>
+    <Content Include="Views\_Scripts\ko-execute-on-enter.min.js">
+      <DependentUpon>ko-execute-on-enter.coffee</DependentUpon>
     </Content>
     <Content Include="Views\_Scripts\ko-protected-observable.js" />
     <Content Include="Web.config" />

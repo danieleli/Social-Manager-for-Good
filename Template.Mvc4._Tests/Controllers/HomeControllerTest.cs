@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SocialManager.Mvc4.Controllers;
 using Template.Mvc4;
-using Template.Mvc4.Controllers;
 
 namespace Template.Mvc4._Tests.Controllers
 {

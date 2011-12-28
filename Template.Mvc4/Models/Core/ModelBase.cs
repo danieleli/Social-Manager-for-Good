@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
-namespace Template.Mvc4.Models
+namespace SocialManager.Mvc4.Models.Core
 {
   public abstract class ModelBase
   {

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using SocialManager.Mvc4.Models.Core;
 
-namespace Template.Mvc4.Models
+namespace SocialManager.Mvc4.Models
 {
 
 

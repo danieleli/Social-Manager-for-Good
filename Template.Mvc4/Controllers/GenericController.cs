@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Template.Mvc4.Models;
-using Template.Mvc4.Repositories;
+﻿using System.Web.Mvc;
+using SocialManager.Mvc4.Models;
+using SocialManager.Mvc4.Models.Core;
 
-namespace Template.Mvc4.Controllers
+namespace SocialManager.Mvc4.Controllers
 {
   public class GenericController<T, TRepo> : Controller
     where T : ModelBase

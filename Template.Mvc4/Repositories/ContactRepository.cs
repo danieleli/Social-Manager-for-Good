@@ -1,6 +1,7 @@
-using Template.Mvc4.Models;
+using SocialManager.Mvc4.Models;
+using SocialManager.Mvc4.Models.Core;
 
-namespace Template.Mvc4.Repositories
+namespace SocialManager.Mvc4.Repositories
 {
   public class ContactRepository : GenericRepository<Contact>
   {
