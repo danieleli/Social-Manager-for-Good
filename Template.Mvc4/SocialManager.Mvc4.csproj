@@ -493,7 +493,9 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Home\_TwitterFoot.cshtml" />
     <Content Include="Views\Home\LessEditor.cshtml" />
     <Content Include="Views\Social\Index.cshtml" />

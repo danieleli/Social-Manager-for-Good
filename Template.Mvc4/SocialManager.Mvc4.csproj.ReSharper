@@ -1,0 +1,5 @@
+<Configuration>
+  <NamespaceFolders>
+    <SkipFolder>CC2DBC0C-C9CA-47E8-BE3E-35109631D4C8/d:Views/d:_Scripts</SkipFolder>
+  </NamespaceFolders>
+</Configuration>
