@@ -183,7 +183,7 @@
     <Compile Include="Models\Core\GenericRepository.cs" />
     <Compile Include="Models\TemplateMvc4Context.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="Views\Social\_calendar.cshtml" />
+    <Content Include="Views\Social\_calendar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\fancy_deboss.png" />
