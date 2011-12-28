@@ -20,7 +20,7 @@ $ ->
          contentType: 'application/json',
          success: (data) ->  
            callback data  
-         error: (data) ->
+         error: (data) -> 
            humane "An error occured: " + data.responseText
   
    
