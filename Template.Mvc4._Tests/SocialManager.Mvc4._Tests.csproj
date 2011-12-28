@@ -9,8 +9,8 @@
     <ProjectGuid>{B4951493-7103-493F-A6EC-6357787B11E4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Template.Mvc4._Tests</RootNamespace>
-    <AssemblyName>Template.Mvc4._Tests</AssemblyName>
+    <RootNamespace>SocialManager.Mvc4._Tests</RootNamespace>
+    <AssemblyName>SocialManager.Mvc4._Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -91,9 +91,9 @@
     <Content Include="Twitter-Bootstrap\vendor\qunit.js" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Template.Mvc4\Template.Mvc4.csproj">
+    <ProjectReference Include="..\Template.Mvc4\SocialManager.Mvc4.csproj">
       <Project>{CC2DBC0C-C9CA-47E8-BE3E-35109631D4C8}</Project>
-      <Name>Template.Mvc4</Name>
+      <Name>SocialManager.Mvc4</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

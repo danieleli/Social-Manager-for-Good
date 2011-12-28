@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SocialManager.Mvc4.Controllers;
-using Template.Mvc4;
 
-namespace Template.Mvc4._Tests.Controllers
+namespace SocialManager.Mvc4._Tests.Controllers
 {
    [TestClass]
    public class HomeControllerTest
