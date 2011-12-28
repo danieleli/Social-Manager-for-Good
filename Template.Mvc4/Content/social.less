@@ -1,6 +1,14 @@
 ﻿@import "common-functions.less";
 
 
+body {
+  background: #222;
+  .xtra { 
+    margin: 0 ; 
+    padding: 0 0 30px 0;
+    background: #fcfcfc; 
+  }
+}
 
 
 ul { list-style: none; }
@@ -15,10 +23,11 @@ ul { list-style: none; }
 }
 
 
-.my-calendar {
-   
+.my-calendar { 
+  position: relative;
+  h3 { position: absolute; left: -120px; top:-8px; }
   .calendar-header { 
-
+    padding-bottom: 10px;
     .channel{
       color: #555; 
       font-size: 115%; 
@@ -27,12 +36,16 @@ ul { list-style: none; }
     }
   }
 
-  .calendar-days { margin: 0; }
+  .calendar-days { 
+    margin: 0; 
+    max-height:600px;
+    overflow: auto;
+  }
   margin: 0;
-  display: inline-block;
+  display: block;
   .day {
-    margin: 0 0 15px 0;
-    padding-top: 5px;
+    padding: 5px 0;
+    border-bottom: 1px dotted #ddd;
   }
   .date { width: 50px; display: inline-block; }
   .channels {
@@ -40,14 +53,16 @@ ul { list-style: none; }
     text-align: center;
     vertical-align: top;
     margin: 0;
+    
     .channel {
       vertical-align: top;
       display: inline-block;
       width: 150px;
       margin: 0;
+      
       .channel-actions {
         margin: 0;
-          
+        
       }
     }
   }
@@ -147,4 +162,12 @@ ul { list-style: none; }
       }
     }
   } 
+}
+
+footer {
+  text-align:center; 
+  width:100%; 
+  margin: 0;
+  a { color: #aaa }
+  a:hover { color: #eee; text-decoration:none; }
 }

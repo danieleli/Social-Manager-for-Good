@@ -1,13 +1,9 @@
 <div class="topbar" data-scrollspy="scrollspy">
   <div class="topbar-inner">
     <div class="container">
-      @Html.ActionLink("your logo here.", "Index", "Home", null, new { Class = "brand" })
+      @Html.ActionLink("{0:1} - Social Manager", "Index", "Social", null, new { Class = "brand" })
       <ul class="nav">
-        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-        <li>@Html.ActionLink("Styles", "TwitterBootstrap", "Home")</li>
-        <li>@Html.ActionLink("Contacts", "Knockout", "Contacts")</li>
-        <li>@Html.ActionLink("About", "About", "Home")</li>
-        <li>@Html.ActionLink("Less Editor", "LessEditor", "Home")</li>
+        <li>@Html.ActionLink("Home", "Index", "Social")</li>
       </ul>
     </div>
   </div>

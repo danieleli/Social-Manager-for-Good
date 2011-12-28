@@ -8,10 +8,12 @@
   <header>
     @Html.Partial("_Header")
   </header>
-  <div class="container" id="body">
-    @RenderSection("featured", false)
-    <div class="content">
-      @RenderBody()
+  <div class="xtra">
+    <div class="container" id="body">
+      @RenderSection("featured", false)
+      <div class="content">
+        @RenderBody()
+      </div>
     </div>
   </div>
   <footer>

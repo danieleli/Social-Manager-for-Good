@@ -1,10 +1,8 @@
-﻿<h3>Calendar</h3>
-<br />
-<div class="my-calendar">
+﻿<div class="my-calendar">
+  <h3>Calendar</h3>
   <span class="date"></span>
   <ul data-bind="foreach: $root.allChannels()" class="channels calendar-header">
-    <li class="channel"><span  data-bind="text: $data"></span>
-    </li>
+    <li class="channel"><span data-bind="text: $data"></span></li>
   </ul>
   <ul data-bind="foreach: calendarDays" class="calendar-days">
     <li class="day"><span class="date" data-bind="text: niceDay"></span>
