@@ -9,7 +9,7 @@ namespace SocialManager.Mvc4.Controllers
     where TRepo : IRepository<T>, new()
   {
     protected readonly TRepo _repository;
-    protected readonly TemplateMvc4Context _context = new TemplateMvc4Context();
+    protected readonly SocialManagerMvc4Context _context = new SocialManagerMvc4Context();
 
     #region -- Constructors ---
 

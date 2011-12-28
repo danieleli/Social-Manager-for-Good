@@ -45,15 +45,15 @@ namespace SocialManager.Mvc4
       RegisterGlobalFilters(GlobalFilters.Filters);
       RegisterRoutes(RouteTable.Routes);
 
-      Database.SetInitializer(new DropCreateDatabaseIfModelChanges<TemplateMvc4Context>());
+      Database.SetInitializer(new DropCreateDatabaseIfModelChanges<SocialManagerMvc4Context>());
     }
 
 
     [Conditional("DEBUG")]
     private void SetDbInit()
     {
-      Database.SetInitializer(new DropCreateDatabaseIfModelChanges<TemplateMvc4Context>());
-      Database.SetInitializer(new CreateDatabaseIfNotExists<TemplateMvc4Context>());
+      Database.SetInitializer(new DropCreateDatabaseIfModelChanges<SocialManagerMvc4Context>());
+      Database.SetInitializer(new CreateDatabaseIfNotExists<SocialManagerMvc4Context>());
     }
   }
   public class CustomRazorViewEngine : RazorViewEngine

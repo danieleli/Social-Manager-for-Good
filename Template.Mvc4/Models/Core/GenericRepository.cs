@@ -8,7 +8,7 @@ namespace SocialManager.Mvc4.Models.Core
 {
   public class GenericRepository<T> : IRepository<T> where T: ModelBase
   {
-    private readonly TemplateMvc4Context _context = new TemplateMvc4Context();
+    private readonly SocialManagerMvc4Context _context = new SocialManagerMvc4Context();
 
     public virtual IQueryable<T> All
     {

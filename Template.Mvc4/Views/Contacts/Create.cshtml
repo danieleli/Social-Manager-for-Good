@@ -1,12 +1,13 @@
-@model Template.Mvc4.Models.Contact
+@model SocialManager.Mvc4.Models.Contact
 
 @{
-    ViewBag.Title = "Create";
+  ViewBag.Title = "Create";
 }
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Contact</legend>

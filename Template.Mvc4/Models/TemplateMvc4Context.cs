@@ -2,7 +2,7 @@ using System.Data.Entity;
 
 namespace SocialManager.Mvc4.Models
 {
-    public class TemplateMvc4Context : DbContext
+    public class SocialManagerMvc4Context : DbContext
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 
@@ -11,7 +11,7 @@ namespace SocialManager.Mvc4.Models
         // code to the Application_Start method in your Global.asax file.
         // Note: this will destroy and re-create your database with every model change.
         // 
-        // System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<Template.Mvc4.Models.TemplateMvc4Context>());
+      // System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<SocialManager.Mvc4.Models.SocialManagerMvc4Context>());
 
        public DbSet<Contact> Contacts { get; set; }
 

@@ -1,7 +1,7 @@
-@model Template.Mvc4.Models.Contact
+@model SocialManager.Mvc4.Models.Contact
 
 @{
-    ViewBag.Title = "Delete";
+  ViewBag.Title = "Delete";
 }
 
 <h2>Delete</h2>
@@ -22,7 +22,8 @@
     <div class="display-label">LastName</div>
     <div class="display-field">@Model.LastName</div>
 </fieldset>
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     <p>
         <input type="submit" value="Delete" /> |
         @Html.ActionLink("Back to List", "Index")

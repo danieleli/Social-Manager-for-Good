@@ -1,18 +1,19 @@
-@model Template.Mvc4.Models.Contact
+@model SocialManager.Mvc4.Models.Contact
 
 @{
-    ViewBag.Title = "Edit";
+  ViewBag.Title = "Edit";
 }
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Contact</legend>
 
         @Html.HiddenFor(model => model.Id)
-		@Html.Partial("_CreateOrEdit", Model)
+    @Html.Partial("_CreateOrEdit", Model)
 
         <p>
             <input type="submit" value="Save" />
