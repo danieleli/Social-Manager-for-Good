@@ -1,6 +1,7 @@
 ﻿@import "common-functions.less";
 
 
+
 body {
   background: #222;
   .xtra { 
@@ -9,6 +10,9 @@ body {
     background: #fcfcfc; 
   }
 }
+
+#help {float: right;}
+.dialog { display: none; }
 
 
 ul { list-style: none; }
@@ -22,12 +26,15 @@ ul { list-style: none; }
   input, textarea { width: 190px; }
 }
 
-
+@channel-width: 100px;
 .my-calendar { 
   position: relative;
-  h3 { position: absolute; left: -120px; top:-8px; }
+  display: inline-block;
+  margin: 0 0 0 20px;
+
   .calendar-header { 
-    padding-bottom: 10px;
+    padding-bottom: 0px;
+    li { padding-bottom: 5px; }
     .channel{
       color: #555; 
       font-size: 115%; 
@@ -38,11 +45,9 @@ ul { list-style: none; }
 
   .calendar-days { 
     margin: 0; 
-    max-height:600px;
     overflow: auto;
   }
-  margin: 0;
-  display: block;
+
   .day {
     padding: 5px 0;
     border-bottom: 1px dotted #ddd;
@@ -57,7 +62,7 @@ ul { list-style: none; }
     .channel {
       vertical-align: top;
       display: inline-block;
-      width: 150px;
+      width: @channel-width;
       margin: 0;
       
       .channel-actions {
@@ -170,4 +175,115 @@ footer {
   margin: 0;
   a { color: #aaa }
   a:hover { color: #eee; text-decoration:none; }
+}
+
+@color1: blue;
+@color1-light: lighten(@color1, 30%);
+@color1-lightest: lighten(@color1, 40%);
+@color1-dark: darken(@color1, 20%);
+@color2: red;
+@color2-light: lighten(@color2, 30%);
+@color2-dark: dark(@color2, 30%);
+@left-list-width: 260px;
+
+.triggers2 {
+  width: @left-list-width;
+  display: inline-block;
+  vertical-align: top;
+  .list-header {
+    
+    padding: 10px 0 10px 10px;
+    font-size: 125%;
+    background: @color1-light;
+    color: @color1-dark;
+    position: relative;
+    .rounded-corners(10px 10px 0px 0px);
+  }
+  .trigger-list {
+    position: relative;
+    .rounded-corners(0px 0px 10px 10px);
+  
+    padding: 5px 5px 0 5px;
+    margin: 0;
+    background: @color1;
+    margin-left: 0;
+    z-index: 10;
+    .trigger { 
+      padding:5px;
+      .summary {
+        cursor: pointer;
+        color: @color1-lightest;
+        padding: 0 0 10px 0;
+        border-bottom: 1px solid @color1-dark;
+        .title { float: left; }
+        .date { float: right; text-align:right; color:@color1-light }
+      }
+      .details
+      {
+        border-bottom: 1px solid @color1-dark;
+        padding: 5px 0;
+        .add { }
+        .delete { float: right; }
+        textarea { 
+          width: (@left-list-width - 30); 
+          background: @color1-lightest; 
+          margin: 10px 0;
+        }
+        ul { 
+          margin: 5px 0; 
+          padding: 0;
+          background: @color1;
+          border-top: none;
+          li { 
+            cursor: pointer;
+            display: inline-block; 
+            margin: 0; 
+            background:@color1-lightest; 
+            .rounded-corners(5px); 
+            padding: 2px 4px;  
+            margin: 2px 4px 2px 0px;
+            .action-date { font-size: 80%; }
+          }
+          li:hover { background: #ddd; }
+
+
+        }
+        .new-item.action {
+          background: @color1-dark;
+          margin: 15px 0;
+          .rounded-corners(8px);
+          padding: 10px;
+          div { margin-top: 15px; }
+          .other-channel { width: 80px !important; }
+          input { display: inline-block; margin-right: 10px; }
+          .btn { float: right;  }
+          .date { width: 60px; margin-right: 0; float: right; margin-top:-3px; }
+        }
+
+        .buttons { height:40px; margin-right: 10px; }
+      }
+    }
+    .trigger:last-child { .summary { border-bottom: none; }}
+    .details { display: none; }
+  }
+
+  .new.trigger {
+    display: none;
+    padding: 20px 0 10px 10px;
+    background: @color2-light;
+    color: @color2-dark;
+    margin-top: -15px;
+    z-index: -1;
+    .rounded-corners(10px);
+    input, textarea { margin: 3px; width: @left-list-width - 35; }
+    button { float: right; margin-right: 12px; margin-top: 2px }
+    .date { width: 110px;}
+    
+  }
+  .reveal-tab { 
+    text-align: right;
+    margin-right: 10px;
+    left: 100px;
+    cursor: pointer;
+  }
 }

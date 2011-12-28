@@ -1,25 +1,34 @@
-﻿<div class="summary">
-  <span class='date' data-bind="text: niceDate"></span><span class='title' data-bind="text: title">
-  </span>
-  <ul data-bind="foreach: actions" class="actions">
-    <li class="action" style="display: inline-block;">
-      <div class="channel">
-        <span class="date" data-bind="text: niceDate"></span><span data-bind="text: channel">
-        </span>
-        <button class="btn moreinfo primary" data-bind="click: $root.showActionDialog">i</button>
+﻿<li class="trigger" data-bind="event: {mouseover: $root.selectTrigger}">
+  <div class="summary">
+    <span class='title' data-bind="text: title"></span>
+    &nbsp
+    <span class='date' data-bind="text: niceDate"></span>
+  </div>
+  <div class="details">
+    <textarea rows="5" cols="90" data-bind="value: notes" placeholder="notes"></textarea>
+    <ul data-bind="foreach: actions" class="actions">
+      <li class="action" data-bind="click: $root.showActionDialog">
+        <span class="action-date" data-bind="text: niceDate"></span>
+        <span data-bind="text: channel"></span>
+      </li>
+    </ul>
+    <div class="new-item action">
+      <input type="radio" name="channel" title="facebook" value="facebook">
+      <input type="radio" name="channel" title="linkedin" value="linkedin" />
+      <input type="radio" name="channel" title="twitter" value="twitter" />
+      <input type="radio" name="channel" title="meetup" value="meetup" />
+      <input type="radio" name="channel" title="other" class="other-radio" value="other" />
+      <input placeholder="Date" name="Date1" class="date" type="text" data-bind="value: $data.addActionDate" />
+      <div>
+        <input placeholder="New Channel" class="other-channel" name="other-channel" type="text"
+          data-bind="value: $data.addActionChannel" />
+        <button data-bind="click: $root.addActionToTrigger" class="btn add primary">+ Add
+          Action</button>
       </div>
-    </li>
-  </ul>
-  <span>
-    <button class="btn delete danger" data-bind="click: $root.removeTrigger">x</button></span>
-</div>
-<div class="details" style="display: none;">
-  <textarea rows="5" cols="90" style="margin: 5px 0px 10px 10px; width: 230px;" data-bind="value: notes" placeholder="notes"></textarea>
-  <span class="new-item action">
-    <input placeholder="Date" name="Date1" class="date" type="text" data-bind="value: $data.addActionDate"
-      style="margin-left: 7px;" />
-    <input placeholder="Channel" style="width: 140px" name="Channel" type="text" data-bind="value: $data.addActionChannel" />
-    <button data-bind="click: $root.addActionToTrigger" style="float: right; margin-right: 10px;"
-      class="btn add primary">+ Add Action</button>
-  </span>@*@Html.Partial("_action-tabs")*@
-</div>
+    </div>
+    <div class="buttons">
+      
+      <span>&nbsp</span>
+      <button class="btn delete danger" data-bind="click: $root.removeTrigger">Delete Trigger</button></div>
+  </div>
+</li>

@@ -1,0 +1,37 @@
+﻿<div class="triggers2">
+  <div class="list-header">
+    Your Triggers</div>
+  <ul class="trigger-list" data-bind="foreach: triggers">
+    @Html.Partial("_trigger")
+  </ul>
+  <div class="new trigger">
+    <input type="text" placeholder="New Trigger" class="title" data-bind="value: triggerToAddTitle"
+      name="Title" />
+    <textarea placeholder="notes"></textarea>
+    <input type="text" class="date" placeholder="Date" data-bind="value: triggerToAddDate"
+      name="Date" />
+    <button data-bind="click: addTrigger" class="btn add primary">+ Add Trigger</button>
+  </div>
+  <div class="reveal-tab">
+    <span>{ + } </span>
+  </div>
+  @Html.Partial("_action-dialog")
+</div>
+<script type="text/javascript">
+  $(function () {
+    var newTriggerState = 'hidden';
+    $('.reveal-tab').click(function () {
+      if (newTriggerState === 'visible') {
+        $(this.previousElementSibling).slideUp('slow');
+        this.innerText = "{ + }";
+        newTriggerState = 'hidden';
+      } else {
+        $(this.previousElementSibling).slideDown('fast');
+        this.innerText = "{ - }";
+         newTriggerState = 'visible';
+
+      }
+
+    });
+  });
+</script>

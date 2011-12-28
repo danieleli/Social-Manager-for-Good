@@ -522,6 +522,7 @@
     <Content Include="Views\_Shared\_LessEditor.cshtml" />
     <Content Include="Views\_Shared\_LogOnPartial.cshtml" />
     <Content Include="Views\_Shared\_Scripts.cshtml" />
+    <Content Include="Views\Social\_triggers2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
