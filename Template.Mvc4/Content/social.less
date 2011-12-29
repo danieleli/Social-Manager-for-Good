@@ -27,36 +27,38 @@ ul { list-style: none; }
 }
 
 @channel-width: 100px;
-@day-width: 85px;
-@tradition-calendar-width: (@day-width * 7) + 52;
+@day-width: 84px;
+@tradition-calendar-width: (@day-width * 7) + 54;
 table td { border: none; }
 table { border: none; }
 .traditional-calendar
 {
   float: right;
   clear: right;
-  background: #aaa;
+  
   .rounded-corners(10px);
   margin-left: 20px;
   width: @tradition-calendar-width;
   display: inline-block;
   div {margin: 0; padding: 0; display:inline-block; border: none;}
-
+ 
   .myheader {
-    padding: 5px 0 0 0;
+    padding: 5px 1px 0 1px;
+    background: #aaa;
     .rounded-corners-each(10px, 10px, 0,0);
-    background: #eee;
     div { 
       text-align: center; 
       width: @day-width; 
       margin-bottom: 0px;
-      border-bottom: 1px solid black;
-      background: #eee;
+      
+      
       padding: 2px 2px 3px 2px;
     }
   }
+  
   .actions { background: none; }
-  .calendar-days { width: auto;  }
+  .calendar-days { background: #eee;  border: 1px solid #aaa;
+  border-top: none;  }
   .day { 
     color: #666;
     
@@ -235,11 +237,11 @@ footer {
   a:hover { color: #eee; text-decoration:none; }
 }
 
-@color1: blue;
+@color1: #999;
 @color1-light: lighten(@color1, 30%);
 @color1-lightest: lighten(@color1, 40%);
 @color1-dark: darken(@color1, 20%);
-@color2: red;
+@color2: #777;
 @color2-light: lighten(@color2, 30%);
 @color2-dark: dark(@color2, 30%);
 @left-list-width: 260px;
