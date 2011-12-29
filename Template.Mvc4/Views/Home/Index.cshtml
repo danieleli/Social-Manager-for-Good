@@ -1,74 +1,57 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+  ViewBag.Title = "Home Page";
 }
-
 @section featured {
-<section class="featured">
+  <section class="featured">
     <div class="content-wrapper">
-        <hgroup class="title">
-            <h1>@ViewBag.Title.</h1>
-            <h2>@ViewBag.Message</h2>
-        </hgroup>
-        <p>
-            To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>. 
-            The page features <span class="highlight">videos, tutorials, and samples</span> to help you get the most from 
-            ASP.NET MVC. If you have any questions about ASP.NET MVC visit 
-            <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">our forums</a>.
-        </p>
+      <div class="content home">
+        <section>
+          <div class="adjectives">
+          <p>easy</p> 
+          <p>specific</p>
+          <p>actions</p>
+          </div>
+          <div class="steps">
+          <ol>
+          <li><span>step 1 </span><div>Enter new topic</div> </li>
+          <li><span>step 2 </span><div>Plan specific actions for that topic (or event)</div> </li>
+          <li><span>step - </span><div>Done.</div></li>
+          <li><br />Click on <a href="/social">my campaigns</a> to see what it looks like with dummy data.</li>
+          </ol>
+          </div>
+        </section>
+        
+      </div>
     </div>
-</section>
+  </section>
 }
-
-
-<h3>We suggest the following:</h3>
-
-<ol class="round">
-    <li class="one">
-        <h5>Configure ASP.NET Membership</h5>
-        ASP.NET membership gives you a built-in way to create, store, and 
-        validate user credentials (authentication). By default, membership works with a local instance of SQL Express, 
-        but you can configure it to use another database.
-    </li>
-    <li class="two">
-        <h5>Add NuGet packages and jump start your coding</h5>
-        NuGet makes it easy to install and update free libraries and tools in Visual Studio. In <em>Solution Explorer</em>, 
-        right-click the <em>References</em> node, select <em>Manage NuGet Packages</em>, and then pick from the extensive 
-        list of packages.
-    </li>
-    <li class="three">
-        <h5>Setup deployment to your web server</h5>
-        Use Microsoft Web Deploy to quickly and easily publish your application to a web server. 
-        In <em>Solution Explorer</em>, right-click your project, select <em>Publish</em>, 
-        and choose one of the many options to get your code deployed and running on the web.
-    </li>
-</ol>
-
 <section class="features">
-    <section class="feature">
-        <img src="@Url.Content("~/Content/Images/aspNetHome.png")" alt="ASP.NET" />
-        <h3>Home of ASP.NET</h3>
-        <p>
-            ASP.NET is a free, fully supported Web application framework that helps you create standards-based web solutions. 
-            Whether you're new to ASP.NET or an experienced developer, the <a href="http://asp.net" title="ASP.NET Website">ASP.NET website</a> 
-            is your source for news, training, downloads, and support.
-        </p>
-    </section>
-    <section class="feature">
-        <img src="@Url.Content("~/Content/Images/NuGetGallery.png")" alt="NuGet" />
-        <h3>NuGet Gallery</h3>
-        <p>
-            NuGet is a Visual Studio extension that makes it easy to install and update open source libraries and tools in 
-            Visual Studio. To see available packages, visit the <a href="http://nuget.org" title="NuGet Gallery">NuGet gallery</a>.
-            You can also develop your own package and share it in the gallery. 
-        </p>
-    </section>
-    <section class="feature">
-        <img src="@Url.Content("~/Content/Images/findHosting.png")" alt="Hosting" />
-        <h3>Find Web Hosting</h3>
-        <p>
-            You can easily find a web hosting company that offers the right mix of features and price for your applications. 
-            Visit <a href="http://microsoft.com/web/hosting" title="Microsoft/Web Website">Microsoft.com/web</a> to 
-            explore offerings from many providers.
-        </p>
-    </section>
+  <section class="feature" style="position: relative;">
+    <!-- Begin MailChimp Signup Form -->
+    <style type="text/css">
+      
+    </style>
+    <div id="mc_embed_signup">
+      <form style="display: inline-block;" action="http://softwaresingularity.us2.list-manage.com/subscribe/post?u=9c9f1781c7b92f21aa9aad04d&amp;id=e806b3483a"
+      method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
+      target="_blank">
+      <label for="mce-EMAIL">Subscribe to our mailing list</label>
+      <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address"
+        required>
+      <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"
+        class="bcvutton btn">
+      </form>
+      <span class="poweredWrapper" style="padding: 20px 0; margin: 0 auto;">
+        <span class="poweredBy" style="display: inline-block; vertical-align: middle;">
+          <a href="http://www.mailchimp.com/monkey-rewards/?aid=9c9f1781c7b92f21aa9aad04d&amp;afl=1"
+            style="color: #336699;">
+            <img src="https://d2q0qd5iz04n9u.cloudfront.net/_ssl/proxy.php/http/gallery.mailchimp.com/089443193dd93823f3fed78b4/images/postmark_mailchimp_red.gif"
+              border="0" alt="Email Marketing Powered by MailChimp" title="MailChimp Email Marketing"></a></span>
+      </span>
+    </div>
+    <div class="reveal-tab" style="position: absolute; top: -20px; right: 20px;">
+      <span>{ - } </span>
+    </div>
+    <!--End mc_embed_signup-->
+  </section>
 </section>

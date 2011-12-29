@@ -4,7 +4,7 @@
 @tradition-calendar-width: (@day-width * 7) + 54;
 @color1: #999;
 @color1-light: lighten(@color1, 30%);
-@color1-lightest: lighten(@color1, 40%);
+@color1-lightest: lighten(@color1, 30%);
 @color1-dark: darken(@color1, 20%);
 @color2: #777;
 @color2-light: lighten(@color2, 30%);
@@ -31,6 +31,41 @@ body {
   }
 }
 .dialog { display: none; }
+
+.content.home {
+  section {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 90px;
+    
+    .adjectives { 
+      display: inline-block; 
+      margin-right: 90px;
+      vertical-align: middle;
+      width:300px;
+      p { font-size: 36pt; line-height: 60px; }
+    }
+    .steps {
+      width: 400px;
+      display: inline-block;
+      ol { 
+        font-size: 20pt; 
+        vertical-align: middle;
+        margin-left: 90px;
+        display: inline-block; 
+        text-align: left;
+        li { 
+          line-height:32px;
+          display: inline-block;
+          text-align: left; 
+          span { width: 90px;  display: inline-block; vertical-align: top;  }
+          div { display: inline-block; width: 220px;vertical-align: top; font-size: 16px; }
+        }  
+      }
+    }
+  }
+}
+
 
 #mc_embed_signup {
   text-align: center;
