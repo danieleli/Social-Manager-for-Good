@@ -90,7 +90,7 @@ table { border: none; }
   
   .actions { background: none; }
   .calendar-days { background: #eee;  border: 1px solid #aaa;
-    border-top: none;  }
+    border-top: none; .rounded-corners(0px 0px 10px 10px);  }
   .day { 
     color: #666;
     
@@ -118,10 +118,6 @@ table { border: none; }
   
 }
 
-
-
-
-
 footer {
   text-align:center; 
   width:100%; 
@@ -130,9 +126,7 @@ footer {
   a:hover { color: #eee; text-decoration:none; }
 }
 
-
-
-.triggers2 {
+.triggers {
   width: @left-list-width;
   display: inline-block;
   vertical-align: top;
@@ -235,6 +229,7 @@ footer {
 }
 
 
+/*
 .triggers {
   display: inline-block;
   ul, li { margin-left: 0; }
@@ -332,7 +327,6 @@ footer {
 }
 
 
-/*
 
 .list-calendar { 
   position: relative;

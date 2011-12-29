@@ -9,7 +9,7 @@
 }
 <br />
 <br />
-@Html.Partial("_triggers2")
+@Html.Partial("_triggers")
 
 @Html.Partial("_calendar")
 
@@ -28,6 +28,7 @@
   <script src="/Content/lib/knockout/knockout-2.0.0.js" type="text/javascript"></script>
   <script src="/Content/lib/knockout/knockout-mapping.js" type="text/javascript"></script>
   <script src="/content/social.js" type="text/javascript"> </script>
+
   <script type="text/javascript">
     $(function () {
       setupViewModel();
@@ -40,11 +41,11 @@
         $(this.parentNode).children('.details').toggle('fast');
       });
       $('input.date').datepicker();
-    }
+    };
     var setupViewModel = function () {
       var data = testUtils.getPageData();
       var viewModel = new TriggersViewModel(data);
       ko.applyBindings(viewModel);
-    }
+    };
   </script>
 }

@@ -12,10 +12,11 @@ namespace SocialManager.Mvc4.Controllers
             return View();
         }
 
-        public ActionResult Index2()
+        public ActionResult Tests()
         {
-          return View();
+          return View("__Tests");
         }
+
         //
         // GET: /Social/Details/5
 

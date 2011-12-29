@@ -183,6 +183,8 @@
     <Compile Include="Models\Core\GenericRepository.cs" />
     <Compile Include="Models\TemplateMvc4Context.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Content\Social.old.js" />
+    <Content Include="Content\site.js" />
     <Content Include="Views\Social\_calendar.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -502,7 +504,6 @@
     <Content Include="Views\Social\_action-dialog.cshtml" />
     <Content Include="Views\Social\_action-tabs.cshtml" />
     <Content Include="Views\Social\_trigger.cshtml" />
-    <Content Include="Views\Social\_triggers.cshtml" />
     <Content Include="Views\Social\__tests.cshtml" />
     <Content Include="Views\Social\Web.config" />
     <None Include="Content\CrudHelpers.coffee">
@@ -522,7 +523,7 @@
     <Content Include="Views\_Shared\_LessEditor.cshtml" />
     <Content Include="Views\_Shared\_LogOnPartial.cshtml" />
     <Content Include="Views\_Shared\_Scripts.cshtml" />
-    <Content Include="Views\Social\_triggers2.cshtml" />
+    <Content Include="Views\Social\_triggers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
