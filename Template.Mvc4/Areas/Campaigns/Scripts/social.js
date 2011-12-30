@@ -1,4 +1,6 @@
 ﻿
+// move this into social_calendar.js and test thoroughly!
+
 function TriggersViewModel(data) {
    var self, triggerHelper;
    self = this;
@@ -7,84 +9,7 @@ function TriggersViewModel(data) {
 
    self.triggerToAddTitle = ko.observable("");
    self.triggerToAddDate = ko.observable("");
-
-   self.allChannels = function () {
-      var temp = [];
-      var rtn = [];
-      self.allActions().map(function (action, index, array) {
-         if ($.inArray(action.channel(), temp) < 0) {
-            rtn.push(action.channel());
-         }
-         temp = rtn.slice(0);
-      });
-      rtn.sort();
-      return rtn;
-   };
-
-   self.allActions = function () {
-      var rtn = [];
-      self.triggers().map(function (trigger, index, array) {
-         rtn = rtn.concat(trigger.actions());
-      });
-      rtn.sort(function (a, b) {
-         var dateA = new Date(a.date());
-         var dateB = new Date(b.date());
-         return dateA - dateB;
-      });
-      return rtn;
-   };
-
-   self.calendarDays = ko.computed(function () {
-      var triggers, firstDay, lastDay, dayCount, i, calendarDays;
-      triggers = self.triggers();
-      var allActionsCopy = self.allActions();
-      dayCount = (function () {
-         if(allActionsCopy.length > 0){
-            firstDay = new Date(allActionsCopy[0].date());
-            // start on sunday
-            firstDay.addDays(-firstDay.getDay());
-            lastDay = new Date(allActionsCopy[allActionsCopy.length - 1].date());
-            // end on saturday
-            lastDay.addDays(6-lastDay.getDay());
-            return ((lastDay - firstDay) / 86400000) + 1;
-         };
-         return 0;
-      } ());
-
-      calendarDays = (function () {
-         var calendarDay, currentDay, rtnDays;
-         rtnDays = [];
-         for (i = 0; i < dayCount; i++) {
-            currentDay = new Date(new Date(firstDay).addDays(i));
-
-            calendarDay = {
-               day: currentDay,
-               niceDay: currentDay.formatMMDD(),
-               channels: (function () {
-                  var rtn = [];
-                  self.allChannels().map(function (currentChannel, index, array) {
-                     var innerActions = [];
-                     
-                     self.allActions().map(function (action, actionIndex, actionArray) {
-                        if ((new Date(action.date()).toString() === currentDay.toString()) && (action.channel() === currentChannel)) {
-                           innerActions.push(action);
-                        }
-                     });
-                     
-                     
-                     rtn = rtn.concat({channel: currentChannel, actions: innerActions});
-                  });
-                  return rtn;
-               })()
-            };
-
-            rtnDays.push(calendarDay);
-         };
-         return rtnDays;
-      })();
-
-      return calendarDays;
-   }, self.triggers);
+   self.calendarDays = ko.computed(function() {return calendarDays(self.triggers);}, self.triggers);
 
    // track current trigger
    var _currentTrigger;
@@ -195,6 +120,7 @@ function TriggerHelper() {
       trigger.addActionDate = "";
       trigger.addActionChannel = "";
       trigger.niceDate = new Date(trigger.date).formatMMDDYYYY();
+     trigger.date = new Date(trigger.date);
       trigger.getRows = function () {
          var _results;
          _results = [];
@@ -202,7 +128,10 @@ function TriggerHelper() {
             _results.push(new Date(new Date(trigger.date).addDays(num)));
          }
          return _results;
-      }
+      };
+      trigger.actions.map(function (action, actionIndex, actionArray) {
+         action.date = new Date(action.date);
+      });
    };
 
    // post-processing

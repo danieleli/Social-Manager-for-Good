@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace SocialManager.Mvc4.Controllers
+namespace SocialManager.Mvc4.Areas.Campaigns.Controllers
 {
     public class SocialController : Controller
     {
@@ -14,7 +14,7 @@ namespace SocialManager.Mvc4.Controllers
 
         public ActionResult Tests()
         {
-          return View("__Tests");
+          return View("__tests");
         }
 
         //

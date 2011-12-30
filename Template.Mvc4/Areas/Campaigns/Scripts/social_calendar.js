@@ -1,4 +1,4 @@
-﻿var CalendarDays = function (topics) {
+﻿var calendarDays = function (topics) {
    var firstDay, lastDay;
    var rtnDays = [];
    var self = this;
@@ -36,7 +36,8 @@
 var CalendarDay = function (date, topics) {
    var myDate = new Date(date);
    return {
-      date: myDate,
+     date: myDate,
+     niceDay: myDate.formatMMDD(),
       actions: (function () {
          var rtnActions = [];
          topics().map(function (topic) {

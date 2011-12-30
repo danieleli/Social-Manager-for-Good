@@ -11,10 +11,11 @@
   <div data-bind="foreach: calendarDays" class="calendar-days">
     <div class="day">
     <div data-bind="text: niceDay"></div>
-    <div data-bind="foreach: channels" class="channels">
-      <div class="actions" data-bind="foreach: actions">
-        <div class="action" data-bind="text: triggerTitle"></div>
-      </div>
+    <div data-bind="foreach: topics" class="topics">
+      <div class="title" data-bind="text: title"></div>
+    </div>
+    <div data-bind="foreach: actions" class="topic-actions">
+      <div data-bind="css: {facebook: channel()==='facebook', twitter: channel()==='twitter', meetup: channel()==='meetup'  }, text: topicTitle()"></div>
     </div>
   </div>
   </div>
@@ -42,5 +43,4 @@
       </ul>
     </li>
   </ul>
-</section>
-*@
+</section>*@

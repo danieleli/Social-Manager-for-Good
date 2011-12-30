@@ -12,7 +12,7 @@
          date: new Date("1/15/2012"),
          notes: "notes for annual meeting",
          actions: [
-            { channel: "facebook", date: "1/12/2012", id: 1, notes: "a note" },
+            { channel: "facebook", date: "12/12/2011", id: 1, notes: "a note" },
             { channel: "twitter", date: "1/12/2012", id: 2, notes: "action note" },
             { channel: "twitter", date: "1/15/2012", id: 3, notes: "" }
          ]
