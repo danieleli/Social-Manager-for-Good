@@ -185,6 +185,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Content\Social.old.js" />
     <Content Include="Content\site.js" />
+    <Content Include="Content\tests.css">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>tests.less</DependentUpon>
+    </Content>
+    <Content Include="Content\tests.min.css">
+      <DependentUpon>tests.less</DependentUpon>
+    </Content>
     <Content Include="Views\Social\_calendar.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -451,6 +459,10 @@
     <Content Include="Test\Index.cshtml" />
     <Content Include="Views\Home\Gallery.cshtml" />
     <Content Include="Test\calendar\Index.cshtml" />
+    <None Include="Content\tests.less">
+      <Generator>LessGenerator</Generator>
+      <LastGenOutput>tests.css</LastGenOutput>
+    </None>
     <None Include="Test\calendar\calendar.less" />
     <Content Include="Test\Calendar.cshtml" />
     <Content Include="Test\calendar\Calendar2.cshtml" />

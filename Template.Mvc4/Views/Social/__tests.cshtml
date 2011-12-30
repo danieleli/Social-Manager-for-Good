@@ -2,11 +2,23 @@
   ViewBag.Title = "SocialTests";
 }
 
-@if (false)
+@if (true)
 {
   // OPTIONAL! QUnit script (here for intellisense)
+  <link rel="stylesheet" href="/content/lib/qunit/qunit.css " />
+  <link rel="stylesheet" href="/content/tests.less " type="text/css" />
   <script type="text/javascript" src="@Url.Content("~/Content/lib/qunit/qunit.js")"> </script>
 }
+  <p>
+    &nbsp<a href="http://docs.jquery.com/QUnit">QUnit Homepage</a>
+  </p>
+  <h1 id="qunit-header">
+    @(Page.Title ?? "QUnit tests")
+  </h1>
+  <h2 id="qunit-banner"></h2>
+  <h2 id="qunit-userAgent"></h2>
+  <ol id="qunit-tests"></ol>
+
 <!-- Script we're testing -->
 <script type="text/javascript">
   Date.prototype.addDays = function (days) {
@@ -16,11 +28,11 @@
   var rows = function (date) {
     var _results;
     _results = [];
-    for (num = -30; num <= 30; num++) {
+    for (var num = -30; num <= 30; num++) {
       _results.push(new Date(new Date(date).addDays(num)));
     }
     return _results;
-  }
+  };
 </script>
 
 <!-- The tests -->
@@ -38,4 +50,3 @@
   });
 </script>
 
-Hello
