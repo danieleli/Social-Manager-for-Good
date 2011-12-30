@@ -185,6 +185,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Content\Social.old.js" />
     <Content Include="Content\site.js" />
+    <Content Include="Content\social_calendar.js" />
+    <Content Include="Content\social_testUtils.js" />
     <Content Include="Content\tests.css">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -438,6 +440,7 @@
     <Content Include="Content\lib\twitter-bootstrap\scripts\bootstrap-twipsy.js" />
     <Content Include="Content\common-functions.less" />
     <Content Include="Content\social.less" />
+    <Content Include="Content\github_commit.js" />
     <None Include="Content\lib\twitter-bootstrap\styles\bootstrap.css.old" />
     <Content Include="Content\lib\twitter-bootstrap\styles\bootstrap.min.css" />
     <Content Include="Global.asax" />

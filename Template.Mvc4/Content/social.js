@@ -3,16 +3,10 @@ function TriggersViewModel(data) {
    var self, triggerHelper;
    self = this;
    triggerHelper = new TriggerHelper();
-   self.triggers = [];
+   self.triggers = triggerHelper.processTriggers(data);
 
-   self.initialize = function (myData) {
-      self.triggers = triggerHelper.processTriggers(myData);
-
-      self.triggerToAddTitle = ko.observable("");
-      self.triggerToAddDate = ko.observable("");
-   };
-
-   self.initialize(data);
+   self.triggerToAddTitle = ko.observable("");
+   self.triggerToAddDate = ko.observable("");
 
    self.allChannels = function () {
       var temp = [];
@@ -41,7 +35,7 @@ function TriggersViewModel(data) {
    };
 
    self.calendarDays = ko.computed(function () {
-      var triggers, rtn, firstDay, lastDay, dayCount, i, calendarDays;
+      var triggers, firstDay, lastDay, dayCount, i, calendarDays;
       triggers = self.triggers();
       var allActionsCopy = self.allActions();
       dayCount = (function () {
@@ -71,7 +65,7 @@ function TriggersViewModel(data) {
                   self.allChannels().map(function (currentChannel, index, array) {
                      var innerActions = [];
                      
-                     self.allActions().map(function (action, index, array) {
+                     self.allActions().map(function (action, actionIndex, actionArray) {
                         if ((new Date(action.date()).toString() === currentDay.toString()) && (action.channel() === currentChannel)) {
                            innerActions.push(action);
                         }
@@ -79,7 +73,7 @@ function TriggersViewModel(data) {
                      
                      
                      rtn = rtn.concat({channel: currentChannel, actions: innerActions});
-                  })
+                  });
                   return rtn;
                })()
             };
@@ -126,7 +120,7 @@ function TriggersViewModel(data) {
 
       $('#actionDialog input.date').datepicker();
       event.cancelBubble = true;
-   }
+   };
 
 
    // trigger - CREATE
@@ -172,48 +166,6 @@ function TriggersViewModel(data) {
 
 };
 
-testUtils = {
-   getPageData: function () {
-      var trigger1 = this.getTrigger1();
-      var trigger2 = this.getTrigger2();
-
-      return [trigger1, trigger2];
-   },
-
-   getTrigger1: function () {
-      return {
-         title: "annual meeting2",
-         date: new Date("1/15/2012"),
-         notes: "notes for annual meeting",
-         actions: [
-            { channel: "facebook", date: "1/12/2012", id: 1, notes: "a note" },
-            { channel: "twitter", date: "1/12/2012", id: 2, notes: "action note" },
-            { channel: "twitter", date: "1/15/2012", id: 3, notes: "" }
-         ]
-      };
-   },
-
-   getTrigger2: function () {
-      return {
-         title: "brown bag2",
-         date: new Date("2/15/2012"),
-         notes: "order lunch",
-         actions: [
-            { channel: "meetup", date: "2/12/2012", id: 4, notes: "yet another" },
-            { channel: "twitter", date: "2/14/2012", id: 5, notes: "notes, notes, notes" },
-         ]
-      };
-   },
-
-   refreshTriggers: function (myViewModel) {
-      myViewModel.triggers.removeAll();
-      var freshTriggers = this.getPageData();
-      myViewModel.modelUtils.prepTriggers(freshTriggers);
-      myViewModel.triggers.push(ko.mapping.fromJS(freshTriggers[0]));
-      myViewModel.triggers.push(ko.mapping.fromJS(freshTriggers[1]));
-   }
-};
-
 function TriggerHelper() {
    var self = this;
 
@@ -246,7 +198,7 @@ function TriggerHelper() {
       trigger.getRows = function () {
          var _results;
          _results = [];
-         for (num = -7; num <= 7; num++) {
+         for (var num = -7; num <= 7; num++) {
             _results.push(new Date(new Date(trigger.date).addDays(num)));
          }
          return _results;
@@ -275,7 +227,7 @@ function TriggerHelper() {
          return new Date(action.date()).formatMMDD();
       }, action);
       action.triggerTitle = ko.computed(triggerTitle, triggers);
-   }
+   };
 };
 
 //var action = function (date, channel) {
