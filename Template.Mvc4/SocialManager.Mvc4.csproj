@@ -186,6 +186,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Areas\Campaigns\Scripts\models.js" />
     <Content Include="Content\Images\FaceBook_512x512.png" />
+    <Content Include="Content\Images\meetup.png" />
     <Content Include="Content\Images\target.png" />
     <Content Include="Content\Images\Twitter_512x512.png" />
     <Content Include="Content\site.js" />
