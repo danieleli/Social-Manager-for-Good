@@ -10,18 +10,32 @@
   </div>
   <div data-bind="foreach: calendarDays" class="calendar-days">
     <div class="day">
-    <div data-bind="text: niceDay"></div>
-    <div data-bind="foreach: topics" class="topics">
-      <div class="title" data-bind="text: title"></div>
+      <div style="display: block;" data-bind="text: niceDay"></div>
+      <div data-bind="foreach: topics" class="topics">
+        <div class="title" data-bind="text: title"></div>
+      </div>
+      <div data-bind="foreach: actions" class="topic-actions">
+        <div style="position: relative;" class="campaign-action" data-bind="css: {facebook: channel()==='facebook', twitter: channel()==='twitter', meetup: channel()==='meetup'  }">
+          <div class="topic-title" style="display: none; position: absolute; z-index: 40; white-space: nowrap; overflow: visible; left: 20px;" data-bind="text: topicTitle()">
+            <div data-bind="text: topicTitle()"></div>
+            <div data-bind="text: notes()"></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div data-bind="foreach: actions" class="topic-actions">
-      <div data-bind="css: {facebook: channel()==='facebook', twitter: channel()==='twitter', meetup: channel()==='meetup'  }, text: topicTitle()"></div>
-    </div>
-  </div>
   </div>
 </section>
+<script type="text/javascript">
+  $(function () {
+    setTimeout(function () {
+      $('.campaign-action').on('hover', function (event) {
+        $(this.children).toggle('slow');
+      });
+    }, 1000);
 
+  });
 
+</script>
 @*<section class="list-calendar">
   <span class="date"></span>
   <ul data-bind="foreach: $root.allChannels()" class="channels calendar-header">
@@ -43,4 +57,4 @@
       </ul>
     </li>
   </ul>
-</section>*@
+</section>*@ 

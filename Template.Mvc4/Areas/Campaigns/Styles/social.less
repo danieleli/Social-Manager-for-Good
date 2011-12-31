@@ -11,9 +11,12 @@
 @color2-dark: dark(@color2, 30%);
 @left-list-width: 260px;
 
-.facebook { background: url(/content/images/facebook.png); content: "test";  }
-.twitter { background: url(/content/images/twitter.png); content: "."}
-.meetup { background: url(/content/images/meetup.png); content: "."}
+.calendar-icon {
+  background: url('/content/images/facebook_512x512.png') no-repeat top left; background-size: contain; width: 20px; height: 20px; 
+}
+.facebook { .calendar-icon(); }
+.twitter { .calendar-icon(); background: url('/content/images/twitter_512x512.png'); }
+.meetup { .calendar-icon(); background: url(/content/images/meetup.png);} 
 #body { min-height: 700px; }
 body {
   .xtra { 

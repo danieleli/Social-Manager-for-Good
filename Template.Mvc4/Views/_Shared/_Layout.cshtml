@@ -15,6 +15,11 @@
         @RenderBody()
       </div>
     </div>
+    <p>
+    Controller: @ViewContext.RouteData.Values["controller"] <br />
+    Action: @ViewContext.RouteData.Values["action"] <br />
+    Area: @ViewContext.RouteData.DataTokens["area"] 
+</p>
   </div>
   <footer>
     @Html.Partial("_Footer")

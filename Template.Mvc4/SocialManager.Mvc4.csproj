@@ -185,6 +185,8 @@
     <Compile Include="Models\TemplateMvc4Context.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Areas\Campaigns\Scripts\models.js" />
+    <Content Include="Content\Images\FaceBook_512x512.png" />
+    <Content Include="Content\Images\Twitter_512x512.png" />
     <Content Include="Content\site.js" />
     <Content Include="Areas\Campaigns\Scripts\social_calendar.js" />
     <Content Include="Areas\Campaigns\Scripts\social_testUtils.js" />
@@ -478,6 +480,7 @@
       <Generator>CoffeeScriptGenerator</Generator>
       <LastGenOutput>nested_knockout.js</LastGenOutput>
     </None>
+    <Content Include="Views\Home\Analytics.cshtml" />
     <None Include="Views\Home\javascript.cshtml" />
     <Content Include="Areas\Campaigns\Scripts\social.js" />
     <Content Include="Content\CrudHelpers.js">

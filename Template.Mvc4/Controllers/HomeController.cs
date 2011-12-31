@@ -25,7 +25,7 @@ namespace SocialManager.Mvc4.Controllers
          return View();
       }
 
-      public ActionResult TwitterBootStrap()
+      public ActionResult Analytics()
       {
         return View();
       }
