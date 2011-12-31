@@ -448,6 +448,7 @@
     <Content Include="Content\github_commit.js" />
     <Content Include="Areas\Campaigns\Views\Web.config" />
     <Content Include="Areas\Campaigns\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Campaigns\Views\Social\Achievements.cshtml" />
     <None Include="Content\lib\twitter-bootstrap\styles\bootstrap.css.old" />
     <Content Include="Content\lib\twitter-bootstrap\styles\bootstrap.min.css" />
     <Content Include="Global.asax" />

@@ -102,5 +102,10 @@ namespace SocialManager.Mvc4.Areas.Campaigns.Controllers
                 return View();
             }
         }
+
+      public ActionResult Achievements()
+      {
+        return View();
+      }
     }
 }
