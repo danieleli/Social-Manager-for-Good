@@ -1,4 +1,9 @@
 ﻿@{
+    ViewBag.Title = "__tests_calendarDays";
+}
+
+<h2>__tests_calendarDays</h2>
+@{
   ViewBag.Title = "SocialTests";
 }
 @if (true)
@@ -17,7 +22,7 @@
 <ol id="qunit-tests"></ol>
 <!-- Script we're testing -->
 <script src="/Content/site.js" type="text/javascript"></script>
-<script src="/Content/lib/jquery/jquery-ui-1.8.16.js" type="text/javascriept"></script>
+<script src="/Content/lib/jquery/jquery-ui-1.8.16.js" type="text/javascript"></script>
 <script src="/Content/lib/knockout/knockout-2.0.0.debug.js" type="text/javascript"></script>
 <script src="/Content/lib/knockout/knockout-mapping.js" type="text/javascript"></script>
 <script src="/Areas/Campaigns/Scripts/models.js" type="text/javascript"></script>
@@ -52,76 +57,66 @@
 
   $(function () {
 
+    var calendarTests = function () {
+      module("Calendar Days");
 
+      test("1/31/2001 should return no actions or topics", function () {
+        var myDate = "1/31/2001";
+        ok(vm, "topics is a O.K.");
+        var myDay = new CalendarDay(myDate, vm.triggers);
+        equals(myDay.date.toString(), new Date(myDate).toString(), "calendarDay.date = correctDate");
+        equals(myDay.actions.length, 0, "actions.length===0");
+        equals(myDay.topics.length, 0, "topics.length===0");
+      });
 
-    var   viewModelTests = function () {
-
-      module("ViewModel");
-
-
-      test("ViewModel.CalendarDays should have length of 42", function () {
-        equals(vm.calendarDays().length, 42, "vm.CalendarDays().length");
+      test("12/22/1999 should return one action and no topics", function () {
+        var myDate = "12/22/1999";
+        ok(vm, "topics is a O.K.");
+        var myDay = new CalendarDay(myDate, vm.triggers);
+        equals(myDay.date.toString(), new Date(myDate).toString(), "calendarDay.date = correctDate");
+        equals(myDay.actions.length, 1, "actions.length===0");
+        equals(myDay.actions[0].topicTitle(), "name2", "action[0].topicTitle==='name2'");
+        equals(myDay.actions[0].channel(), "facebook", "action[0].channel");
+        equals(myDay.topics.length, 0, "topics.length===0");
       });
 
 
-      test("add new campaign", function () {
-        var initialCount = vm.triggers().length;
-        vm.triggerToAddTitle('new campagin');
-        vm.triggerToAddDate('1/1/2004');
-        vm.addTrigger();
-
-        equals(vm.triggers().length, initialCount + 1, "Trigger Length");
+      test("1/3/2000 should return no actions and one topic", function () {
+        var myDate = "1/3/2000";
+        ok(vm, "topics is a O.K.");
+        var myDay = new CalendarDay(myDate, vm.triggers);
+        equals(myDay.date.toString(), new Date(myDate).toString(), "calendarDay.date = correctDate");
+        equals(myDay.actions.length, 0, "actions.length===0");
+        equals(myDay.topics.length, 1, "topics.length===1");
+        equals(myDay.topics[0].title(), "name2", "topics.title==='name1'");
       });
 
 
-      test("remove existing campaign", function () {
-        var initialCount = vm.triggers().length;
-        var triggerElement = $('.trigger').first();
-        triggerElement.mouseover();
-        triggerElement.children('button.delete-trigger').click();
-        equals(vm.triggers().length, initialCount - 1, "Triggers.length");
-
+      test("12/1/1999 should return two actions and no topics", function () {
+        var myDate = "12/1/1999";
+        ok(vm, "topics is a O.K.");
+        var myDay = new CalendarDay(myDate, vm.triggers);
+        equals(myDay.date.toString(), new Date(myDate).toString(), "calendarDay.date = correctDate");
+        equals(myDay.actions.length, 2, "actions.length");
+        equals(myDay.topics.length, 0, "topics.length");
       });
 
-      test("remove existing action from existing campaign", function () {
+      test("CalendarDays.length shoud be 42", function () {
+        ok(vm, "topics is a O.K.");
 
-        var triggerElement = $('.trigger').first();
-        var childActions = triggerElement.children('.actions').children('.action');
-        var initialCount = childActions.length;
-        // select trigger.
-        triggerElement.mouseover();
-        // click delete.
-        var actionElement = childActions.first().children('button.delete-action').first();
-        logger("actionElemanet: " + actionElement.text());
-        actionElement.click();
-        childActions = triggerElement.children('.actions').children('.action');
-        equals(equals(childActions.length, initialCount - 1, "Trigger[0].actions.length"));
-
-      });
-
-      test("add new action to existing campaign", function () {
-
-        var myTrigger = vm.triggers()[0];
-        var initialCount = vm.triggers()[0].actions().length;
-
-        myTrigger.addActionDate("1/2/2000");
-        myTrigger.addActionChannel("testchannel");
-        var triggerElement = $('.trigger').first();
-        // select trigger.
-        triggerElement.mouseover();
-        // click delete.
-        triggerElement.first().children('.btn.add-action').click();
-        logger("length: " + $('.trigger').first().children('.actions').children().length);
-        equals($('.trigger').first().children('.actions').children('.action').length, initialCount + 1, "myTrigger.actions.length");
-
+        var days = calendarDays(vm.triggers);
+        equals(days.length, 42, "days.length");
+        days.map(function (day) {
+          equals(isNaN(day.date.getTime()), false, "day.date isNaN");
+        });
       });
     };
-    
+
+
     var vm = new TriggersViewModel(topics());
     ko.applyBindings(vm);
 
-    viewModelTests();
-
+    calendarTests();
 
 
 

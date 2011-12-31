@@ -73,13 +73,15 @@ function TriggersViewModel(data) {
    self.addActionToTrigger = function () {
       // this = the trigger getting the new action.
       if (arguments.length > 0) {
-         var newAction = ko.mapping.fromJS({ date: this.addActionDate(), channel: this.addActionChannel(), id: "new", notes: "", });
+         var newAction = ko.mapping.fromJS({ date: this.addActionDate(), channel: this.addActionChannel(), id: "new", notes: "" });
          triggerHelper.postProcessAction(newAction, self.currentTrigger().title, self.triggers);
          this.addActionDate("");
          this.addActionChannel("");
          this.actions.push(newAction);
       }
    };
+
+
 
    // action - DELETE
    self.removeActionFromTrigger = function () {
