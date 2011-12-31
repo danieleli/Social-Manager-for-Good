@@ -39,33 +39,38 @@ body {
 .dialog { display: none; }
 
 .content.home {
+
   section {
     text-align: center;
     margin-top: 30px;
     margin-bottom: 90px;
     
     .adjectives { 
-      display: inline-block; 
-      margin-right: 90px;
-      vertical-align: middle;
-      width:300px;
-      p { font-size: 36pt; line-height: 60px; }
-    }
-    .steps {
-      width: 400px;
       display: inline-block;
+      vertical-align:middle;
+      width: 350px;
+      p { 
+      color: #666;
+        font-size: 36pt; 
+        margin: 80px auto; 
+      }
+    }
+
+    .steps {
+      vertical-align:middle;
+      display: inline-block;
+      margin: auto;
+      width: 350px;
       ol { 
-        font-size: 20pt; 
-        vertical-align: middle;
-        margin-left: 90px;
-        display: inline-block; 
+        font-size: 15pt; 
+        margin: auto;
         text-align: left;
+        display: inline-block;
         li { 
-          line-height:32px;
-          display: inline-block;
-          text-align: left; 
-          span { width: 90px;  display: inline-block; vertical-align: top;  }
-          div { display: inline-block; width: 220px;vertical-align: top; font-size: 16px; }
+          line-height:40px;
+          display: block;
+          b { color: #444;}
+          
         }  
       }
     }
@@ -78,7 +83,8 @@ body {
   background: @color1-light;
   padding: 35px;
   border: 3px solid @color1;
-  
+  opacity: .6;
+  margin-top: 140px;
   .rounded-corners(10px);
   form {
     font-size: 140% !important;
