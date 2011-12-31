@@ -4,7 +4,7 @@
 @tradition-calendar-width: (@day-width * 7) + 54;
 @color1: #999;
 @color1-light: lighten(@color1, 30%);
-@color1-lightest: lighten(@color1, 30%);
+@color1-lightest: lighten(@color1, 40%);
 @color1-dark: darken(@color1, 20%);
 @color2: #777;
 @color2-light: lighten(@color2, 30%);
@@ -17,6 +17,7 @@
 .facebook { .calendar-icon(); }
 .twitter { .calendar-icon(); background: url('/content/images/twitter_512x512.png'); }
 .meetup { .calendar-icon(); background: url(/content/images/meetup.png);} 
+.target { .calendar-icon(); background: url(/content/images/target.png);} 
 #body { min-height: 700px; }
 body {
   .xtra { 
@@ -139,7 +140,7 @@ table { border: none; }
     width: @day-width; 
     margin-bottom: 3px; 
     vertical-align: top;  
-    overflow: hidden;
+    overflow: visible;
     padding: 2px;
     .actions { 
       border: none;
@@ -191,6 +192,7 @@ footer {
     z-index: 10;
     .trigger { 
       padding:5px;
+      .target { display: inline-block; float: left; margin-right: 5px; opacity: .6; }
       .summary {
         cursor: pointer;
         color: @color1;

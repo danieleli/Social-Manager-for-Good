@@ -11,14 +11,25 @@
   <div data-bind="foreach: calendarDays" class="calendar-days">
     <div class="day">
       <div style="display: block;" data-bind="text: niceDay"></div>
-      <div data-bind="foreach: topics" class="topics">
-        <div class="title" data-bind="text: title"></div>
+      <div data-bind="foreach: topics" class="topics tooltip-wrapper">
+        <div class="target">
+          <div class="tooltip">
+            <div class="tip">
+              <p data-bind="text: title"></p>
+            </div>
+            <div class="tooltip-arrow"></div>
+          </div>
+        </div>
       </div>
       <div data-bind="foreach: actions" class="topic-actions">
-        <div style="position: relative;" class="campaign-action" data-bind="css: {facebook: channel()==='facebook', twitter: channel()==='twitter', meetup: channel()==='meetup'  }">
-          <div class="topic-title" style="display: none; position: absolute; z-index: 40; white-space: nowrap; overflow: visible; left: 20px;" data-bind="text: topicTitle()">
-            <div data-bind="text: topicTitle()"></div>
-            <div data-bind="text: notes()"></div>
+        <div class="tooltip-wrapper">
+          <div class="campaign-action" data-bind="css: {facebook: channel()==='facebook', twitter: channel()==='twitter', meetup: channel()==='meetup'  }">
+            <div class="tooltip">
+              <div class="tip">
+                <p data-bind="text: topicTitle"></p>
+              </div>
+              <div class="tooltip-arrow"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -29,7 +40,10 @@
   $(function () {
     setTimeout(function () {
       $('.campaign-action').on('hover', function (event) {
-        $(this.children).toggle('slow');
+        $(this.children).toggle('fast');
+      });
+      $('.target').on('hover', function (event) {
+        $(this.children).toggle('fast');
       });
     }, 1000);
 

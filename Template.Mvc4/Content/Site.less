@@ -1,4 +1,4 @@
-﻿
+﻿.debug { display: none; }
 
 body { height: auto; margin-top: 10px;}
 .subtitle-bar {
@@ -15,3 +15,33 @@ body { height: auto; margin-top: 10px;}
 .float-right { float: right; }
 
 .reveal-tab { cursor: pointer; }
+
+
+.tooltip-wrapper {
+  position:relative;
+  .tooltip {
+    position: absolute;
+    display: none;
+    top: -45px;
+    left: -10px;
+    .tip { 
+      display: block; 
+      position: relative;
+      background: black;
+      color: white; 
+      border-radius: 6px;
+      padding: 6px;
+      white-space: nowrap;
+      z-index: 10000;
+      opacity: .5;
+      p { margin-bottom: 0; }
+    }
+    .tooltip-arrow {
+      position: relative;
+      left: 10px;
+      opacity: .5;
+      border: 10px solid transparent !important; 
+      border-top: 10px solid black !important;
+    }
+  } 
+}
