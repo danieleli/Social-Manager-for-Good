@@ -39,15 +39,16 @@
 </section>
 <script type="text/javascript">
   $(function () {
-    setTimeout(function () {
+    setTimeout(setCalendarHover, 1000);
+
+    function setCalendarHover() {
       $('.campaign-action').on('hover', function (event) {
         $(this.children).toggle('fast');
       });
       $('.target').on('hover', function (event) {
         $(this.children).toggle('fast');
       });
-    }, 1000);
-
+    }
   });
 
 </script>
