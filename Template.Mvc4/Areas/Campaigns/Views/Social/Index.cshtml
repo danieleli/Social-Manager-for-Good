@@ -52,6 +52,7 @@
       $(document).on("click", '.summary', function () {
         $(this.parentNode).children('.details').toggle('fast');
       });
+      $('input.date').datepicker("destroy");
       $('input.date').datepicker();
 
 

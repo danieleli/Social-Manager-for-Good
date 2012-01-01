@@ -43,7 +43,8 @@ function TriggersViewModel(data) {
             }
           ]
     });
-
+    $('#actionDialog .date').blur();
+    $('#actionDialog input.date').datepicker("destroy");
     $('#actionDialog input.date').datepicker();
     event.cancelBubble = true;
   };
