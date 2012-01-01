@@ -6,9 +6,9 @@
    var item_dates = (function () {
       var my_dates = [];
       campaigns().map(function (campaign) {
-         my_dates.push(campaign.date());
+         my_dates.push(new Date(campaign.date()));
          campaign.actions().map(function (action) {
-            my_dates.push(action.date());
+            my_dates.push(new Date(action.date()));
          });
       });
 
@@ -42,7 +42,7 @@ var CalendarDay = function (date, campaigns) {
       var rtn_actions = [];
       campaigns().map(function (campaign) {
         campaign.actions().map(function (action) {
-          if (action.date().toString() === my_date.toString()) {
+          if (new Date(action.date()).toString() === my_date.toString()) {
             action.campaignTitle = ko.computed(function () { return campaign.title; }, campaigns);
             rtn_actions.push(action);
           };
@@ -53,7 +53,7 @@ var CalendarDay = function (date, campaigns) {
     campaigns: (function () {
       var rtn_campaigns = [];
       campaigns().map(function (campaign) {
-        if (campaign.date().toString() === my_date.toString()) {
+        if (new Date(campaign.date()).toString() === my_date.toString()) {
           rtn_campaigns.push(campaign);
         }
       });

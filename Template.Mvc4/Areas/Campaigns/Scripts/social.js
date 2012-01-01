@@ -78,12 +78,12 @@ function TriggersViewModel(data) {
   self.addActionToTrigger = function () {
     // this = the trigger getting the new action.
     if (arguments.length > 0) {
-      var newAction = ko.mapping.fromJS({ date: new Date(this.addActionDate()), channel: this.addActionChannel(), id: "new", notes: "" });
-      triggerHelper.postProcessAction(newAction, self.currentTrigger().title, self.triggers);
+      var new_action = ko.mapping.fromJS({ date: this.addActionDate(), channel: this.addActionChannel(), id: "new", notes: "" });
+      triggerHelper.postProcessAction(new_action, self.currentTrigger().title, self.triggers);
       this.addActionDate("");
       this.addActionChannel("");
       this.addActionNotes("");
-      this.actions.push(newAction);
+      this.actions.push(new_action);
     }
   };
 
@@ -139,7 +139,7 @@ function TriggerHelper() {
       return _results;
     };
     trigger.actions.map(function (action, actionIndex, actionArray) {
-      action.date = new Date(action.date);
+      //action.date = new Date(action.date);
     });
   };
 
