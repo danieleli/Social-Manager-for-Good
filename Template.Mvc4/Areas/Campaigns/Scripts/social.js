@@ -64,7 +64,9 @@ function TriggersViewModel(data) {
     this.triggerToAddNotes("");
     self.triggers.push(rtn);
     $('.triggers .tabs').tabs();
-    return $('.triggers .details .date').datepicker();
+    $('.triggers .details .date').datepicker();
+    $('.summary').last().click();
+    $('.summary').last().parent().children(".details").children('.reveal-tab').click();
   };
 
   // trigger - DELETE

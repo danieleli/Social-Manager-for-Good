@@ -22,12 +22,13 @@
           </div>
         </div>
       </div>
+
       <div data-bind="foreach: actions" class="campaign-actions">
-        <div class="tooltip-wrapper">
-          <div class="campaign-action" data-bind="css: {facebook: channel()==='facebook', twitter: channel()==='twitter', meetup: channel()==='meetup'  }">
+        <div class="tooltip-wrapper" data-bind="click: $root.showActionDialog" >
+          <div class="campaign-action" data-bind="css: {facebook: $data.channel()==='facebook', twitter: $data.channel()==='twitter', channel: $data.channel()==='meetup'  }">
             <div class="tooltip">
               <div class="tip">
-                <p data-bind="text: campaignTitle"></p>
+                <p data-bind="text: campaignTitle()"></p>
               </div>
               <div class="tooltip-arrow"></div>
             </div>

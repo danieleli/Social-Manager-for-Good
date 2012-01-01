@@ -1,10 +1,11 @@
-﻿var Topic = function (id, title, date, notes, actions) {
+﻿var Topic = function (id, title, date, notes, actions, hashtag) {
    return {
       id: id,
       title: title,
       date: new Date(date),
       notes: notes,
-      actions: actions
+      actions: actions,
+      hashtag: hashtag
    };
 };
 

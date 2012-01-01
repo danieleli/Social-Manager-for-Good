@@ -1,67 +1,65 @@
 ﻿var calendarDays = function (campaigns) {
-   var firstDay, lastDay;
-   var rtnDays = [];
+   var first_day, last_day;
+   var rtn_days = [];
    var self = this;
 
-   var itemDates = (function () {
-      var myDates = [];
+   var item_dates = (function () {
+      var my_dates = [];
       campaigns().map(function (campaign) {
-         myDates.push(campaign.date());
+         my_dates.push(campaign.date());
          campaign.actions().map(function (action) {
-            myDates.push(action.date());
+            my_dates.push(action.date());
          });
       });
 
-      return myDates.sort(function (a, b) {
+      return my_dates.sort(function (a, b) {
          return a - b;
       });
    } ());
 
-   var count = (function () {
-      if (itemDates.length === 0) return 0;
+   var date_range_length = (function () {
+      if (item_dates.length === 0) return 0;
 
-      firstDay = new Date(itemDates[0]);
-      firstDay.addDays(-firstDay.getDay());  // start on sunday
-      lastDay = new Date(itemDates[itemDates.length - 1]);
-      lastDay.addDays(6 - lastDay.getDay()); // end on saturday
-      return ((lastDay - firstDay) / 86400000) + 1;
+      first_day = new Date(item_dates[0]);
+      first_day.addDays(-first_day.getDay());  // start on sunday
+      last_day = new Date(item_dates[item_dates.length - 1]);
+      last_day.addDays(6 - last_day.getDay()); // end on saturday
+      return ((last_day - first_day) / 86400000) + 1;
    } ());
 
-   for (var i = 0; i < count; i++) {
-      rtnDays.push(new CalendarDay(new Date(firstDay).addDays(i), campaigns));
+   for (var i = 0; i < date_range_length; i++) {
+      rtn_days.push(new CalendarDay(new Date(first_day).addDays(i), campaigns));
    }
-   return rtnDays;
+   return rtn_days;
 };
 
 var CalendarDay = function (date, campaigns) {
-   var myDate = new Date(date);
-   return {
-     date: myDate,
-     niceDay: myDate.formatMMDD(),
-      actions: (function () {
-         var rtnActions = [];
-         campaigns().map(function (campaign) {
-            campaign.actions().map(function (action) {
-               if (action.date().toString() === myDate.toString()) {
-                  rtnActions.push({
-                     channel: action.channel,
-                     campaignTitle: campaign.title
-                  });
-               };
-            });
-         });
-         return rtnActions;
-      }()),
-      campaigns: (function () {
-         var rtncampaigns = [];
-         campaigns().map(function (campaign) {
-            if (campaign.date().toString() === myDate.toString()) {
-               rtncampaigns.push(campaign);
-            }
-         });
-         return rtncampaigns;
-      }())
-   };
+  var my_date = new Date(date);
+  return {
+    date: my_date,
+    niceDay: my_date.formatMMDD(),
+    actions: (function () {
+      var rtn_actions = [];
+      campaigns().map(function (campaign) {
+        campaign.actions().map(function (action) {
+          if (action.date().toString() === my_date.toString()) {
+            action.campaignTitle = ko.computed(function () { return campaign.title; }, campaigns);
+            rtn_actions.push(action);
+          };
+        });
+      });
+      return rtn_actions;
+    } ()),
+    campaigns: (function () {
+      var rtn_campaigns = [];
+      campaigns().map(function (campaign) {
+        if (campaign.date().toString() === my_date.toString()) {
+          rtn_campaigns.push(campaign);
+        }
+      });
+      return rtn_campaigns;
+    } ())
+  };
 };
 
 //self.allActions = function () {
