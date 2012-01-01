@@ -1,6 +1,9 @@
-﻿.debug { display: none; }
+﻿@import "/Content/common-functions.less";
+
+.debug { display: none; }
 
 body { height: auto; margin-top: 10px;}
+
 .subtitle-bar {
   h2 {
     float: left;
@@ -11,12 +14,13 @@ body { height: auto; margin-top: 10px;}
     display: inline;
   }
 }
+
 .float-left { float: left; }
+
 .float-right { float: right; }
 
 .reveal-tab { cursor: pointer; }
       
-
 .tooltip-wrapper {
   position:relative;
   .tooltip {
@@ -45,3 +49,38 @@ body { height: auto; margin-top: 10px;}
     }
   } 
 }
+
+
+
+@arrow_color: #ccc;
+@arrow_highlight_color: #666;
+
+.arrow_body {
+  color: @arrow_highlight_color;
+  background: @arrow_color;
+  padding: 10px;
+  width: 150px;
+  display: inline-block;
+  vertical-align:middle;
+  text-align: center;
+  .rounded-corners(5px 0 0 5px); 
+}
+
+.arrow_head {
+  border: 60px solid transparent;
+  border-left: 60px solid @arrow_color;
+  color: @arrow_highlight_color;
+  border-radius: 6px;
+  display: inline-block;
+  vertical-align:middle;
+}
+.arrow:hover {
+  .arrow_body {
+    background: @arrow_highlight_color; 
+    color: @arrow_color;
+  }
+  .arrow_head {
+    border-left: 60px solid @arrow_highlight_color;  
+  }
+}
+

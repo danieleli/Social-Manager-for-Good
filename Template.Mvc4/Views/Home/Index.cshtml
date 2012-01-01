@@ -11,15 +11,18 @@
             <p>specific</p>
             <p>steps</p>
           </div>
-          <div style="width:130px; display: inline-block;"></div>
+          <div style="width: 130px; display: inline-block;"></div>
           <div class="steps">
             <ol>
               <li><b>step 1: </b>Enter new campaign (or event.)</li>
               <li><b>step 2: </b>Plan specific actions.</li>
               <li><b>step 3: </b>Done.</li>
-              <li>
-                <br />
-                Click on @Html.ActionLink("my campaigns", "Index", "Social", new { area = "Campaigns" }, null) to see.</li>
+              <li>&nbsp;</li>
+              <li style="margin-left:50px; display: block;">
+                <a class="arrow" href="/campaigns/social">
+                    <span class="arrow_body">see demo</span><span class="arrow_head"></span>
+                </a>
+              </li>
             </ol>
           </div>
         </section>
@@ -37,7 +40,7 @@
       <form style="display: inline-block;" action="http://softwaresingularity.us2.list-manage.com/subscribe/post?u=9c9f1781c7b92f21aa9aad04d&amp;id=e806b3483a"
       method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
       target="_blank">
-      <label for="mce-EMAIL">Subscribe to our mailing list</label>
+      <label for="mce-EMAIL">Sign up for our private beta</label>
       <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address"
         required>
       <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"
