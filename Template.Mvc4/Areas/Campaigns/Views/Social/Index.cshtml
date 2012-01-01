@@ -51,13 +51,19 @@
       $('.tabs').tabs();
       $(document).on("click", '.summary', function () {
         $(this.parentNode).children('.details').toggle('fast');
+        if ($(this).hasClass('selected')) {
+          $(this).removeClass('selected');  
+        }else {
+          $(this).addClass('selected');  
+        }
+        
       });
       $('input.date').datepicker("destroy");
       $('input.date').datepicker();
 
 
       //var editor = CodeMirror.fromTextArea(document.getElementById("code"), { lineNumbers: true, matchBrackets: true, name: "javascript", json: true, lineWrapping: true });
-      
+
     };
 
   </script>

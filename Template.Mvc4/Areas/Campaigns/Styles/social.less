@@ -191,7 +191,7 @@ footer {
     position: relative;
     .rounded-corners(0px 0px 10px 10px);
   
-    padding: 5px 5px 0 5px;
+    padding: 0;
     margin: 0;
     background: @color1-light;
     margin-left: 0;
@@ -202,8 +202,10 @@ footer {
       .summary {
         cursor: pointer;
         color: @color1-dark;
-        padding: 0 0 10px 0;
+        padding: 5px;
+        .rounded-corners(5px 5px 0 0);
         border-bottom: 1px solid @color1;
+        &.selected { background: @color1-lightest;}
         .title { float: left; }
         .date { float: right; text-align:right; color:@color1;}
       }
