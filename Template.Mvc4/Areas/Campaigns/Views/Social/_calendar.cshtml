@@ -43,13 +43,10 @@
     setTimeout(setCalendarHover, 1000);
 
     function setCalendarHover() {
-
-      $('.campaign-action').off('click');
-      $('.campaign-action').on('hover', function (event) {
+      $("body").on('hover', '.campaign-action', {},  function () {
         $(this.children).toggle('fast');
       });
-      $('.target').off('click');
-      $('.target').on('hover', function (event) {
+      $("body").on('hover', '.target', {}, function (event) {
         $(this.children).toggle('fast');
       });
     };
