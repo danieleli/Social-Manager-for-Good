@@ -1,13 +1,13 @@
-﻿var calendarDays = function (topics) {
+﻿var calendarDays = function (campaigns) {
    var firstDay, lastDay;
    var rtnDays = [];
    var self = this;
 
    var itemDates = (function () {
       var myDates = [];
-      topics().map(function (topic) {
-         myDates.push(topic.date());
-         topic.actions().map(function (action) {
+      campaigns().map(function (campaign) {
+         myDates.push(campaign.date());
+         campaign.actions().map(function (action) {
             myDates.push(action.date());
          });
       });
@@ -28,38 +28,38 @@
    } ());
 
    for (var i = 0; i < count; i++) {
-      rtnDays.push(new CalendarDay(new Date(firstDay).addDays(i), topics));
+      rtnDays.push(new CalendarDay(new Date(firstDay).addDays(i), campaigns));
    }
    return rtnDays;
 };
 
-var CalendarDay = function (date, topics) {
+var CalendarDay = function (date, campaigns) {
    var myDate = new Date(date);
    return {
      date: myDate,
      niceDay: myDate.formatMMDD(),
       actions: (function () {
          var rtnActions = [];
-         topics().map(function (topic) {
-            topic.actions().map(function (action) {
+         campaigns().map(function (campaign) {
+            campaign.actions().map(function (action) {
                if (action.date().toString() === myDate.toString()) {
                   rtnActions.push({
                      channel: action.channel,
-                     topicTitle: topic.title
+                     campaignTitle: campaign.title
                   });
                };
             });
          });
          return rtnActions;
       }()),
-      topics: (function () {
-         var rtnTopics = [];
-         topics().map(function (topic) {
-            if (topic.date().toString() === myDate.toString()) {
-               rtnTopics.push(topic);
+      campaigns: (function () {
+         var rtncampaigns = [];
+         campaigns().map(function (campaign) {
+            if (campaign.date().toString() === myDate.toString()) {
+               rtncampaigns.push(campaign);
             }
          });
-         return rtnTopics;
+         return rtncampaigns;
       }())
    };
 };

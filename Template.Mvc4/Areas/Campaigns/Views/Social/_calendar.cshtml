@@ -12,7 +12,7 @@
   <div data-bind="foreach: calendarDays" class="calendar-days">
     <div class="day">
       <div style="display: block;" data-bind="text: niceDay"></div>
-      <div data-bind="foreach: topics" class="topics tooltip-wrapper">
+      <div data-bind="foreach: campaigns" class="campaigns tooltip-wrapper">
         <div class="target">
           <div class="tooltip">
             <div class="tip">
@@ -22,12 +22,12 @@
           </div>
         </div>
       </div>
-      <div data-bind="foreach: actions" class="topic-actions">
+      <div data-bind="foreach: actions" class="campaign-actions">
         <div class="tooltip-wrapper">
           <div class="campaign-action" data-bind="css: {facebook: channel()==='facebook', twitter: channel()==='twitter', meetup: channel()==='meetup'  }">
             <div class="tooltip">
               <div class="tip">
-                <p data-bind="text: topicTitle"></p>
+                <p data-bind="text: campaignTitle"></p>
               </div>
               <div class="tooltip-arrow"></div>
             </div>
