@@ -63,7 +63,6 @@
         equals(vm.calendarDays().length, 42, "vm.CalendarDays().length");
       });
 
-
       test("add new campaign", function () {
         var initialCount = vm.triggers().length;
         vm.triggerToAddTitle('new campagin');
@@ -72,7 +71,6 @@
 
         equals(vm.triggers().length, initialCount + 1, "Trigger Length");
       });
-
 
       test("remove existing campaign", function () {
         var initialCount = vm.triggers().length;
@@ -115,14 +113,57 @@
         equals($('.trigger').first().children('.actions').children('.action').length, initialCount + 1, "myTrigger.actions.length");
 
       });
+
+      test("add new action to new campaign", function () {
+
+          vm.triggerToAddTitle('new campagin3');
+          vm.triggerToAddDate('1/8/2012');
+          vm.addTrigger();
+
+          
+          var myTrigger = vm.triggers().last;
+          var initialCount = myTrigger.actions().length;
+
+
+        myTrigger.addActionDate("1/5/2012");
+        myTrigger.addActionChannel("twitter");
+        var triggerElement = $('.trigger').last();
+        // select trigger.
+        triggerElement.mouseover();
+        // click delete.
+        triggerElement.first().children('.btn.add-action').click();
+        logger("length: " + $('.trigger').trigger().children('.actions').children().length);
+        equals($('.trigger').last().children('.actions').children('.action').length, 1, "new Trigger.actions.length");
+
+      });
     };
     
     var vm = new TriggersViewModel(topics());
     ko.applyBindings(vm);
 
-    viewModelTests();
+    //viewModelTests();
+
+    test("add new action to new campaign", function () {
+
+      vm.triggerToAddTitle('new campagin3');
+      vm.triggerToAddDate('1/8/2012');
+      vm.addTrigger();
 
 
+      var myTrigger = vm.triggers().pop();
+
+
+      myTrigger.addActionDate("1/5/2012");
+      myTrigger.addActionChannel("twitter");
+      var triggerElement = $('.trigger').last();
+      // select trigger.
+      triggerElement.mouseover();
+      // click delete.
+      triggerElement.first().children('.btn.add-action').click();
+      logger("length: " + myTrigger.actions().length);
+      equals(myTrigger.actions().length, 1, "new Trigger.actions.length");
+
+    });
 
 
     var logger = function (text) {
