@@ -1,0 +1,22 @@
+/**
+ * SocialMate: 28 Free Social Media Icons (Includes PSDs)
+ *
+ * URL: http://sixrevisions.com/freebies/icons/socialmate-free/
+ *
+ * This downloadable freebie source file package includes 28 icons, 2 variations,
+ * PSD source files, and PNG format.
+ *
+ * You MAY use the source files in this package for commercial
+ * purposes.
+ *
+ * You MAY NOT redistribute or sell the source files in this package.
+ *
+ * Six Revisions (sixrevisions.com)
+ *
+ * LICENSE: This source file package is subject to the
+ * terms outlined in http://sixrevisions.com/freebies/icons/socialmate-free/
+ *
+ * Author     Rafi Md (graphicsfuel.com)
+ * Author     Six Revisions
+ * Copyright  Rafi Md and Six Revisions
+ */
