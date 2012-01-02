@@ -185,8 +185,10 @@
     <Compile Include="Models\TemplateMvc4Context.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Areas\Campaigns\Scripts\models.js" />
+    <Content Include="Content\Images\FaceBook_512x512-bw.png" />
     <Content Include="Content\Images\FaceBook_512x512.png" />
     <Content Include="Content\Images\HTML5 Logo.svg" />
+    <Content Include="Content\Images\meetup-bw.png" />
     <Content Include="Content\Images\meetup.png" />
     <Content Include="Content\Images\rss-icon.jpg" />
     <Content Include="Content\Images\socialmate\01\behance.png" />
@@ -249,7 +251,9 @@
     <Content Include="Content\Images\socialmate\meetup-bw.png" />
     <Content Include="Content\Images\socialmate\target-bw.png" />
     <Content Include="Content\Images\socialmate\Twitter_512x512-bw.png" />
+    <Content Include="Content\Images\target-bw.png" />
     <Content Include="Content\Images\target.png" />
+    <Content Include="Content\Images\Twitter_512x512-bw.png" />
     <Content Include="Content\Images\Twitter_512x512.png" />
     <Content Include="Content\lib\underscore-min.js" />
     <Content Include="Content\site.js" />
