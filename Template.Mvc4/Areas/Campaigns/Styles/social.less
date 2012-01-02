@@ -99,7 +99,6 @@ ul { list-style: none; }
   }
 }
 
-
 .traditional-calendar
 {
   float: right;
@@ -130,11 +129,14 @@ ul { list-style: none; }
     width: 20px; 
     height: 20px; 
     cursor: pointer;
+    border: 2px dotted transparent;
+    .rounded-corners(5px);
+    background-repeat: no-repeat;
   }
-  .facebook { .calendar-icon(); background: url('/content/images/facebook_512x512-bw.png');}
-  .twitter { .calendar-icon(); background: url('/content/images/twitter_512x512-bw.png'); }
-  .meetup { .calendar-icon(); background: url('/content/images/meetup-bw.png');} 
-  .target { .calendar-icon(); background: url('/content/images/target-bw.png');} 
+  .facebook { .calendar-icon(); background-image: url('/content/images/facebook_512x512-bw.png');}
+  .twitter { .calendar-icon(); background-image: url('/content/images/twitter_512x512-bw.png'); }
+  .meetup { .calendar-icon(); background-image: url('/content/images/meetup-bw.png');} 
+  .target { .calendar-icon(); background-image: url('/content/images/target-bw.png');} 
   .actions { background: none; }
   .calendar-days { background: #eee;  border: 1px solid #aaa;
     border-top: none; .rounded-corners(0px 0px 10px 10px);  }
@@ -147,17 +149,9 @@ ul { list-style: none; }
     vertical-align: top;  
     overflow: visible;
     padding: 2px;
-    .actions { 
-      border: none;
-      display: inline;
-      .action  { 
-        color: #333;
-        background: transparent;
-        display: inline;
-        border: none;
-        display: inline-block; 
-        white-space: nowrap; 
-      }  
+
+    .highlighted {
+      border: 2px dotted #666;
     }
   }
   
@@ -256,6 +250,7 @@ footer {
 
         .buttons { height:40px; margin-right: 10px; }
       }
+      &.selected .details { display: inline-block; }
     }
     .trigger:last-child { .summary { border-bottom: none; }}
     .details { display: none; }

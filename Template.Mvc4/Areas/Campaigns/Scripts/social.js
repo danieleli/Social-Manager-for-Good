@@ -116,6 +116,7 @@ function TriggerHelper() {
     trigger.addActionDate = "";
     trigger.addActionChannel = "";
     trigger.addActionNotes = "";
+    trigger.isSelected = false;
     trigger.niceDate = new Date(trigger.date).formatMMDDYYYY();
     trigger.date = new Date(trigger.date);
     trigger.getRows = function () {
@@ -143,6 +144,14 @@ function TriggerHelper() {
       return new Date(trigger.date()).formatMMDDYYYY();
     }, trigger);
 
+    trigger.toggleSelectedState = function () {
+      trigger.isSelected(!trigger.isSelected());
+    };
+
+    trigger.selectMe = function () {
+      trigger.isSelected(true);
+    };
+
     trigger.actions().map(function (action, actionIndex, actionArray) {
       self.postProcessAction(action, trigger, triggers);
     });
@@ -153,6 +162,7 @@ function TriggerHelper() {
       return new Date(action.date()).formatMMDD();
     }, action);
     action.triggerTitle = ko.computed(trigger.title, triggers);
+    action.isHighlighted = ko.computed(trigger.isSelected, triggers);
     action.remove = function () {
       trigger.actions.remove(action);
     };

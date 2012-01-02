@@ -38,34 +38,14 @@
   <script type="text/javascript">
     $(function () {
       setupViewModel();
-      processDom();
+      $('input.date').datepicker("destroy");
+      $('input.date').datepicker();
     });
 
     var setupViewModel = function () {
       var data = testUtils.getPageData();
       var viewModel = new TriggersViewModel(data);
       ko.applyBindings(viewModel);
-    };
-
-    var processDom = function () {
-      $('.tabs').tabs();
-      $(document).on("click", '.summary', function () {
-        if ($(this).hasClass('selected')) {
-          $(this.parentNode).children('.details').hide('fast');  
-          $(this).removeClass('selected');
-        } else {
-          $(this.parentNode).children('.details').show('fast');
-          $(this).addClass('selected');  
-        }
-      });
-      
-      
-      $('input.date').datepicker("destroy");
-      $('input.date').datepicker();
-
-
-      //var editor = CodeMirror.fromTextArea(document.getElementById("code"), { lineNumbers: true, matchBrackets: true, name: "javascript", json: true, lineWrapping: true });
-
     };
 
   </script>

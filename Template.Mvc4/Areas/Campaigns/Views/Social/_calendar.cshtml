@@ -15,7 +15,7 @@
     <div class="day">
       <div style="display: block;" data-bind="text: niceDay"></div>
       <div data-bind="foreach: campaigns" class="campaigns has_tip">
-        <div class="target"></div>
+        <div class="target" data-bind="click: selectMe"></div>
         <div class="tip">
           <div class="tip_text" data-bind="text: title">tool tip text</div>
           <div class="tip_ornament"></div>
@@ -23,7 +23,7 @@
       </div>
       <div data-bind="foreach: actions" class="campaign-actions has_tip">
         <div class="campaign-action"  
-        data-bind=" click: $root.showActionDialog, css: {facebook: $data.channel()==='facebook', twitter: $data.channel()==='twitter', channel: $data.channel()==='meetup'  }" >
+        data-bind="click: $root.showActionDialog, css: {facebook: $data.channel()==='facebook', twitter: $data.channel()==='twitter', meetup: $data.channel()==='meetup', highlighted: $data.isHighlighted()  }" >
         </div>
         <div class="tip">
           <div class="tip_text" data-bind="text: campaignTitle()"></div>

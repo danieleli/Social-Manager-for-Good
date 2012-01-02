@@ -1,5 +1,5 @@
-﻿<li class="trigger" data-bind="event: {mouseover: $root.selectTrigger}">
-  <div class="summary">
+﻿<li class="trigger" data-bind="css: { selected: isSelected()===true }">
+  <div class="summary" data-bind="click: toggleSelectedState">
     <div class="target"></div>
     <span class='title' data-bind="text: title"></span>
     &nbsp
