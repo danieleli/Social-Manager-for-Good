@@ -100,6 +100,17 @@ ul { list-style: none; }
   }
 }
 
+    .calendar-icon {
+      background: url('/content/images/target.png') no-repeat top left; 
+      background-size: contain; 
+      width: 20px; 
+      height: 20px; 
+      cursor: pointer;
+      border: 2px dotted transparent;
+      .rounded-corners(5px);
+      background-repeat: no-repeat;
+    }
+
 .traditional-calendar
 {
   float: right;
@@ -140,23 +151,18 @@ ul { list-style: none; }
     overflow: visible;
     padding: 2px;
     
-    .calendar-icon {
-      background: url('/content/images/target.png') no-repeat top left; 
-      background-size: contain; 
-      width: 20px; 
-      height: 20px; 
-      cursor: pointer;
-      border: 2px dotted transparent;
-      .rounded-corners(5px);
-      background-repeat: no-repeat;
-    }
-    .facebook { .calendar-icon(); background-image: url('/content/images/facebook_512x512.png');}
-    .twitter { .calendar-icon(); background-image: url('/content/images/twitter_512x512.png'); }
-    .meetup { .calendar-icon(); background-image: url('/content/images/meetup.png');} 
-    .target { .calendar-icon(); background-image: url('/content/images/target.png');} 
+
+    .facebook { .calendar-icon(); background-image: url('/content/images/facebook_512x512-bw.png');}
+    .twitter { .calendar-icon(); background-image: url('/content/images/twitter_512x512-bw.png'); }
+    .meetup { .calendar-icon(); background-image: url('/content/images/meetup-bw.png');} 
+    .target { .calendar-icon(); background-image: url('/content/images/target-bw.png');} 
   
     .highlighted {
-      border: 2px dotted #666;
+      
+      &.facebook { background-image: url('/content/images/facebook_512x512.png');}
+      &.twitter { background-image: url('/content/images/twitter_512x512.png'); }
+      &.meetup { background-image: url('/content/images/meetup.png');} 
+      &.target { background-image: url('/content/images/target.png');} 
     }
   }
 }
@@ -195,13 +201,14 @@ footer {
     z-index: 10;
     .trigger { 
       padding:5px;
-      .target { display: inline-block; float: left; margin-right: 5px; opacity: .6; }
+      
       .summary {
         cursor: pointer;
         color: @color1-dark;
         padding: 5px;
         .rounded-corners(5px 5px 0 0);
         border-bottom: 1px solid @color1;
+        .target-icon { .calendar-icon(); display: inline-block; float: left; vertical-align:bottom; border: 0; margin-right: 5px; }
         &.selected { background: @color1-lightest;}
         .title { float: left; }
         .date { float: right; text-align:right; color:@color1;}

@@ -190,6 +190,7 @@
     <Content Include="Content\Images\HTML5 Logo.svg" />
     <Content Include="Content\Images\meetup-bw.png" />
     <Content Include="Content\Images\meetup.png" />
+    <Content Include="Content\Images\rss-icon-bw.jpg" />
     <Content Include="Content\Images\rss-icon.jpg" />
     <Content Include="Content\Images\socialmate\01\behance.png" />
     <Content Include="Content\Images\socialmate\01\blogger.png" />

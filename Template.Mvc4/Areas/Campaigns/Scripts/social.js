@@ -148,10 +148,6 @@ function TriggerHelper() {
       trigger.isSelected(!trigger.isSelected());
     };
 
-    trigger.selectMe = function () {
-      trigger.isSelected(true);
-    };
-
     trigger.actions().map(function (action, actionIndex, actionArray) {
       self.postProcessAction(action, trigger, triggers);
     });
