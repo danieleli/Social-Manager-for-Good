@@ -124,16 +124,16 @@ ul { list-style: none; }
     }
   }
   .calendar-icon {
-    background: url('/content/images/target.png') no-repeat top left; 
+    background: url('/content/images/target-bw.png') no-repeat top left; 
     background-size: contain; 
     width: 20px; 
     height: 20px; 
     cursor: pointer;
   }
-  .facebook { .calendar-icon(); background: url('/content/images/facebook_512x512.png');}
-  .twitter { .calendar-icon(); background: url('/content/images/twitter_512x512.png'); }
-  .meetup { .calendar-icon(); background: url('/content/images/meetup.png');} 
-  .target { .calendar-icon(); background: url('/content/images/target.png');} 
+  .facebook { .calendar-icon(); background: url('/content/images/facebook_512x512-bw.png');}
+  .twitter { .calendar-icon(); background: url('/content/images/twitter_512x512-bw.png'); }
+  .meetup { .calendar-icon(); background: url('/content/images/meetup-bw.png');} 
+  .target { .calendar-icon(); background: url('/content/images/target-bw.png');} 
   .actions { background: none; }
   .calendar-days { background: #eee;  border: 1px solid #aaa;
     border-top: none; .rounded-corners(0px 0px 10px 10px);  }
@@ -282,6 +282,7 @@ footer {
 }
 
 #actionDialog {
+  opacity: .9;
   label { margin-top: 4px; margin-right: 10px; padding: 0; width:60px; text-align: right; }
   input, textarea { width: 190px; }
 }

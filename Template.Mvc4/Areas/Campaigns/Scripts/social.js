@@ -22,12 +22,7 @@ function TriggersViewModel(data) {
   };
 
   // track current action
-  var _currentAction;
   self.currentAction = ko.observable("");
-  self.selectAction = function () {
-    _currentAction = this;
-  };
-
   self.showActionDialog = function () {
     self.currentAction(this);
     $('#actionDialog').dialog({
@@ -37,17 +32,19 @@ function TriggersViewModel(data) {
             },
             {
               text: "Delete", click: function () {
-                self.currentTrigger().actions.remove(self.currentAction());
+                self.currentAction().remove();
                 $(this).dialog("close");
               }
             }
           ]
     });
+    $('#actionDialog').parent().css("opacity", ".9");
     $('#actionDialog .date').blur();
     $('#actionDialog input.date').datepicker("destroy");
     $('#actionDialog input.date').datepicker();
     event.cancelBubble = true;
   };
+
 
 
   // trigger - CREATE
@@ -87,16 +84,6 @@ function TriggersViewModel(data) {
     }
   };
 
-
-
-  // action - DELETE
-  self.removeActionFromTrigger = function () {
-    // this = the trigger getting the new action.
-    if (arguments.length > 0) {
-      self.currentTrigger().actions.remove(this);
-    }
-  };
-
 };
 
 function TriggerHelper() {
@@ -123,6 +110,7 @@ function TriggerHelper() {
       self.preProcessTrigger(trigger);
     });
   };
+
   self.preProcessTrigger = function (trigger) {
     // add viewModel fields so ko.mapping can make them observable.
     trigger.addActionDate = "";
@@ -156,15 +144,18 @@ function TriggerHelper() {
     }, trigger);
 
     trigger.actions().map(function (action, actionIndex, actionArray) {
-      self.postProcessAction(action, trigger.title, triggers);
+      self.postProcessAction(action, trigger, triggers);
     });
   };
 
-  self.postProcessAction = function (action, triggerTitle, triggers) {
+  self.postProcessAction = function (action, trigger, triggers) {
     action.niceDate = ko.computed(function () {
       return new Date(action.date()).formatMMDD();
     }, action);
-    action.triggerTitle = ko.computed(triggerTitle, triggers);
+    action.triggerTitle = ko.computed(trigger.title, triggers);
+    action.remove = function () {
+      trigger.actions.remove(action);
+    };
   };
 };
 
