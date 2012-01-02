@@ -50,10 +50,11 @@
     var processDom = function () {
       $('.tabs').tabs();
       $(document).on("click", '.summary', function () {
-        $(this.parentNode).children('.details').toggle('fast');
         if ($(this).hasClass('selected')) {
-          $(this).removeClass('selected');  
-        }else {
+          $(this.parentNode).children('.details').hide('fast');  
+          $(this).removeClass('selected');
+        } else {
+          $(this.parentNode).children('.details').show('fast');
           $(this).addClass('selected');  
         }
       });
