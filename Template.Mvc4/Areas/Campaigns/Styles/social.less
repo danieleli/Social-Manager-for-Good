@@ -21,6 +21,7 @@ body {
 }
 
 ul { list-style: none; }
+
 .tabs, .tabs ul { border: none; background: transparent;}
 
 .date {
@@ -103,12 +104,17 @@ ul { list-style: none; }
 {
   float: right;
   clear: right;
-  
-  .rounded-corners(10px);
   margin-left: 20px;
   width: @tradition-calendar-width;
   display: inline-block;
-  div {margin: 0; padding: 0; display:inline-block; border: none;}
+  .rounded-corners(10px);
+  
+  div { 
+    margin: 0; 
+    padding: 0; 
+    display:inline-block; 
+    border: none;
+  }
  
   .myheader {
     padding: 5px 1px 0 1px;
@@ -118,45 +124,41 @@ ul { list-style: none; }
       text-align: center; 
       width: @day-width; 
       margin-bottom: 0px;
-      
-      
       padding: 2px 2px 3px 2px;
     }
   }
-  .calendar-icon {
-    background: url('/content/images/target-bw.png') no-repeat top left; 
-    background-size: contain; 
-    width: 20px; 
-    height: 20px; 
-    cursor: pointer;
-    border: 2px dotted transparent;
-    .rounded-corners(5px);
-    background-repeat: no-repeat;
-  }
-  .facebook { .calendar-icon(); background-image: url('/content/images/facebook_512x512-bw.png');}
-  .twitter { .calendar-icon(); background-image: url('/content/images/twitter_512x512-bw.png'); }
-  .meetup { .calendar-icon(); background-image: url('/content/images/meetup-bw.png');} 
-  .target { .calendar-icon(); background-image: url('/content/images/target-bw.png');} 
-  .actions { background: none; }
+
   .calendar-days { background: #eee;  border: 1px solid #aaa;
     border-top: none; .rounded-corners(0px 0px 10px 10px);  }
+
   .day { 
     color: #666;
-    
     min-height: 50px;
     width: @day-width; 
     margin-bottom: 3px; 
     vertical-align: top;  
     overflow: visible;
     padding: 2px;
-
+    
+    .calendar-icon {
+      background: url('/content/images/target-bw.png') no-repeat top left; 
+      background-size: contain; 
+      width: 20px; 
+      height: 20px; 
+      cursor: pointer;
+      border: 2px dotted transparent;
+      .rounded-corners(5px);
+      background-repeat: no-repeat;
+    }
+    .facebook { .calendar-icon(); background-image: url('/content/images/facebook_512x512.png');}
+    .twitter { .calendar-icon(); background-image: url('/content/images/twitter_512x512.png'); }
+    .meetup { .calendar-icon(); background-image: url('/content/images/meetup.png');} 
+    .target { .calendar-icon(); background-image: url('/content/images/target.png');} 
+  
     .highlighted {
       border: 2px dotted #666;
     }
   }
-  
-  
-  
 }
 
 footer {
