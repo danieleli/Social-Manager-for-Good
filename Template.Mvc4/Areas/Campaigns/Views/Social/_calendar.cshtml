@@ -15,7 +15,7 @@
     <div class="day">
       <div style="display: block;" data-bind="text: niceDay"></div>
       <div data-bind="foreach: campaigns" class="campaigns has_tip">
-        <div class="target" data-bind="click: toggleSelectedState, css: { highlighted: $data.isSelected }"></div>
+        <div class="target" data-bind="click: toggleSelectedState, css: { highlighted: $data.isHighlighted }"></div>
         <div class="tip">
           <div class="tip_text" data-bind="text: title">tool tip text</div>
           <div class="tip_ornament"></div>

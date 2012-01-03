@@ -1,11 +1,13 @@
-﻿<li class="trigger" data-bind="css: { selected: isSelected()===true }">
+﻿<li class="trigger" data-bind="css: { selected: isSelected()===true }, event: { hover: setHover }">
+  <!-- summary -->
   <div class="summary" data-bind="click: toggleSelectedState">
     <div class="target-icon"></div>
     <span class='title' data-bind="text: title"></span>
     &nbsp
     <span class='date' data-bind="text: niceDate"></span>
   </div>
-  <div class="details">
+  <!-- details -->
+  <div class="details"> 
     <textarea rows="5" cols="90" data-bind="value: notes" placeholder="notes"></textarea>
     <ul data-bind="foreach: actions" class="actions">
       <li class="action" data-bind="click: $root.showActionDialog">

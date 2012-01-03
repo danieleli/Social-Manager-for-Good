@@ -2,10 +2,10 @@
 // move this into social_calendar.js and test thoroughly!
 
 function TriggersViewModel(data) {
-  var self, triggerHelper;
+  var self, trigger_helper;
   self = this;
-  triggerHelper = new TriggerHelper();
-  self.triggers = triggerHelper.processTriggers(data);
+  trigger_helper = new TriggerHelper();
+  self.triggers = trigger_helper.processTriggers(data);
 
   self.triggerToAddTitle = ko.observable("");
   self.triggerToAddDate = ko.observable("");
@@ -13,12 +13,12 @@ function TriggersViewModel(data) {
   self.calendarDays = ko.computed(function () { return calendarDays(self.triggers); }, self.triggers);
 
   // track current trigger
-  var _currentTrigger;
+  var current_trigger;
   self.currentTrigger = function () {
-    return _currentTrigger;
+    return current_trigger;
   };
   self.selectTrigger = function () {
-    _currentTrigger = this;
+    current_trigger = this;
   };
 
   // track current action
@@ -49,13 +49,13 @@ function TriggersViewModel(data) {
 
   // trigger - CREATE
   self.addTrigger = function () {
-    var newTrigger = {
+    var new_trigger = {
       title: this.triggerToAddTitle(),
       date: this.triggerToAddDate(),
       notes: this.triggerToAddNotes(),
       actions: []
     };
-    var rtn = triggerHelper.processTrigger(newTrigger, self.triggers);
+    var rtn = trigger_helper.processTrigger(new_trigger, self.triggers);
     this.triggerToAddTitle("");
     this.triggerToAddDate("");
     this.triggerToAddNotes("");
@@ -76,7 +76,7 @@ function TriggersViewModel(data) {
     // this = the trigger getting the new action.
     if (arguments.length > 0) {
       var new_action = ko.mapping.fromJS({ date: this.addActionDate(), channel: this.addActionChannel(), id: "new", notes: "" });
-      triggerHelper.postProcessAction(new_action, self.currentTrigger().title, self.triggers);
+      trigger_helper.postProcessAction(new_action, self.currentTrigger().title, self.triggers);
       this.addActionDate("");
       this.addActionChannel("");
       this.addActionNotes("");
@@ -117,15 +117,16 @@ function TriggerHelper() {
     trigger.addActionChannel = "";
     trigger.addActionNotes = "";
     trigger.isSelected = false;
+    trigger.hasHover = false;
     trigger.niceDate = new Date(trigger.date).formatMMDDYYYY();
     trigger.date = new Date(trigger.date);
     trigger.getRows = function () {
-      var _results;
-      _results = [];
+      var results;
+      results = [];
       for (var num = -7; num <= 7; num++) {
-        _results.push(new Date(new Date(trigger.date).addDays(num)));
+        results.push(new Date(new Date(trigger.date).addDays(num)));
       }
-      return _results;
+      return results;
     };
     trigger.actions.map(function (action, actionIndex, actionArray) {
       //action.date = new Date(action.date);
@@ -148,6 +149,14 @@ function TriggerHelper() {
       trigger.isSelected(!trigger.isSelected());
     };
 
+    trigger.isHighlighted = ko.computed(function () {
+      return (trigger.hasHover() || trigger.isSelected());
+    }, triggers);
+
+    trigger.setHover = function () {
+      trigger.hasHover(!trigger.hasHover());
+    };
+    
     trigger.actions().map(function (action, actionIndex, actionArray) {
       self.postProcessAction(action, trigger, triggers);
     });
@@ -158,7 +167,9 @@ function TriggerHelper() {
       return new Date(action.date()).formatMMDD();
     }, action);
     action.triggerTitle = ko.computed(trigger.title, triggers);
-    action.isHighlighted = ko.computed(trigger.isSelected, triggers);
+    action.isHighlighted = ko.computed(function () {
+       return (trigger.hasHover() || trigger.isSelected());
+    }, triggers);
     action.remove = function () {
       trigger.actions.remove(action);
     };

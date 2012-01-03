@@ -100,16 +100,16 @@ ul { list-style: none; }
   }
 }
 
-    .calendar-icon {
-      background: url('/content/images/target.png') no-repeat top left; 
-      background-size: contain; 
-      width: 20px; 
-      height: 20px; 
-      cursor: pointer;
-      border: 2px dotted transparent;
-      .rounded-corners(5px);
-      background-repeat: no-repeat;
-    }
+.calendar-icon {
+  background: url('/content/images/target-bw.png') no-repeat top left; 
+  background-size: contain; 
+  width: 20px; 
+  height: 20px; 
+  cursor: pointer;
+  border: 2px dotted transparent;
+  .rounded-corners(5px);
+  background-repeat: no-repeat;
+}
 
 .traditional-calendar
 {
@@ -208,11 +208,22 @@ footer {
         padding: 5px;
         .rounded-corners(5px 5px 0 0);
         border-bottom: 1px solid @color1;
+
+
         .target-icon { .calendar-icon(); display: inline-block; float: left; vertical-align:bottom; border: 0; margin-right: 5px; }
-        &.selected { background: @color1-lightest;}
+        &:hover .target-icon { background: url('/content/images/target.png') no-repeat top left;  }
+        
         .title { float: left; }
         .date { float: right; text-align:right; color:@color1;}
       }
+
+      &.selected { 
+        background: @color1-light; 
+        .target-icon {
+          background: url('/content/images/target.png') no-repeat top left;  
+        }
+      }
+      
       .details
       {
         border-bottom: 1px solid @color1;
