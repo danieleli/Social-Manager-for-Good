@@ -23,7 +23,7 @@
       </div>
       <div data-bind="foreach: actions" class="campaign-actions has_tip">
         <div class="campaign-action"  
-        data-bind="click: $root.showActionDialog, css: {facebook: $data.channel()==='facebook', twitter: $data.channel()==='twitter', meetup: $data.channel()==='meetup', highlighted: $data.isHighlighted()  }" >
+        data-bind="click: $root.showActionDialog, css: {facebook: $data.channel()==='facebook', twitter: $data.channel()==='twitter', meetup: $data.channel()==='meetup', highlighted: $data.isHighlighted  }" >
         </div>
         <div class="tip">
           <div class="tip_text" data-bind="text: campaignTitle()"></div>

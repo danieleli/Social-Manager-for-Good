@@ -1,4 +1,4 @@
-﻿<li class="trigger" data-bind="css: { selected: isSelected()===true }, event: { hover: setHover }">
+﻿<li class="trigger" data-bind="css: { selected: isSelected()===true }, event: {  mouseover: setHover, mouseout: removeHover }">
   <!-- summary -->
   <div class="summary" data-bind="click: toggleSelectedState">
     <div class="target-icon"></div>

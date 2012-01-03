@@ -150,11 +150,15 @@ function TriggerHelper() {
     };
 
     trigger.isHighlighted = ko.computed(function () {
-      return (trigger.hasHover() || trigger.isSelected());
+        return (trigger.hasHover() || trigger.isSelected());
     }, triggers);
 
     trigger.setHover = function () {
-      trigger.hasHover(!trigger.hasHover());
+      trigger.hasHover(true);
+    };
+
+    trigger.removeHover = function () {
+      trigger.hasHover(false);
     };
     
     trigger.actions().map(function (action, actionIndex, actionArray) {
@@ -167,9 +171,7 @@ function TriggerHelper() {
       return new Date(action.date()).formatMMDD();
     }, action);
     action.triggerTitle = ko.computed(trigger.title, triggers);
-    action.isHighlighted = ko.computed(function () {
-       return (trigger.hasHover() || trigger.isSelected());
-    }, triggers);
+    action.isHighlighted = ko.computed(trigger.isHighlighted, triggers);
     action.remove = function () {
       trigger.actions.remove(action);
     };
