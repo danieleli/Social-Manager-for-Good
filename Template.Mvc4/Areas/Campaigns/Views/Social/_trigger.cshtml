@@ -12,11 +12,14 @@
     <ul data-bind="foreach: actions" class="actions">
       <li class="action" data-bind="click: $root.showActionDialog">
         <div class="action-icon"  
-          data-bind="css: {facebook: $data.channel()==='facebook', twitter: $data.channel()==='twitter', meetup: $data.channel()==='meetup'} " >
+             data-bind="css: {facebook: $data.channel()==='facebook', twitter: $data.channel()==='twitter', meetup: $data.channel()==='meetup'} " >
         </div>
         <span class="action-date" data-bind="text: niceDate"></span>
       </li>
     </ul>
+    <h4><div>add</div>
+    <div>action</div>
+    <div>-></div></></h4>
     <div class="new-item action">
       <div class="channel">
         <div class="action-icon facebook">

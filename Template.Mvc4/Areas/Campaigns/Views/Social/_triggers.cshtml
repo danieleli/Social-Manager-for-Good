@@ -1,4 +1,6 @@
 ﻿<div class="triggers">
+  <H4 style="margin-top: 10px;">HAI!
+  </H4>
   <div class="list-header">
     my campaigns</div>
   <ul class="trigger-list" data-bind="foreach: triggers">
@@ -6,10 +8,10 @@
   </ul>
   <div class="new trigger">
     <input type="text" placeholder="New Trigger" class="title" data-bind="value: triggerToAddTitle"
-      name="Title" />
+           name="Title" />
     <textarea placeholder="notes" data-bind="value: triggerToAddNotes"></textarea>
     <input type="text" class="date" placeholder="Date" data-bind="value: triggerToAddDate"
-      name="Date" />
+           name="Date" />
     <button data-bind="click: addTrigger" class="btn add primary">+ Add Trigger</button>
   </div>
   <div class="reveal-tab">
