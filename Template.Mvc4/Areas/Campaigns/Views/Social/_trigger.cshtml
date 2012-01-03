@@ -11,29 +11,40 @@
     <textarea rows="5" cols="90" data-bind="value: notes" placeholder="notes"></textarea>
     <ul data-bind="foreach: actions" class="actions">
       <li class="action" data-bind="click: $root.showActionDialog">
+        <div class="action-icon"  
+          data-bind="css: {facebook: $data.channel()==='facebook', twitter: $data.channel()==='twitter', meetup: $data.channel()==='meetup'} " >
+        </div>
         <span class="action-date" data-bind="text: niceDate"></span>
-        <span data-bind="text: channel"></span>
       </li>
     </ul>
     <div class="new-item action">
-      <input type="radio" name="channel" title="facebook" value="facebook">
-      <input type="radio" name="channel" title="linkedin" value="linkedin" />
-      <input type="radio" name="channel" title="twitter" value="twitter" />
-      <input type="radio" name="channel" title="meetup" value="meetup" />
-      <input type="radio" name="channel" title="other" class="other-radio" value="other" />
+      <div class="channel">
+        <div class="action-icon facebook">
+        </div>
+        <input type="radio" name="channel" title="facebook" value="facebook">
+      </div>
+      <div class="channel">
+        <div class="action-icon meetup">
+        </div>
+        <input type="radio" name="channel" title="meetup" value="meetup">
+      </div>
+      <div class="channel">
+        <div class="action-icon twitter">
+        </div>
+        <input type="radio" name="channel" title="twitter" value="twitter">
+      </div>
+      
       <input placeholder="Date" name="Date1" class="date" type="text" data-bind="value: $data.addActionDate" />
-      <div>
-        <input placeholder="New Channel" class="other-channel" name="other-channel" type="text"
-          data-bind="value: $data.addActionChannel" />
+      <div style="height:30px;">
+        <input style="display:none;" placeholder="New Channel" class="other-channel" name="other-channel" type="text"
+               data-bind="value: $data.addActionChannel" />
         <button data-bind="click: $root.addActionToTrigger" class="btn add primary">+ Add
           Action</button>
       </div>
     </div>
-    <div class="reveal-tab">
-      <span>{ + }</span>
-    </div>
+
     <div class="buttons">
       <span>&nbsp</span>
-      <button class="btn delete danger" data-bind="click: $root.removeTrigger">Delete Trigger</button></div>
+      <button class="btn delete danger" data-bind="click: $root.removeTrigger">Delete Campaign</button></div>
   </div>
 </li>

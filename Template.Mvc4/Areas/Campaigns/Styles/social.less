@@ -248,27 +248,46 @@ footer {
             .rounded-corners(5px); 
             padding: 2px 4px;  
             margin: 2px 4px 2px 0px;
+            .action-icon {.calendar-icon();}
+            .facebook {  background-image: url('/content/images/facebook_512x512.png');}
+            .twitter { background-image: url('/content/images/twitter_512x512.png'); }
+            .meetup { background-image: url('/content/images/meetup.png');} 
+            .target { background-image: url('/content/images/target.png');} 
             .action-date { font-size: 80%; }
           }
-          li:hover { background: #ddd; }
 
+          li:hover { background: #ddd; }
 
         }
         .new-item.action {
-          display: none;
+          display: block;
           background: @color1;
-          margin: 15px 0 0 0;
-          .rounded-corners(8px);
+          margin: 15px 0 15px 0;
           padding: 10px;
+          .rounded-corners(8px);
+          .channel {
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+            text-align: center;
+            .action-icon {.calendar-icon(); margin: 0;}
+            .twitter { background-image: url('/content/images/twitter_512x512.png'); }
+            .meetup { background-image: url('/content/images/meetup.png');} 
+            .facebook {  background-image: url('/content/images/facebook_512x512.png');}
+            input { margin: auto; }
+          }
           div { margin-top: 15px; }
           .other-channel { width: 80px !important; }
           input { display: inline-block; margin-right: 10px; }
-          .btn { float: right;  }
-          .date { width: 60px; margin-right: 0; float: right; margin-top:-3px; }
+          .btn { float: right; margin-right: 0px;  }
+          .date { width: 60px; margin-right: 0; float: right; margin-top:15px; }
         }
         .reveal-tab { margin-bottom: 15px; }
 
-        .buttons { height:40px; margin-right: 10px; }
+        .buttons { height:40px; margin-right: 0px; }
+ 
+
+   
       }
       &.selected .details { display: inline-block; }
     }
