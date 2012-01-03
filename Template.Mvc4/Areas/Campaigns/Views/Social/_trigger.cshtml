@@ -21,17 +21,17 @@
       <div class="channel">
         <div class="action-icon facebook">
         </div>
-        <input type="radio" name="channel" title="facebook" value="facebook">
+        <input type="radio" name="channel" title="facebook" value="facebook"  data-bind="checked: addActionChannel">
       </div>
       <div class="channel">
         <div class="action-icon meetup">
         </div>
-        <input type="radio" name="channel" title="meetup" value="meetup">
+        <input type="radio" name="channel" title="meetup" value="meetup" data-bind="checked: addActionChannel">
       </div>
       <div class="channel">
         <div class="action-icon twitter">
         </div>
-        <input type="radio" name="channel" title="twitter" value="twitter">
+        <input type="radio" name="channel" title="twitter" value="twitter" data-bind="checked: addActionChannel">
       </div>
       
       <input placeholder="Date" name="Date1" class="date" type="text" data-bind="value: $data.addActionDate" />

@@ -76,7 +76,7 @@ function TriggersViewModel(data) {
     // this = the trigger getting the new action.
     if (arguments.length > 0) {
       var new_action = ko.mapping.fromJS({ date: this.addActionDate(), channel: this.addActionChannel(), id: "new", notes: "" });
-      trigger_helper.postProcessAction(new_action, self.currentTrigger().title, self.triggers);
+      trigger_helper.postProcessAction(new_action, this, self.triggers);
       this.addActionDate("");
       this.addActionChannel("");
       this.addActionNotes("");
