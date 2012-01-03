@@ -20,6 +20,13 @@ namespace SocialManager.Mvc4.Areas.Campaigns
           new { action = "Index", id = UrlParameter.Optional }
           
       );
+
+      context.MapRoute(
+          "Social",
+          "Social",
+          new { controller="Social", action = "Index", id = UrlParameter.Optional }
+
+      );
     }
   }
 }
