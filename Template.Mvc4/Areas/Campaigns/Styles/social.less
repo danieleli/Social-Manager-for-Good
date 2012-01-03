@@ -119,6 +119,17 @@ ul { list-style: none; }
   width: @tradition-calendar-width;
   display: inline-block;
   .rounded-corners(10px);
+
+  .preheader { 
+    background: @color1-dark;
+    display: block;
+    font-size: 200%;
+    text-align: center;
+    padding: 20px 20px 30px 20px;
+    margin-bottom: -8px;
+    color: #eee;
+    .rounded-corners(20px 20px 0 0);
+  }
   
   div { 
     margin: 0; 
@@ -128,14 +139,16 @@ ul { list-style: none; }
   }
  
   .myheader {
-    padding: 5px 1px 0 1px;
+    padding: 15px 1px 15px 2px;
     background: #aaa;
-    .rounded-corners-each(10px, 10px, 0,0);
+    color: @color1-lightest;
+    font-size: 140%;
+   
     div { 
       text-align: center; 
       width: @day-width; 
       margin-bottom: 0px;
-      padding: 2px 2px 3px 2px;
+      padding: 2px 1px 3px 2px;
     }
   }
 
@@ -182,10 +195,11 @@ footer {
   
   .list-header {
     
-    padding: 10px 0 10px 10px;
-    font-size: 125%;
-    background: @color1;
-    color: @color1-lightest;
+    padding: 20px;
+    background: @color1-dark;
+    color: #fff;
+    font-size: 200%;
+    text-align: center;
     position: relative;
     .rounded-corners(10px 10px 0px 0px);
   }
@@ -205,7 +219,7 @@ footer {
       .summary {
         cursor: pointer;
         color: @color1-dark;
-        padding: 5px;
+        padding: 20px;
         .rounded-corners(5px 5px 0 0);
         border-bottom: 1px solid @color1;
 
