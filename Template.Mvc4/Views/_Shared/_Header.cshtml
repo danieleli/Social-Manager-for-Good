@@ -18,7 +18,7 @@
     </svg>
   </div>
 
-      @Html.ActionLink("{1:1} - social campaign creator", "Index", "Home", new { }, new { Class = "brand" })
+      @Html.ActionLink("{1:1} - social campaign creator", "Index", "Home", new { area = "" }, new { Class = "brand" })
       <ul class="nav">
         <li>@Html.ActionLink("my campaigns", "Index", "Social", new { area = "Campaigns" }, null)</li>
         <li>@Html.ActionLink("achievements", "Achievements", "Social", new { area = "Campaigns" }, null)</li>

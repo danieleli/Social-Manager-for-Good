@@ -133,8 +133,9 @@ h4 {
   .rounded-corners(10px);
 
   .preheader { 
-    background: @color1-dark;
-    display: block;
+    //background: @color1-dark;
+    //display: block;
+    display: none;
     font-size: 200%;
     font-weight: bold;
     text-align: center;
@@ -153,8 +154,8 @@ h4 {
  
   .myheader {
     padding: 15px 4px 10px 7px;
-    background: #aaa;
-    color: @color1-lightest;
+  //  background: #aaa;
+    color: @color1-dark;
     font-size: 140%;
    
     div { 
@@ -166,8 +167,8 @@ h4 {
   }
 
   .calendar-days { 
-    background: #eee;  
-    border: 1px solid #aaa;
+ //   background: #eee;  
+ //   border: 1px solid #aaa;
     border-top: none; 
     .rounded-corners(0px 0px 10px 10px); 
     padding: 2px 0px 2px 4px; 
@@ -177,7 +178,7 @@ h4 {
   .day { 
     position: relative;
     text-align:left;
-    background: #ccc;
+    background: #ddd;
     
     width: @day-width; 
     height: @day-width - 10;
@@ -233,13 +234,7 @@ h4 {
   }
 }
 
-footer {
-  text-align:center; 
-  width:100%; 
-  margin: 0;
-  a { color: #aaa }
-  a:hover { color: #eee; text-decoration:none; }
-}
+
 
 .triggers {
   width: @left-list-width;
@@ -248,12 +243,14 @@ footer {
   position:relative;
   .list-header {
     
-    padding: 20px;
-    background: @color1-dark;
-    color: #fff;
+    padding: 15px;
+    margin-left: 5px;
+  //  background: @color1-dark;
+    color: #666;
     font-size: 200%;
     font-weight: bold;
-    text-align: center;
+//    text-align: center;
+    text-align: left;
     position: relative;
     .rounded-corners(20px 20px 0px 0px);
   }
@@ -264,7 +261,7 @@ footer {
   
     padding: 0;
     margin: 0;
-    background: @color1-light;
+  //  background: @color1-light;
     margin-left: 0;
     z-index: 10;
     .trigger { 
@@ -275,17 +272,18 @@ footer {
         color: @color1-dark;
         padding: 20px;
         .rounded-corners(5px 5px 0 0);
-        border-bottom: 1px solid @color1;
+ //       border-bottom: 1px solid @color1;
 
 
-        .target-icon { .calendar-icon(); display: inline-block; float: left; vertical-align:bottom; border: 0; margin-right: 5px; }
+        .target-icon { .calendar-icon(); display: inline-block; float: left; vertical-align:bottom; border: 0;margin-top:-2px; margin-right: 5px; }
         &:hover .target-icon { background: url('/content/images/target.png') no-repeat top left;  }
         
-        .title { float: left; }
+        .title { float: left;  }
         .date { float: right; text-align:right; color:@color1;}
       }
 
       &.selected { 
+        .rounded-corners(10px);
         background: @color1-light; 
         .target-icon {
           background: url('/content/images/target.png') no-repeat top left;  
@@ -294,7 +292,7 @@ footer {
       
       .details
       {
-        border-bottom: 1px solid @color1;
+   //     border-bottom: 1px solid @color1;
         padding: 5px 0;
         .add { }
         .delete { float: right; }
@@ -389,6 +387,15 @@ footer {
   opacity: .9;
   label { margin-top: 4px; margin-right: 10px; padding: 0; width:60px; text-align: right; }
   input, textarea { width: 190px; }
+}
+
+
+footer {
+  text-align:center; 
+  width:100%; 
+  margin: 0;
+  a { color: #aaa }
+  a:hover { color: #eee; text-decoration:none; }
 }
 
 /*

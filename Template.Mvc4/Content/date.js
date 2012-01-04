@@ -12,6 +12,6 @@ Date.prototype.addDays = function (days) {
 };
 
 Date.prototype.getMonthName = function () {
-  var months = ["jan", "feb", "mar", "apr", "may"];
+  var months = ["jan", "feb", "mar", "apr", "may", "june", "july", "aug", "sept", "oct", "nov", "dec"];
   return months[this.getMonth()];
 };
