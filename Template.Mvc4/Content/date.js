@@ -10,3 +10,8 @@ Date.prototype.addDays = function (days) {
    days = this.getDate() + days;
    return this.setDate(days);
 };
+
+Date.prototype.getMonthName = function () {
+  var months = ["jan", "feb", "mar", "apr", "may"];
+  return months[this.getMonth()];
+};

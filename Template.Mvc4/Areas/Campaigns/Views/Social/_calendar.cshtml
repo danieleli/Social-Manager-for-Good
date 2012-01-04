@@ -12,9 +12,13 @@
          title="Subscribe to your calendar feed coming soon." style="position: absolute;
                                        right: -40px; top: 5px;" />
   </div>
-  <div data-bind="foreach: calendarDays" class="calendar-days">
+  <div data-bind="foreach: calendarDays" class="calendar-days" >
     <div class="day">
-      <div style="display: block;" data-bind="text: niceDay"></div>
+      <div data-bind="css: {first_day: ($data.date.getDate()===1) }">
+        <div class="nice_day" data-bind="text: $data.date.getDate()"></div>  
+        <div class="month_name"  data-bind="text: $data.date.getMonthName()"></div>  
+      </div>
+      
       <div data-bind="foreach: campaigns" class="campaigns has_tip">
         <div class="target" data-bind="click: toggleSelectedState, css: { highlighted: $data.isHighlighted }"></div>
         <div class="tip">

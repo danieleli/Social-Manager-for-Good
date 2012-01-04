@@ -1,7 +1,7 @@
 ﻿@import "/Content/common-functions.less";
 @channel-width: 100px;
 @day-width: 84px;
-@tradition-calendar-width: (@day-width * 7) + 54;
+@tradition-calendar-width: (@day-width * 7) + 48;
 @color1: #999;
 @color1-light: lighten(@color1, 30%);
 @color1-lightest: lighten(@color1, 40%);
@@ -100,17 +100,6 @@ ul { list-style: none; }
   }
 }
 
-.calendar-icon {
-  background: url('/content/images/target-bw.png') no-repeat top left; 
-  background-size: contain; 
-  width: 20px; 
-  height: 20px; 
-  cursor: pointer;
-  border: 2px dotted transparent;
-  .rounded-corners(5px);
-  background-repeat: no-repeat;
-}
-
 h4 {
   position: absolute;
   left: -180px;
@@ -120,6 +109,21 @@ h4 {
   text-align: right;
   color: #666;
 }
+
+.calendar-icon {
+  background: url('/content/images/target-bw.png') no-repeat top left; 
+  background-size: contain; 
+  width: 22px; 
+  height: 22px; 
+  cursor: pointer;
+  opacity: .8;
+  background-repeat: no-repeat;
+  margin: 1px;
+  margin-left:-4px;
+ 
+}
+
+
 .traditional-calendar
 {
   float: right;
@@ -148,7 +152,7 @@ h4 {
   }
  
   .myheader {
-    padding: 15px 1px 15px 2px;
+    padding: 15px 4px 10px 7px;
     background: #aaa;
     color: @color1-lightest;
     font-size: 140%;
@@ -157,22 +161,62 @@ h4 {
       text-align: center; 
       width: @day-width; 
       margin-bottom: 0px;
-      padding: 2px 1px 3px 2px;
+      padding: 2px 1px 3px 0px;
     }
   }
 
-  .calendar-days { background: #eee;  border: 1px solid #aaa;
-    border-top: none; .rounded-corners(0px 0px 10px 10px);  }
+  .calendar-days { 
+    background: #eee;  
+    border: 1px solid #aaa;
+    border-top: none; 
+    .rounded-corners(0px 0px 10px 10px); 
+    padding: 2px 0px 2px 4px; 
+    
+  }
 
   .day { 
-    color: #666;
+    position: relative;
+    text-align:left;
+    background: #ddd;
     min-height: 50px;
     width: @day-width; 
-    margin-bottom: 3px; 
+    height: @day-width;
+    .rounded-corners(5px);
     vertical-align: top;  
-    overflow: visible;
-    padding: 2px;
+    overflow: hidden;
+    padding: 0px;
+    padding-top: 1px;
+    margin: 1px; 
+
+    .nice_day {
+      position: absolute;
+      .rounded-corners(5px);
+      margin: auto;
+      text-align:center;
+      color: #eee;
+      width: 100%;
+      height: 100%;
+      display: block;
+      padding-top: 35px;
+      top: 0;
+      font-size: 220%;
+      font-weight: bold;
+    }
+
+    .month_name { display: none; }
     
+    .first_day { 
+      color: #aaa;
+      .nice_day { color: #aaa; }
+      .month_name {
+        display: block;
+        position: absolute;
+        bottom: 5px;
+        text-align: center;
+        font-size: 130%;
+        width: 100%;
+      }
+    }
 
     .facebook { .calendar-icon(); background-image: url('/content/images/facebook_512x512-bw.png');}
     .twitter { .calendar-icon(); background-image: url('/content/images/twitter_512x512-bw.png'); }
@@ -210,7 +254,7 @@ footer {
     font-size: 200%;
     text-align: center;
     position: relative;
-    .rounded-corners(10px 10px 0px 0px);
+    .rounded-corners(20px 20px 0px 0px);
   }
   
   .trigger-list {
@@ -271,7 +315,8 @@ footer {
             .rounded-corners(5px); 
             padding: 2px 4px;  
             margin: 2px 4px 2px 0px;
-            .action-icon {.calendar-icon();}
+            text-align:center;
+            .action-icon {.calendar-icon(); margin: auto;}
             .facebook {  background-image: url('/content/images/facebook_512x512.png');}
             .twitter { background-image: url('/content/images/twitter_512x512.png'); }
             .meetup { background-image: url('/content/images/meetup.png');} 
