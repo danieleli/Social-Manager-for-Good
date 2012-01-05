@@ -7,15 +7,66 @@
   <script src="/Content/lib/jquery/jquery-1.7.1.min.js" type="text/javascript"></script> 
   }
 }
-
-<div class="debug" >
- <textarea style="position:absolute; left: 10px; width: 275px; height: 400px;" data-bind="text: ko.toJSON($root.triggers)"></textarea>
+<div class="debug">
+  <textarea style="position: absolute; left: 10px; width: 275px; height: 400px;" data-bind="text: ko.toJSON($root.triggers)"></textarea>
 </div>
 <br />
-@Html.Partial("_triggers")
-
+<div class="left_aside">
+  @Html.Partial("_triggers")
+  <br />
+  <br />
+  <br />
+  <br />
+  <div class="overview">
+    <h3>Overview</h3>
+    <div>
+      <div>Campaigns</div>
+      <ol>
+        <li>Mouse over a campaign.
+          <ul>
+            <li>Actions related to that campaign become full color in the calandar. </li>
+          </ul>
+        </li>
+        <li>Click on a campaign.
+          <ul>
+            <li>Reveals detailed view. </li>
+          </ul>
+        </li>
+        <li>Click on social media action.
+          <ul>
+            <li>Popup for detail on that action. </li>
+          </ul>
+        </li>
+        <li>Delete action.
+          <ul>
+            <li>Removes action from both detail view and calendar </li>
+          </ul>
+        </li>
+        <li>Add action.
+          <ul>
+            <li>Click on a action button in the dark area, then select a date, and click the blue
+              " + add action " button. The action is added immediately to the details section
+              of the campaign and calendar. </li>
+          </ul>
+        </li>
+        <li>Click { + } to add new campaign
+          <ul>
+            <li>Removes action from both detail view and calendar </li>
+          </ul>
+        </li>
+      </ol>
+      <br />
+      <div>Calendar</div>
+      <ol>
+        <li>Mouse over social icon. </li>
+        <li>Click on on social actions. </li>
+        <li>Change date</li>
+        <li>Click on target icon. <div style=" margin-left: 5px; display: inline-block; vertical-align: middle; height: 12px; width: 12px;" class="calendar-icon"></div></li>
+      </ol>
+    </div>
+  </div>
+</div>
 @Html.Partial("_calendar")
-
 @section pageScripts
 {
   <script type="text/javascript">
@@ -41,7 +92,7 @@
       $('input.date').datepicker("destroy");
       $('input.date').datepicker();
       //$(".triggers .trigger .summary").first().click();
-      
+
 
     });
 
@@ -53,3 +104,4 @@
 
   </script>
 }
+
