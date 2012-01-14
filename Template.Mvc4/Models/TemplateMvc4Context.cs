@@ -14,6 +14,7 @@ namespace SocialManager.Mvc4.Models
       // System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<SocialManager.Mvc4.Models.SocialManagerMvc4Context>());
 
        public DbSet<Contact> Contacts { get; set; }
+       public DbSet<Foo> Foos { get; set; }
 
     }
 }

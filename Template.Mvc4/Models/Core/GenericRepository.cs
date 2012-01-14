@@ -6,18 +6,18 @@ using System.Data;
 
 namespace SocialManager.Mvc4.Models.Core
 {
-  public class GenericRepository<T> : IRepository<T> where T: ModelBase
+  public class GenericRepository<TModel> : IRepository<TModel> where TModel: ModelBase
   {
     private readonly SocialManagerMvc4Context _context = new SocialManagerMvc4Context();
 
-    public virtual IQueryable<T> All
+    public IQueryable<TModel> All
     {
-      get { return _context.Set<T>(); }
+      get { return _context.Set<TModel>(); }
     }
 
-    public virtual IQueryable<T> AllIncluding(params Expression<Func<T, object>>[] includeProperties)
+    public IQueryable<TModel> AllIncluding(params Expression<Func<TModel, object>>[] includeProperties)
     {
-      IQueryable<T> query = _context.Set<T>();
+      IQueryable<TModel> query = _context.Set<TModel>();
       foreach (var includeProperty in includeProperties)
       {
         query = query.Include(includeProperty);
@@ -25,18 +25,18 @@ namespace SocialManager.Mvc4.Models.Core
       return query;
     }
 
-    public virtual T Find(int id)
+    public TModel Find(int id)
     {
-      return _context.Set<T>().Find(id);
+      return _context.Set<TModel>().Find(id);
     }
 
-    public virtual void InsertOrUpdate(T entity)
+    public void InsertOrUpdate(TModel entity)
     {
       entity.ModifyDate = DateTime.Now;
       if (entity.Id == default(int))
       {
         // New entity
-        _context.Set<T>().Add(entity);
+        _context.Set<TModel>().Add(entity);
       }
       else
       {
@@ -45,13 +45,13 @@ namespace SocialManager.Mvc4.Models.Core
       }
     }
 
-    public virtual void Delete(int id)
+    public void Delete(int id)
     {
-      var entity = _context.Set<T>().Find(id);
-      _context.Set<T>().Remove(entity);
+      var entity = _context.Set<TModel>().Find(id);
+      _context.Set<TModel>().Remove(entity);
     }
 
-    public virtual void Save()
+    public void Save()
     {
       _context.SaveChanges();
     }
@@ -59,11 +59,11 @@ namespace SocialManager.Mvc4.Models.Core
 
   public interface IRepository<T>
   {
-    IQueryable<T> All { get; }
-    IQueryable<T> AllIncluding(params Expression<Func<T, object>>[] includeProperties);
-    T Find(int id);
-    void InsertOrUpdate(T contact);
-    void Delete(int id);
-    void Save();
+     IQueryable<T> All { get; }
+     IQueryable<T> AllIncluding(params Expression<Func<T, object>>[] includeProperties);
+     T Find(int id);
+     void InsertOrUpdate(T contact);
+     void Delete(int id);
+     void Save();
   }
 }

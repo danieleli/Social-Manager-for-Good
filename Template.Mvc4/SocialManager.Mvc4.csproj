@@ -171,6 +171,7 @@
     <Compile Include="Areas\Campaigns\CampaignsAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Controllers\FooController.cs" />
     <Compile Include="Controllers\GenericController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Campaigns\Controllers\SocialController.cs" />
@@ -179,6 +180,7 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\Foo.cs" />
     <Compile Include="Repositories\ContactRepository.cs" />
     <Compile Include="Models\Core\ModelBase.cs" />
     <Compile Include="Models\Core\GenericRepository.cs" />
@@ -553,6 +555,12 @@
       <LastGenOutput>nested_knockout.js</LastGenOutput>
     </None>
     <Content Include="Views\Home\Analytics.cshtml" />
+    <Content Include="Views\Foo\Create.cshtml" />
+    <Content Include="Views\Foo\Edit.cshtml" />
+    <Content Include="Views\Foo\Delete.cshtml" />
+    <Content Include="Views\Foo\Details.cshtml" />
+    <Content Include="Views\Foo\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Foo\Index.cshtml" />
     <None Include="Views\Home\javascript.cshtml" />
     <Content Include="Areas\Campaigns\Scripts\social.js" />
     <Content Include="Content\CrudHelpers.js">

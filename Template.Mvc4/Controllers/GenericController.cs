@@ -4,21 +4,20 @@ using SocialManager.Mvc4.Models.Core;
 
 namespace SocialManager.Mvc4.Controllers
 {
-  public class GenericController<T, TRepo> : Controller
-    where T : ModelBase
-    where TRepo : IRepository<T>, new()
+  public abstract class GenericController<TModel> : Controller
+    where TModel : ModelBase
   {
-    protected readonly TRepo _repository;
+    protected readonly IRepository<TModel> _repository;
     protected readonly SocialManagerMvc4Context _context = new SocialManagerMvc4Context();
 
     #region -- Constructors ---
 
-    public GenericController()
-      : this(new TRepo())
+    protected GenericController()
+      : this(new GenericRepository<TModel>())
     {
     }
 
-    public GenericController(TRepo repository)
+    protected GenericController(IRepository<TModel> repository)
     {
       this._repository = repository;
     }
@@ -41,7 +40,7 @@ namespace SocialManager.Mvc4.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(T model)
+    public ActionResult Create(TModel model)
     {
       if (ModelState.IsValid)
       {
@@ -65,7 +64,7 @@ namespace SocialManager.Mvc4.Controllers
     }
 
     [HttpPost]
-    public virtual ActionResult Edit(T model)
+    public virtual ActionResult Edit(TModel model)
     {
       if (ModelState.IsValid)
       {
@@ -84,9 +83,6 @@ namespace SocialManager.Mvc4.Controllers
     {
       return View(_repository.Find(id));
     }
-
-    //
-    // POST: /Stores/Delete/5
 
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
