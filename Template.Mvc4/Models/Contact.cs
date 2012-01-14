@@ -11,6 +11,7 @@ namespace SocialManager.Mvc4.Models
     public string FirstName { get; set; }
     [Required]
     public string LastName { get; set; }
+    public string Title { get; set; }
 
 
   }

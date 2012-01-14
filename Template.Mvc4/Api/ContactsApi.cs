@@ -35,7 +35,7 @@ namespace SocialManager.Mvc4.Api
     public Contact Create(Contact instance)
     {
       instance.ModifyDate = DateTime.Now;
-      _contactRepository.InsertOrUpdate(instance);
+      _contactRepository.InsertOrUpdate(instance, "api");
       _contactRepository.Save();
       return instance;
     }
@@ -49,7 +49,7 @@ namespace SocialManager.Mvc4.Api
     [WebInvoke(UriTemplate = "{id}", Method = "PUT")]
     public Contact Update(string id, Contact instance)
     {
-      _contactRepository.InsertOrUpdate(instance);
+      _contactRepository.InsertOrUpdate(instance, "api");
       _contactRepository.Save();
       return instance;
     }

@@ -13,4 +13,6 @@ namespace SocialManager.Mvc4.Controllers
     public FooController() : base() { }
     public FooController(IRepository<Foo> repo) : base(repo) { }
   }
+  
+  
 }

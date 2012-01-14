@@ -61,7 +61,7 @@ namespace SocialManager.Mvc4.Controllers
     {
       if (ModelState.IsValid)
       {
-        _contactRepository.InsertOrUpdate(contact);
+        _contactRepository.InsertOrUpdate(contact, base.User.Identity.Name);
         _contactRepository.Save();
         if (Request.IsAjaxRequest())
         {
@@ -90,7 +90,7 @@ namespace SocialManager.Mvc4.Controllers
       //TryUpdateModel(contact);
       if (ModelState.IsValid)
       {
-        _contactRepository.InsertOrUpdate(contact);
+        _contactRepository.InsertOrUpdate(contact, this.User.Identity.Name);
         _contactRepository.Save();
         if (Request.IsAjaxRequest())
         {

@@ -45,7 +45,7 @@ namespace SocialManager.Mvc4.Controllers
     {
       if (ModelState.IsValid)
       {
-        _repository.InsertOrUpdate(model);
+        _repository.InsertOrUpdate(model, base.User.Identity.Name);
         _repository.Save();
         if (Request.IsAjaxRequest())
         {
@@ -67,7 +67,7 @@ namespace SocialManager.Mvc4.Controllers
     {
       if (ModelState.IsValid)
       {
-        _repository.InsertOrUpdate(model);
+        _repository.InsertOrUpdate(model, base.User.Identity.Name);
         _repository.Save();
 
         return RedirectToAction("Index");

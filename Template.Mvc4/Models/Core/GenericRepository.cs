@@ -6,23 +6,45 @@ using System.Data;
 
 namespace SocialManager.Mvc4.Models.Core
 {
-  public class GenericRepository<TModel> : IRepository<TModel> where TModel: ModelBase
+  public class GenericRepository<TModel> : IRepository<TModel> where TModel : ModelBase
   {
-    private readonly AppDbContext _dbContext = new AppDbContext();
+    private readonly DbContext _dbContext;
+
+    #region -- constructors --
+
+    public GenericRepository() : this(new AppDbContext()) { }
+    
+    public GenericRepository(DbContext dbContext)
+    {
+      _dbContext = new AppDbContext();
+    }
+    
+    public GenericRepository(string connectionString)
+    {
+      _dbContext = new DbContext(connectionString);
+    }
+
+    #endregion // -- constructors --
 
     public IQueryable<TModel> All
     {
       get { return _dbContext.Set<TModel>(); }
     }
 
+    /// <param name="includeProperties">AllIncluding(model => model.ChildItemsProperty);</param>
     public IQueryable<TModel> AllIncluding(params Expression<Func<TModel, object>>[] includeProperties)
     {
-      IQueryable<TModel> query = _dbContext.Set<TModel>();
+
+      var query = _dbContext.Set<TModel>().AsQueryable();
+
       foreach (var includeProperty in includeProperties)
       {
         query = query.Include(includeProperty);
       }
       return query;
+
+      // Alternate to foreach in Linq
+      // return includeProperties.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
     }
 
     public TModel Find(int id)
@@ -30,17 +52,17 @@ namespace SocialManager.Mvc4.Models.Core
       return _dbContext.Set<TModel>().Find(id);
     }
 
-    public void InsertOrUpdate(TModel entity)
+    public void InsertOrUpdate(TModel entity, string user)
     {
       entity.ModifyDate = DateTime.Now;
-      if (entity.Id == default(int))
+      entity.ModifyUser = user;
+      
+      if (entity.Id == default(int))                                            // New entity
       {
-        // New entity
         _dbContext.Set<TModel>().Add(entity);
       }
-      else
+      else                                                                      // Existing entity
       {
-        // Existing entity
         _dbContext.Entry(entity).State = EntityState.Modified;
       }
     }
@@ -57,13 +79,13 @@ namespace SocialManager.Mvc4.Models.Core
     }
   }
 
-  public interface IRepository<T>
+  public interface IRepository<TModel>
   {
-     IQueryable<T> All { get; }
-     IQueryable<T> AllIncluding(params Expression<Func<T, object>>[] includeProperties);
-     T Find(int id);
-     void InsertOrUpdate(T contact);
-     void Delete(int id);
-     void Save();
+    IQueryable<TModel> All { get; }
+    IQueryable<TModel> AllIncluding(params Expression<Func<TModel, object>>[] includeProperties);
+    TModel Find(int id);
+    void InsertOrUpdate(TModel model, string user);
+    void Delete(int id);
+    void Save();
   }
 }
