@@ -4,11 +4,12 @@ using SocialManager.Mvc4.Models.Core;
 
 namespace SocialManager.Mvc4.Controllers
 {
-  public abstract class GenericController<TModel> : Controller
+  // ReSharper disable Mvc.ViewNotResolved
+  public class GenericController<TModel> : Controller
     where TModel : ModelBase
   {
     protected readonly IRepository<TModel> _repository;
-    protected readonly SocialManagerMvc4Context _context = new SocialManagerMvc4Context();
+    protected readonly AppDbContext _dbContext = new AppDbContext();
 
     #region -- Constructors ---
 
@@ -19,7 +20,7 @@ namespace SocialManager.Mvc4.Controllers
 
     protected GenericController(IRepository<TModel> repository)
     {
-      this._repository = repository;
+      _repository = repository;
     }
 
     #endregion // -- Constructors ---
@@ -40,7 +41,7 @@ namespace SocialManager.Mvc4.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(TModel model)
+    public virtual ActionResult Create(TModel model)
     {
       if (ModelState.IsValid)
       {
@@ -50,12 +51,10 @@ namespace SocialManager.Mvc4.Controllers
         {
           return Json(model, JsonRequestBehavior.AllowGet);
         }
+
         return RedirectToAction("Index");
       }
-      else
-      {
-        return View();
-      }
+      return View();
     }
 
     public virtual ActionResult Edit(int id)
@@ -70,22 +69,20 @@ namespace SocialManager.Mvc4.Controllers
       {
         _repository.InsertOrUpdate(model);
         _repository.Save();
+
         return RedirectToAction("Index");
       }
-      else
-      {
-        return View();
-      }
+      return View();
     }
 
 
-    public ActionResult Delete(int id)
+    public virtual ActionResult Delete(int id)
     {
       return View(_repository.Find(id));
     }
 
     [HttpPost, ActionName("Delete")]
-    public ActionResult DeleteConfirmed(int id)
+    public virtual ActionResult DeleteConfirmed(int id)
     {
       _repository.Delete(id);
       _repository.Save();
@@ -93,4 +90,5 @@ namespace SocialManager.Mvc4.Controllers
       return RedirectToAction("Index");
     }
   }
+  // ReSharper restore Mvc.ViewNotResolved
 }

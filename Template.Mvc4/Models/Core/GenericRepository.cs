@@ -8,16 +8,16 @@ namespace SocialManager.Mvc4.Models.Core
 {
   public class GenericRepository<TModel> : IRepository<TModel> where TModel: ModelBase
   {
-    private readonly SocialManagerMvc4Context _context = new SocialManagerMvc4Context();
+    private readonly AppDbContext _dbContext = new AppDbContext();
 
     public IQueryable<TModel> All
     {
-      get { return _context.Set<TModel>(); }
+      get { return _dbContext.Set<TModel>(); }
     }
 
     public IQueryable<TModel> AllIncluding(params Expression<Func<TModel, object>>[] includeProperties)
     {
-      IQueryable<TModel> query = _context.Set<TModel>();
+      IQueryable<TModel> query = _dbContext.Set<TModel>();
       foreach (var includeProperty in includeProperties)
       {
         query = query.Include(includeProperty);
@@ -27,7 +27,7 @@ namespace SocialManager.Mvc4.Models.Core
 
     public TModel Find(int id)
     {
-      return _context.Set<TModel>().Find(id);
+      return _dbContext.Set<TModel>().Find(id);
     }
 
     public void InsertOrUpdate(TModel entity)
@@ -36,24 +36,24 @@ namespace SocialManager.Mvc4.Models.Core
       if (entity.Id == default(int))
       {
         // New entity
-        _context.Set<TModel>().Add(entity);
+        _dbContext.Set<TModel>().Add(entity);
       }
       else
       {
         // Existing entity
-        _context.Entry(entity).State = EntityState.Modified;
+        _dbContext.Entry(entity).State = EntityState.Modified;
       }
     }
 
     public void Delete(int id)
     {
-      var entity = _context.Set<TModel>().Find(id);
-      _context.Set<TModel>().Remove(entity);
+      var entity = _dbContext.Set<TModel>().Find(id);
+      _dbContext.Set<TModel>().Remove(entity);
     }
 
     public void Save()
     {
-      _context.SaveChanges();
+      _dbContext.SaveChanges();
     }
   }
 

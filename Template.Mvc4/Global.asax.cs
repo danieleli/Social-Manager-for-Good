@@ -55,8 +55,8 @@ namespace SocialManager.Mvc4
     [Conditional("DEBUG")]
     private void SetDbInit()
     {
-      Database.SetInitializer(new DropCreateDatabaseIfModelChanges<SocialManagerMvc4Context>());
-      Database.SetInitializer(new CreateDatabaseIfNotExists<SocialManagerMvc4Context>());
+      Database.SetInitializer(new DropCreateDatabaseIfModelChanges<AppDbContext>());
+      Database.SetInitializer(new CreateDatabaseIfNotExists<AppDbContext>());
     }
   }
   public class CustomRazorViewEngine : RazorViewEngine
